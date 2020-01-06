@@ -3,13 +3,18 @@ import Draft from "draft-js";
 import Prism from "prismjs";
 import "./rich.css";
 import "./prism.css";
-
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 
 const emojiPlugin = createEmojiPlugin();
 const { EmojiSuggestions} = emojiPlugin;
 
 const { Editor, EditorState, RichUtils, getDefaultKeyBinding } = Draft;
+
+
+
 
 export default class RichEditorExample extends React.Component {
 	constructor(props) {
@@ -74,7 +79,10 @@ export default class RichEditorExample extends React.Component {
 			}
 		}
 		return (
-			<div className="RichEditor-root">
+			<div className="RichEditor-root post-editor">
+				<Container>
+					<Row className="justify-content-md-center">
+						<Col md="7">
 				<BlockStyleControls
 					editorState={editorState}
 					onToggle={this.toggleBlockType}
@@ -109,6 +117,9 @@ onSubmit(e) {
 					`}
 					</code>
 				</pre>
+				</Col>
+	</Row>
+</Container>
 			</div>
 		);
 	}

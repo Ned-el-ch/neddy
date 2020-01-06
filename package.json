@@ -10,6 +10,7 @@
     "draft-js-plugins-editor": "^3.0.0",
     "prismjs": "^1.18.0",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0"
   },

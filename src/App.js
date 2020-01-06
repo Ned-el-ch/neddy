@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Rich from './Rich';
 import './App.css';
 
-function App() {
-	return (
-		<Rich />
-	);
-}
+export default class App extends Component {
 
-export default App;
+	render() {
+
+		return (
+	
+			<div className='app'>
+	
+				<Rich />
+	
+			</div>
+	
+		);
+
+	};
+
+};
