@@ -7,8 +7,11 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
+import createPrismPlugin from 'draft-js-prism-plugin';
 
 const emojiPlugin = createEmojiPlugin();
+const prismPlugin = createPrismPlugin({prism: Prism});
+
 const { EmojiSuggestions} = emojiPlugin;
 
 const { Editor, EditorState, RichUtils, getDefaultKeyBinding } = Draft;
@@ -58,6 +61,8 @@ export default class RichEditorExample extends React.Component {
 		);
 	}
 
+	
+
 	componentDidMount() {
 		Prism.highlightAll();
 	}
@@ -83,30 +88,31 @@ export default class RichEditorExample extends React.Component {
 				<Container>
 					<Row className="justify-content-md-center">
 						<Col md="7">
-				<BlockStyleControls
-					editorState={editorState}
-					onToggle={this.toggleBlockType}
-				/>
-				<InlineStyleControls
-					editorState={editorState}
-					onToggle={this.toggleInlineStyle}
-				/>
-				<div className={className} onClick={this.focus}>
-					<Editor
-						blockStyleFn={getBlockStyle}
-						customStyleMap={styleMap}
-						editorState={editorState}
-						handleKeyCommand={this.handleKeyCommand}
-						keyBindingFn={this.mapKeyToEditorCommand}
-						onChange={this.onChange}
-						ref="editor"
-						spellCheck={true}
-					/>
-					<EmojiSuggestions />
-				</div>
-				<pre>
-					<code className='language-javascript'>
-					{`
+							<BlockStyleControls
+								editorState={editorState}
+								onToggle={this.toggleBlockType}
+							/>
+							<InlineStyleControls
+								editorState={editorState}
+								onToggle={this.toggleInlineStyle}
+							/>
+							<div className={className} onClick={this.focus}>
+								<Editor
+									blockStyleFn={getBlockStyle}
+									customStyleMap={styleMap}
+									editorState={editorState}
+									handleKeyCommand={this.handleKeyCommand}
+									keyBindingFn={this.mapKeyToEditorCommand}
+									onChange={this.onChange}
+									ref="editor"
+									spellCheck={true}
+									plugins={[prismPlugin]}
+								/>
+								<EmojiSuggestions />
+							</div>
+<pre>
+	<code className='language-javascript'>
+		{`
 onSubmit(e) {
 	e.preventDefault();
 	const job = {
@@ -115,11 +121,11 @@ onSubmit(e) {
 	};
 };
 					`}
-					</code>
-				</pre>
-				</Col>
-	</Row>
-</Container>
+	</code>
+</pre>
+						</Col>
+					</Row>
+				</Container>
 			</div>
 		);
 	}
@@ -171,7 +177,7 @@ const BLOCK_TYPES = [
 	{ label: "Blockquote", style: "blockquote" },
 	{ label: "UL", style: "unordered-list-item" },
 	{ label: "OL", style: "ordered-list-item" },
-	{ label: "Code Block", style: "code-block" }
+	{ label: "Code Block", style: "code-block"}
 ];
 const BlockStyleControls = props => {
 	const { editorState } = props;
