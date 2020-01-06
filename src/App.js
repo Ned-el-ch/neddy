@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Rich from './Rich';
+import PrismEditorExample from './Rich';
 import './App.css';
 
 export default class App extends Component {
@@ -9,8 +9,8 @@ export default class App extends Component {
 		return (
 	
 			<div className='app'>
-	
-				<Rich />
+				< PrismEditorExample />
+
 	
 			</div>
 	

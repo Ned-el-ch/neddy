@@ -8,7 +8,7 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
 
  code[class*="language-"],
  pre[class*="language-"] {
-	 color: rgb(186, 229, 227);
+	 color: rgb(248, 248, 248);
 	 background: none;
 	 font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	 font-size: 1em;
@@ -60,7 +60,7 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  }
  
  .token.punctuation {
-	 color: rgb(255, 255, 255);
+	 color: rgb(83, 215, 255);
  }
  
  .token.tag,
