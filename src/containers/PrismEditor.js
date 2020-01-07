@@ -7,8 +7,8 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-import BlockStyleControls from '../components/BlockStyleControls'
-import InlineStyleControls from '../components/InlineStyleControls'
+import BlockStyleControls from '../components/BlockStyleControls';
+import InlineStyleControls from '../components/InlineStyleControls';
 // import PrismDraftDecorator from 'draft-js-prism'
 import "../styles/rich.css";
 import "../styles/prism.css"
@@ -77,7 +77,7 @@ const {
  export default class PrismEditor extends Component {
 	constructor(props) {
 		super(props);
-		var decorator = new PrismDraftDecorator(Prism.languages.javascript);
+		const decorator = new PrismDraftDecorator(Prism.languages.javascript);
 		this.state = {
 		 editorState: EditorState.createEmpty(decorator),
 		};
@@ -112,16 +112,24 @@ const {
 			)
 		);
 	}
+
+	getBlockStyle(block) {
+		switch (block.getType()) {
+			case 'blockquote': return 'RichEditor-blockquote';
+			default: return null;
+		}
+	}
+
 	render() {
 		const {editorState} = this.state;
 		// If the user changes block type before entering any text, we can
 		// either style the placeholder or hide it. Let's just hide it now.
 		let className = 'RichEditor-editor';
-		var contentState = editorState.getCurrentContent();
+		const contentState = editorState.getCurrentContent();
 		if (!contentState.hasText()) {
-		 if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-			className += ' RichEditor-hidePlaceholder';
-		 }
+			if (contentState.getBlockMap().first().getType() !== 'unstyled') {
+				className += ' RichEditor-hidePlaceholder';
+			}
 		}
 		return (
 			<Container><Row className="justify-content-md-center"><Col md="7">
@@ -136,7 +144,7 @@ const {
 					/>
 					<div className={className} onClick={this.focus}>
 						<Editor
-						blockStyleFn={getBlockStyle}
+						blockStyleFn={this.getBlockStyle}
 						editorState={editorState}
 						handleKeyCommand={this.handleKeyCommand}
 						onChange={this.onChange}
@@ -150,84 +158,3 @@ const {
 		);
 	}
 }
-function getBlockStyle(block) {
-	switch (block.getType()) {
-		case 'blockquote': return 'RichEditor-blockquote';
-		default: return null;
-	}
-}
-// class StyleButton extends Component {
-// 	constructor() {
-// 		super();
-// 		this.onToggle = (e) => {
-// 			e.preventDefault();
-// 			this.props.onToggle(this.props.style);
-// 		};
-// 	}
-// 	render() {
-// 		let className = 'RichEditor-styleButton';
-// 		if (this.props.active) {
-// 			className += ' RichEditor-activeButton';
-// 		}
-// 		return (
-// 			<span className={className} onMouseDown={this.onToggle}>
-// 				{this.props.label}
-// 			</span>
-// 		);
-// 	}
-// }
-// const BlockStyleControls = (props) => {
-// 	const BLOCK_TYPES = [
-// 		// {label: 'H1', style: 'header-one'},
-// 		{label: 'Heading', style: 'header-two'},
-// 		// {label: 'Sub-heading', style: 'header-three'},
-// 		{label: 'Sub-heading', style: 'header-four'},
-// 		// {label: 'H5', style: 'header-five'},
-// 		// {label: 'H6', style: 'header-six'},
-// 		{label: 'Blockquote', style: 'blockquote'},
-// 		{label: 'Bullet List', style: 'unordered-list-item'},
-// 		{label: 'Numbered List', style: 'ordered-list-item'},
-// 		{label: 'JS Code Block', style: 'code-block'},
-// 	];
-// 	const {editorState} = props;
-// 	const selection = editorState.getSelection();
-// 	const blockType = editorState
-// 		.getCurrentContent()
-// 		.getBlockForKey(selection.getStartKey())
-// 		.getType();
-// 	return (
-// 		<div className="RichEditor-controls">
-// 			{BLOCK_TYPES.map((type) =>
-// 				<StyleButton
-// 					key={type.label}
-// 					active={type.style === blockType}
-// 					label={type.label}
-// 					onToggle={props.onToggle}
-// 					style={type.style}
-// 				/>
-// 			)}
-// 		</div>
-// 	);
-// };
-// const InlineStyleControls = (props) => {
-// 	const INLINE_STYLES = [
-// 		{label: 'Bold', style: 'BOLD'},
-// 		{label: 'Italic', style: 'ITALIC'},
-// 		{label: 'Underline', style: 'UNDERLINE'},
-// 		{label: 'Monospace', style: 'CODE'},
-// 	];
-// 	const currentStyle = props.editorState.getCurrentInlineStyle();
-// 	return (
-// 		<div className="RichEditor-controls">
-// 			{INLINE_STYLES.map(type =>
-// 				<StyleButton
-// 					key={type.label}
-// 					active={currentStyle.has(type.style)}
-// 					label={type.label}
-// 					onToggle={props.onToggle}
-// 					style={type.style}
-// 				/>
-// 			)}
-// 		</div>
-// 	);
-// };

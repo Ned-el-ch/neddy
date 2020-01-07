@@ -34,6 +34,7 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  pre {
 	 color: white;
 	 font-weight: bolder;
+	 margin-bottom: 0;
  }
  
  /* Code blocks */
