@@ -61,6 +61,8 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  
  .token.punctuation {
 	 color: rgb(83, 215, 255);
+	 font-weight: bolder;
+
  }
  
  .token.tag,
@@ -68,16 +70,21 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  .token.namespace,
  .token.deleted {
 	 color: #dd5055;
+	 font-weight: bolder;
+
  }
  
  .token.function-name {
 	 color: #4287cc;
+	 font-weight: bolder;
  }
  
  .token.boolean,
  .token.number,
  .token.function {
 	 color: #ff8432;
+	 font-weight: bolder;
+
  }
  
  .token.property,
@@ -85,6 +92,8 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  .token.constant,
  .token.symbol {
 	 color: #f7b72d;
+	 font-weight: bolder;
+
  }
  
  .token.selector,
@@ -93,6 +102,8 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  .token.keyword,
  .token.builtin {
 	 color: #f879fa;
+	 font-weight: bolder;
+
  }
  
  .token.string,
@@ -101,12 +112,16 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  .token.regex,
  .token.variable {
 	 color: #40dd7c;
+	 font-weight: bolder;
+
  }
  
  .token.operator,
  .token.entity,
  .token.url {
 	 color: #41cecb;
+	 font-weight: bolder;
+
  }
  
  .token.important,
@@ -123,6 +138,8 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  
  .token.inserted {
 	 color: rgb(0, 163, 0);
+	 font-weight: bolder;
+
  }
  
  pre[class*="language-"].line-numbers {

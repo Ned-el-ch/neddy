@@ -51,6 +51,7 @@
 
 .RichEditor-editor .public-DraftStyleDefault-pre {
 	background-color: #2f2c38;
+	color: white;
 	border-radius: 10px;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
 	font-size: 16px;

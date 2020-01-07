@@ -16,22 +16,22 @@ const {
  const {Map, List} = Immutable;
  class PrismDraftDecorator {
 	constructor(grammar) {
-	  this.grammar = grammar;
-	  this.highlighted = {};
+		this.grammar = grammar;
+		this.highlighted = {};
 	}
 	getDecorations(block) {
-	  var blockType = block.getType();
-	  var blockKey = block.getKey();
-	  var blockText = block.getText();
-	  var decorations = Array(blockText.length).fill(null);
-	  this.highlighted[blockKey] = {};
-	  if (blockType !== 'code-block') {
+		var blockType = block.getType();
+		var blockKey = block.getKey();
+		var blockText = block.getText();
+		var decorations = Array(blockText.length).fill(null);
+		this.highlighted[blockKey] = {};
+		if (blockType !== 'code-block') {
 		 return List(decorations);
-	  }
-	  var tokens = Prism.tokenize(blockText, this.grammar);
-	  var offset = 0;
-	  var that = this;
-	  tokens.forEach(function(tok) {
+		}
+		var tokens = Prism.tokenize(blockText, this.grammar);
+		var offset = 0;
+		var that = this;
+		tokens.forEach(function(tok) {
 		 if (typeof tok === 'string') {
 			offset += tok.length;
 		 } else {
@@ -41,90 +41,90 @@ const {
 			occupySlice(decorations, offset, offset + tok.content.length, completeId);
 			offset += tok.content.length;
 		 }
-	  });
-	  return List(decorations);
+		});
+		return List(decorations);
 	}
 	getComponentForKey(key) {
-	  return function(props) {
+		return function(props) {
 		 return <span {...props} className={'token ' + props.tokType}>{props.children}</span>;
-	  }
+		}
 	}
 	getPropsForKey(key) {
-	  var parts = key.split('-');
-	  var blockKey = parts[0];
-	  var tokId = parts[1];
-	  var token = this.highlighted[blockKey][tokId];
-	  return {
+		var parts = key.split('-');
+		var blockKey = parts[0];
+		var tokId = parts[1];
+		var token = this.highlighted[blockKey][tokId];
+		return {
 		 tokType: token.type
-	  };
+		};
 	}
  }
  function occupySlice(targetArr, start, end, componentKey) {
 	for (var ii = start; ii < end; ii++) {
-	  targetArr[ii] = componentKey;
+		targetArr[ii] = componentKey;
 	}
  }
  export default class PrismEditorExample extends React.Component {
 	constructor(props) {
-	  super(props);
-	  var decorator = new PrismDraftDecorator(Prism.languages.javascript);
-	  this.state = {
+		super(props);
+		var decorator = new PrismDraftDecorator(Prism.languages.javascript);
+		this.state = {
 		 editorState: EditorState.createEmpty(decorator),
-	  };
-	  this.focus = () => this.refs.editor.focus();
-	  this.onChange = (editorState) => this.setState({editorState});
-	  this.handleKeyCommand = (command) => this._handleKeyCommand(command);
-	  this.toggleBlockType = (type) => this._toggleBlockType(type);
-	  this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+		};
+		this.focus = () => this.refs.editor.focus();
+		this.onChange = (editorState) => this.setState({editorState});
+		this.handleKeyCommand = (command) => this._handleKeyCommand(command);
+		this.toggleBlockType = (type) => this._toggleBlockType(type);
+		this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
 	}
 	_handleKeyCommand(command) {
-	  const {editorState} = this.state;
-	  const newState = RichUtils.handleKeyCommand(editorState, command);
-	  if (newState) {
+		const {editorState} = this.state;
+		const newState = RichUtils.handleKeyCommand(editorState, command);
+		if (newState) {
 		 this.onChange(newState);
 		 return true;
-	  }
-	  return false;
+		}
+		return false;
 	}
 	_toggleBlockType(blockType) {
-	  this.onChange(
+		this.onChange(
 		 RichUtils.toggleBlockType(
 			this.state.editorState,
 			blockType
 		 )
-	  );
+		);
 	}
 	_toggleInlineStyle(inlineStyle) {
-	  this.onChange(
-		 RichUtils.toggleInlineStyle(
-			this.state.editorState,
-			inlineStyle
-		 )
-	  );
+		this.onChange(
+			RichUtils.toggleInlineStyle(
+				this.state.editorState,
+				inlineStyle
+			)
+		);
 	}
 	render() {
-	  const {editorState} = this.state;
-	  // If the user changes block type before entering any text, we can
-	  // either style the placeholder or hide it. Let's just hide it now.
-	  let className = 'RichEditor-editor';
-	  var contentState = editorState.getCurrentContent();
-	  if (!contentState.hasText()) {
+		const {editorState} = this.state;
+		// If the user changes block type before entering any text, we can
+		// either style the placeholder or hide it. Let's just hide it now.
+		let className = 'RichEditor-editor';
+		var contentState = editorState.getCurrentContent();
+		if (!contentState.hasText()) {
 		 if (contentState.getBlockMap().first().getType() !== 'unstyled') {
 			className += ' RichEditor-hidePlaceholder';
 		 }
-	  }
-	  return (
+		}
+		return (
 		 <div className="RichEditor-root">
 			<BlockStyleControls
-			  editorState={editorState}
-			  onToggle={this.toggleBlockType}
+				editorState={editorState}
+				onToggle={this.toggleBlockType}
 			/>
 			<InlineStyleControls
-			  editorState={editorState}
-			  onToggle={this.toggleInlineStyle}
+				editorState={editorState}
+				onToggle={this.toggleInlineStyle}
 			/>
 			<div className={className} onClick={this.focus}>
-			  <Editor
+				<Editor
 				 blockStyleFn={getBlockStyle}
 				 customStyleMap={styleMap}
 				 editorState={editorState}
@@ -133,45 +133,46 @@ const {
 				 placeholder="Tell a story..."
 				 ref="editor"
 				 spellCheck={true}
-			  />
+				/>
 			</div>
 		 </div>
-	  );
+		);
 	}
  }
  // Custom overrides for "code" style.
  const styleMap = {
 	CODE: {
-	  backgroundColor: 'rgba(0, 0, 0, 0.05)',
-	  fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-	  fontSize: 16,
-	  padding: 2,
+		backgroundColor: 'rgba(0, 0, 0, 0.05)',
+		fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
+		fontSize: 16,
+		padding: 2,
+		color: 'white'
 	},
  };
  function getBlockStyle(block) {
 	switch (block.getType()) {
-	  case 'blockquote': return 'RichEditor-blockquote';
-	  default: return null;
+		case 'blockquote': return 'RichEditor-blockquote';
+		default: return null;
 	}
  }
  class StyleButton extends React.Component {
 	constructor() {
-	  super();
-	  this.onToggle = (e) => {
+		super();
+		this.onToggle = (e) => {
 		 e.preventDefault();
 		 this.props.onToggle(this.props.style);
-	  };
+		};
 	}
 	render() {
-	  let className = 'RichEditor-styleButton';
-	  if (this.props.active) {
+		let className = 'RichEditor-styleButton';
+		if (this.props.active) {
 		 className += ' RichEditor-activeButton';
-	  }
-	  return (
+		}
+		return (
 		 <span className={className} onMouseDown={this.onToggle}>
 			{this.props.label}
 		 </span>
-	  );
+		);
 	}
  }
  const BLOCK_TYPES = [
@@ -190,21 +191,21 @@ const {
 	const {editorState} = props;
 	const selection = editorState.getSelection();
 	const blockType = editorState
-	  .getCurrentContent()
-	  .getBlockForKey(selection.getStartKey())
-	  .getType();
+		.getCurrentContent()
+		.getBlockForKey(selection.getStartKey())
+		.getType();
 	return (
-	  <div className="RichEditor-controls">
+		<div className="RichEditor-controls">
 		 {BLOCK_TYPES.map((type) =>
 			<StyleButton
-			  key={type.label}
-			  active={type.style === blockType}
-			  label={type.label}
-			  onToggle={props.onToggle}
-			  style={type.style}
+				key={type.label}
+				active={type.style === blockType}
+				label={type.label}
+				onToggle={props.onToggle}
+				style={type.style}
 			/>
 		 )}
-	  </div>
+		</div>
 	);
  };
  var INLINE_STYLES = [
@@ -216,16 +217,16 @@ const {
  const InlineStyleControls = (props) => {
 	var currentStyle = props.editorState.getCurrentInlineStyle();
 	return (
-	  <div className="RichEditor-controls">
+		<div className="RichEditor-controls">
 		 {INLINE_STYLES.map(type =>
 			<StyleButton
-			  key={type.label}
-			  active={currentStyle.has(type.style)}
-			  label={type.label}
-			  onToggle={props.onToggle}
-			  style={type.style}
+				key={type.label}
+				active={currentStyle.has(type.style)}
+				label={type.label}
+				onToggle={props.onToggle}
+				style={type.style}
 			/>
 		 )}
-	  </div>
+		</div>
 	);
  };
