@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RichEditor from './RichEditor';
 import './App.css';
+import PrismEditorExample from './PrismEditorExample';
 
 export default class App extends Component {
 
@@ -10,7 +11,8 @@ export default class App extends Component {
 	
 			<div className='app'>
 
-				< RichEditor />
+				{/* < RichEditor /> */}
+				< PrismEditorExample />
 	
 			</div>
 	

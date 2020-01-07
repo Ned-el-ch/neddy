@@ -1,10 +1,7 @@
 import React, {Component} from "react";
 import Draft from "draft-js";
 import Prism from 'prismjs';
-
-import createPrismPlugin from 'draft-js-prism-plugin';
-import createEmojiPlugin from "draft-js-emoji-plugin";
-
+import PrismDecorator from 'draft-js-prism'
 import "./rich.css";
 import "./prism.css"
 
@@ -12,26 +9,20 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-const { Editor, EditorState, RichUtils, getDefaultKeyBinding } = Draft;
-
-const prismPlugin = createPrismPlugin({
+const decorator = new PrismDecorator({
 	prism: Prism
-});
-const emojiPlugin = createEmojiPlugin();
+})
 
-const plugins = [
-	prismPlugin,
-	emojiPlugin
-]
-
+const { Editor, EditorState, RichUtils, getDefaultKeyBinding } = Draft;
 export default class RichEditor extends React.Component {
 
 	constructor(props) {
 
 		super(props);
 
-		this.state = { editorState: EditorState.createEmpty() };
+		this.state = { editorState: EditorState.createEmpty(decorator)};
 		this.focus = () => this.refs.editor.focus();
+		// this.onChange = this._onChange.bind(this);
 		this.onChange = editorState => this.setState({ editorState });
 		this.handleKeyCommand = this._handleKeyCommand.bind(this);
 		this.mapKeyToEditorCommand = this._mapKeyToEditorCommand.bind(this);
@@ -39,6 +30,32 @@ export default class RichEditor extends React.Component {
 		this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
 
 	}
+
+	// _onChange = (editorState) => {
+
+	// 	const content = editorState.getCurrentContent()
+	// 	const block = content.getBlockMap().first()
+	// 	const key = block.key
+	// 	console.log(key)
+	// 	// debugger
+	// 	if (block.getType() !== "code-block") {
+
+	// 	} else {
+
+	// 		const data = block.getData().merge({ language: 'javascript' });
+	// 		const newBlock = block.merge({ data });
+	// 		const newContentState = content.merge({
+	// 		blockMap: content.blockMap.set(key, newBlock),
+	// 		selectionAfter: content.getSelectionAfter()
+	// 		})
+	
+	// 		this.setState({
+	// 		editorState: EditorState.push(editorState, newContentState, "change-block-data")
+	// 		})
+
+	// 	}
+
+	// }
 
 	_handleKeyCommand(command, editorState) {
 		const newState = RichUtils.handleKeyCommand(editorState, command);
@@ -71,6 +88,7 @@ export default class RichEditor extends React.Component {
 			RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle)
 		);
 	}
+
 	render() {
 		const { editorState } = this.state;
 		// If the user changes block type before entering any text, we can
@@ -108,27 +126,34 @@ export default class RichEditor extends React.Component {
 						onChange={this.onChange}
 						ref="editor"
 						spellCheck={true}
-						plugins={plugins}
 					/>
 				</div>
 			</div>
+			<pre><code class="language-css">
+    {`.example {
+        font-size: 2em;
+    }`}
+</code></pre>
+
 			</Col></Row></Container>
 		);
 	}
 }
 // Custom overrides for "code" style.
 const styleMap = {
-	CODE: {
-		backgroundColor: "rgba(0, 0, 0, 0.05)",
-		fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-		fontSize: 16,
-		padding: 2
-	}
+	// CODE: {
+	// 	backgroundColor: "rgba(0, 0, 0, 0.05)",
+	// 	fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
+	// 	fontSize: 16,
+	// 	padding: 2
+	// }
 };
 function getBlockStyle(block) {
 	switch (block.getType()) {
 		case "blockquote":
 			return "RichEditor-blockquote";
+		case "javascript":
+			return "RichEditor-javascript";
 		default:
 			return null;
 	}
@@ -164,7 +189,8 @@ const BlockStyleControls = props => {
 		{ label: "Blockquote", style: "blockquote" },
 		{ label: "UL", style: "unordered-list-item" },
 		{ label: "OL", style: "ordered-list-item" },
-		{ label: "Code Block", style: "code-block" }
+		{ label: "Code Block", style: "code-block" },
+		{ label: "JavaScript", style: "javascript" },
 	];
 	const { editorState } = props;
 	const selection = editorState.getSelection();
@@ -209,4 +235,3 @@ const InlineStyleControls = props => {
 		</div>
 	);
 };
-

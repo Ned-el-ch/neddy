@@ -38,11 +38,24 @@
 	padding: 10px 20px;
 }
 
-.RichEditor-editor .public-DraftStyleDefault-pre {
-	background-color: rgba(0, 0, 0, 0.05);
+.RichEditor-editor .RichEditor-javascript {
+	background-color: #2f2c38;
+	border-left: 5px solid rgb(216, 216, 216);
+	border-radius: 10px;
+	color: white;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
 	font-size: 16px;
 	padding: 20px;
+	margin: 0;
+}
+
+.RichEditor-editor .public-DraftStyleDefault-pre {
+	background-color: #2f2c38;
+	border-radius: 10px;
+	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+	font-size: 16px;
+	padding: 20px;
+	margin: 0;
 }
 
 .RichEditor-controls {
