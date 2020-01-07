@@ -57,13 +57,16 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
 	 white-space: normal;
  }
  
- .token.comment,
- .token.block-comment,
- .token.prolog,
- .token.doctype,
- .token.cdata {
-	 color: rgb(219, 219, 219);
- }
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: rgb(153, 153, 153);
+	font-weight: normal;
+	font-family: "Comic Sans MS", cursive
+
+}
  
  .token.punctuation {
 	 color: rgb(83, 215, 255);

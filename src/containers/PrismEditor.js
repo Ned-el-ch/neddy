@@ -116,6 +116,7 @@ const {
 	getBlockStyle(block) {
 		switch (block.getType()) {
 			case 'blockquote': return 'RichEditor-blockquote';
+			case 'new-age-shit': return 'RichEditor-new-age-shit';
 			default: return null;
 		}
 	}
@@ -132,7 +133,7 @@ const {
 			}
 		}
 		return (
-			<Container><Row className="justify-content-md-center"><Col md="7">
+			<Container><Row className="justify-content-md-center"><Col md="7.5">
 				<div className="RichEditor-root">
 					<BlockStyleControls
 						editorState={editorState}

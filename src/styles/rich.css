@@ -41,16 +41,33 @@
 	padding: 1px 20px;
 }
 
-/* .RichEditor-editor .RichEditor-javascript {
-	background-color: #2f2c38;
-	border-left: 5px solid rgb(216, 216, 216);
+.RichEditor-editor .RichEditor-new-age-shit {
+
+	background: linear-gradient(222deg, #d53535, #ffa000, #f9ff00, #94ff00, #18ff00, #00ff91, #00e6ff, #af00ff, #ff0085);
+background-size: 200% 200%;
+
+animation: New-Age-Shit-Animation .3s ease infinite;
 	border-radius: 10px;
 	color: white;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-	font-size: 16px;
+	font-size: 30px;
+	font-weight: bolder;
+	text-transform: uppercase;
+	letter-spacing: -2px;
 	padding: 20px;
-	margin: 0;
-} */
+	text-shadow: 2px 2px 0px rgba(82, 82, 82, 0.56);
+	line-height: 1;
+}
+
+
+
+@keyframes New-Age-Shit-Animation {
+    0%{background-position:10% 90%}
+    25%{background-position:90% 10%}
+    50%{background-position:10% 90%}
+    75%{background-position:90% 10%}
+    100%{background-position:10% 90%}
+}
 
 .RichEditor-editor .public-DraftStyleDefault-pre {
 	background-color: #2f2c38;

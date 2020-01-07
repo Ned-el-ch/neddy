@@ -13,6 +13,7 @@ const BlockStyleControls = (props) => {
 		{label: 'Bullet List', style: 'unordered-list-item'},
 		{label: 'Numbered List', style: 'ordered-list-item'},
 		{label: 'JS Code Block', style: 'code-block'},
+		{label: 'New age shit', style: 'new-age-shit'},
 	];
 	const {editorState} = props;
 	const selection = editorState.getSelection();
