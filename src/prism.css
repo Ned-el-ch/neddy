@@ -30,6 +30,11 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
 	 hyphens: none;
  
  }
+
+ pre {
+	 color: white;
+	 font-weight: bolder;
+ }
  
  /* Code blocks */
  pre[class*="language-"] {
@@ -80,9 +85,13 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  }
  
  .token.boolean,
- .token.number,
- .token.function {
+ .token.number {
 	 color: #ff8432;
+	 font-weight: bolder;
+
+ }
+ .token.function {
+	 color: #49adff;
 	 font-weight: bolder;
 
  }

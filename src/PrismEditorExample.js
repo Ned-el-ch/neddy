@@ -2,6 +2,10 @@ import React, {Component} from "react";
 import Draft from "draft-js";
 import Prism from 'prismjs';
 import Immutable from 'immutable';
+
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 // import PrismDraftDecorator from 'draft-js-prism'
 import "./rich.css";
 import "./prism.css"
@@ -114,80 +118,71 @@ const {
 		 }
 		}
 		return (
-		 <div className="RichEditor-root">
-			<BlockStyleControls
-				editorState={editorState}
-				onToggle={this.toggleBlockType}
-			/>
-			<InlineStyleControls
-				editorState={editorState}
-				onToggle={this.toggleInlineStyle}
-			/>
-			<div className={className} onClick={this.focus}>
-				<Editor
-				 blockStyleFn={getBlockStyle}
-				 customStyleMap={styleMap}
-				 editorState={editorState}
-				 handleKeyCommand={this.handleKeyCommand}
-				 onChange={this.onChange}
-				 placeholder="Tell a story..."
-				 ref="editor"
-				 spellCheck={true}
-				/>
-			</div>
-		 </div>
+			<Container><Row className="justify-content-md-center"><Col md="7">
+				<div className="RichEditor-root">
+					<BlockStyleControls
+						editorState={editorState}
+						onToggle={this.toggleBlockType}
+					/>
+					<InlineStyleControls
+						editorState={editorState}
+						onToggle={this.toggleInlineStyle}
+					/>
+					<div className={className} onClick={this.focus}>
+						<Editor
+						blockStyleFn={getBlockStyle}
+						editorState={editorState}
+						handleKeyCommand={this.handleKeyCommand}
+						onChange={this.onChange}
+						placeholder="Tell a story..."
+						ref="editor"
+						spellCheck={true}
+						/>
+					</div>
+				</div>
+			</Col></Row></Container>
 		);
 	}
- }
- // Custom overrides for "code" style.
- const styleMap = {
-	CODE: {
-		backgroundColor: 'rgba(0, 0, 0, 0.05)',
-		fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-		fontSize: 16,
-		padding: 2,
-		color: 'white'
-	},
- };
- function getBlockStyle(block) {
+}
+function getBlockStyle(block) {
 	switch (block.getType()) {
 		case 'blockquote': return 'RichEditor-blockquote';
 		default: return null;
 	}
- }
- class StyleButton extends React.Component {
+}
+class StyleButton extends React.Component {
 	constructor() {
 		super();
 		this.onToggle = (e) => {
-		 e.preventDefault();
-		 this.props.onToggle(this.props.style);
+			e.preventDefault();
+			this.props.onToggle(this.props.style);
 		};
 	}
 	render() {
 		let className = 'RichEditor-styleButton';
 		if (this.props.active) {
-		 className += ' RichEditor-activeButton';
+			className += ' RichEditor-activeButton';
 		}
 		return (
-		 <span className={className} onMouseDown={this.onToggle}>
-			{this.props.label}
-		 </span>
+			<span className={className} onMouseDown={this.onToggle}>
+				{this.props.label}
+			</span>
 		);
 	}
- }
- const BLOCK_TYPES = [
-	{label: 'H1', style: 'header-one'},
-	{label: 'H2', style: 'header-two'},
-	{label: 'H3', style: 'header-three'},
-	{label: 'H4', style: 'header-four'},
-	{label: 'H5', style: 'header-five'},
-	{label: 'H6', style: 'header-six'},
-	{label: 'Blockquote', style: 'blockquote'},
-	{label: 'UL', style: 'unordered-list-item'},
-	{label: 'OL', style: 'ordered-list-item'},
-	{label: 'Code Block', style: 'code-block'},
- ];
- const BlockStyleControls = (props) => {
+}
+const BlockStyleControls = (props) => {
+	const BLOCK_TYPES = [
+		{label: 'H1', style: 'header-one'},
+		{label: 'H2', style: 'header-two'},
+		{label: 'H3', style: 'header-three'},
+		{label: 'H4', style: 'header-four'},
+		{label: 'H5', style: 'header-five'},
+		{label: 'H6', style: 'header-six'},
+		{label: 'Blockquote', style: 'blockquote'},
+		{label: 'UL', style: 'unordered-list-item'},
+		{label: 'OL', style: 'ordered-list-item'},
+		{label: 'Code Block', style: 'code-block'},
+	];
 	const {editorState} = props;
 	const selection = editorState.getSelection();
 	const blockType = editorState
@@ -196,37 +191,37 @@ const {
 		.getType();
 	return (
 		<div className="RichEditor-controls">
-		 {BLOCK_TYPES.map((type) =>
-			<StyleButton
-				key={type.label}
-				active={type.style === blockType}
-				label={type.label}
-				onToggle={props.onToggle}
-				style={type.style}
-			/>
-		 )}
+			{BLOCK_TYPES.map((type) =>
+				<StyleButton
+					key={type.label}
+					active={type.style === blockType}
+					label={type.label}
+					onToggle={props.onToggle}
+					style={type.style}
+				/>
+			)}
 		</div>
 	);
- };
- var INLINE_STYLES = [
-	{label: 'Bold', style: 'BOLD'},
-	{label: 'Italic', style: 'ITALIC'},
-	{label: 'Underline', style: 'UNDERLINE'},
-	{label: 'Monospace', style: 'CODE'},
- ];
- const InlineStyleControls = (props) => {
-	var currentStyle = props.editorState.getCurrentInlineStyle();
+};
+const InlineStyleControls = (props) => {
+	const INLINE_STYLES = [
+		{label: 'Bold', style: 'BOLD'},
+		{label: 'Italic', style: 'ITALIC'},
+		{label: 'Underline', style: 'UNDERLINE'},
+		{label: 'Monospace', style: 'CODE'},
+	];
+	const currentStyle = props.editorState.getCurrentInlineStyle();
 	return (
 		<div className="RichEditor-controls">
-		 {INLINE_STYLES.map(type =>
-			<StyleButton
-				key={type.label}
-				active={currentStyle.has(type.style)}
-				label={type.label}
-				onToggle={props.onToggle}
-				style={type.style}
-			/>
-		 )}
+			{INLINE_STYLES.map(type =>
+				<StyleButton
+					key={type.label}
+					active={currentStyle.has(type.style)}
+					label={type.label}
+					onToggle={props.onToggle}
+					style={type.style}
+				/>
+			)}
 		</div>
 	);
- };
+};
