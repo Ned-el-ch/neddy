@@ -14,10 +14,13 @@ const {
 	Editor,
 	EditorState,
 	RichUtils,
-	DefaultDraftBlockRenderMap,
-	Decorator
+	// DefaultDraftBlockRenderMap,
+	// Decorator
  } = Draft;
- const {Map, List} = Immutable;
+ const {
+	//  Map,
+	 List
+} = Immutable;
  class PrismDraftDecorator {
 	constructor(grammar) {
 		this.grammar = grammar;
@@ -68,7 +71,7 @@ const {
 		targetArr[ii] = componentKey;
 	}
  }
- export default class PrismEditorExample extends React.Component {
+ export default class PrismEditor extends Component {
 	constructor(props) {
 		super(props);
 		var decorator = new PrismDraftDecorator(Prism.languages.javascript);
@@ -134,7 +137,7 @@ const {
 						editorState={editorState}
 						handleKeyCommand={this.handleKeyCommand}
 						onChange={this.onChange}
-						placeholder="Tell a story..."
+						// placeholder="Tell a story..."
 						ref="editor"
 						spellCheck={true}
 						/>
@@ -150,7 +153,7 @@ function getBlockStyle(block) {
 		default: return null;
 	}
 }
-class StyleButton extends React.Component {
+class StyleButton extends Component {
 	constructor() {
 		super();
 		this.onToggle = (e) => {
@@ -175,13 +178,13 @@ const BlockStyleControls = (props) => {
 		{label: 'H1', style: 'header-one'},
 		{label: 'H2', style: 'header-two'},
 		{label: 'H3', style: 'header-three'},
-		{label: 'H4', style: 'header-four'},
-		{label: 'H5', style: 'header-five'},
-		{label: 'H6', style: 'header-six'},
+		// {label: 'H4', style: 'header-four'},
+		// {label: 'H5', style: 'header-five'},
+		// {label: 'H6', style: 'header-six'},
 		{label: 'Blockquote', style: 'blockquote'},
-		{label: 'UL', style: 'unordered-list-item'},
-		{label: 'OL', style: 'ordered-list-item'},
-		{label: 'Code Block', style: 'code-block'},
+		{label: 'Bullet List', style: 'unordered-list-item'},
+		{label: 'Numbered List', style: 'ordered-list-item'},
+		{label: 'JS Code Block', style: 'code-block'},
 	];
 	const {editorState} = props;
 	const selection = editorState.getSelection();
