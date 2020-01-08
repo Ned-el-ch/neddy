@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PrismEditor from './PrismEditor';
 import SignUpPage from './SignUpPage';
 import LoginPage from './LoginPage';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Posts from './Posts';
 
 export default class App extends Component {
 
@@ -20,20 +21,52 @@ export default class App extends Component {
 
 	}
 
+	pagesToRender = () => {
+
+		if (this.state.user.id ) {
+
+			return(
+
+				<Fragment>
+					<Link to="/editor" exact>Editor Page</Link><br/>
+					<Route exact path='/editor' component={PrismEditor} />
+				</Fragment>
+
+			)
+
+		} else {
+
+			return(
+
+				<Fragment>
+					<Link to="/login" exact>Login Page</Link><br/>
+					<Link to="/signup" exact>Signup Page</Link><br/>
+					<Route exact path='/signup' component={SignUpPage} />
+					<Route exact path='/login' render={(routerProps) => < LoginPage {...routerProps} handleLogin={this.handleLogin}/>} />
+				</Fragment>
+
+			)
+		}
+
+
+
+	}
+
 	render() {
 
 		return (
 
 			<div className='app'>
-				<Router>
-					<Link to="/" exact>Home</Link><br/>
-					<Link to="/login" exact>Login Page</Link><br/>
-					<Link to="/signup" exact>Signup Page</Link><br/>
-					<Link to="/editor" exact>Editor Page</Link><br/>
 
-					<Route exact path='/signup' component={SignUpPage} />
-					<Route exact path='/login' component={LoginPage} />
-					<Route exact path='/editor' component={PrismEditor} />
+				<Router>
+					
+					<Link to="/" exact>Home</Link><br/>
+					<Link to="/posts" exact>Posts</Link><br/>
+					
+					{this.pagesToRender()}
+					
+					<Route exact path='/' component={Posts} />
+					<Route exact path='/posts' component={Posts} />
 
 				</Router>
 

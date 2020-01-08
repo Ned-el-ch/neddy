@@ -14,6 +14,7 @@ export default class LoginPage extends Component{
 		event.preventDefault();
 
 		const handleLogin = this.props.handleLogin;
+		const history = this.props.history;
 		const form = event.currentTarget;
 		
 		if (!form.checkValidity() === false) {
@@ -29,7 +30,12 @@ export default class LoginPage extends Component{
 					"Content-Type": "application/json",
 					Accept: "application/json"
 				},
-				body: JSON.stringify({user : { username: username, password: password }})
+				body: JSON.stringify({
+					user : {
+						username: username,
+						password: password
+					}
+				})
 			})
 				.then(res => res.json())
 				.then(data => {
@@ -37,6 +43,8 @@ export default class LoginPage extends Component{
 					return data.user;
 				})
 				.then(handleLogin)
+				.then(history.push('/'))
+				// .then(console.log)
 
 		}
 
