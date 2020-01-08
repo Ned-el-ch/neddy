@@ -1,15 +1,13 @@
 import React, {Component} from "react";
 import Draft from "draft-js";
-import Prism from 'prismjs';
-import Immutable from 'immutable';
+import Prism from "prismjs";
+import Immutable from "immutable";
+import EditorControls from "./EditorControls";
 
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
-import BlockStyleControls from '../components/BlockStyleControls';
-import InlineStyleControls from '../components/InlineStyleControls';
-// import PrismDraftDecorator from 'draft-js-prism'
 import "../styles/rich.css";
 import "../styles/prism.css"
 
@@ -24,7 +22,7 @@ const {
 	//  Map,
 	 List
 } = Immutable;
- class PrismDraftDecorator {
+class PrismDecorator {
 	constructor(grammar) {
 		this.grammar = grammar;
 		this.highlighted = {};
@@ -35,18 +33,18 @@ const {
 		var blockText = block.getText();
 		var decorations = Array(blockText.length).fill(null);
 		this.highlighted[blockKey] = {};
-		if (blockType !== 'code-block') {
+		if (blockType !== "code-block") {
 		 return List(decorations);
 		}
 		var tokens = Prism.tokenize(blockText, this.grammar);
 		var offset = 0;
 		var that = this;
 		tokens.forEach(function(tok) {
-		 if (typeof tok === 'string') {
+		 if (typeof tok === "string") {
 			offset += tok.length;
 		 } else {
-			var tokId = 'tok'+offset;
-			var completeId = blockKey + '-' + tokId;
+			var tokId = "tok"+offset;
+			var completeId = blockKey + "-" + tokId;
 			that.highlighted[blockKey][tokId] = tok;
 			occupySlice(decorations, offset, offset + tok.content.length, completeId);
 			offset += tok.content.length;
@@ -56,11 +54,11 @@ const {
 	}
 	getComponentForKey(key) {
 		return function(props) {
-		 return <span {...props} className={'token ' + props.tokType}>{props.children}</span>;
+		 return <span {...props} className={"token " + props.tokType}>{props.children}</span>;
 		}
 	}
 	getPropsForKey(key) {
-		var parts = key.split('-');
+		var parts = key.split("-");
 		var blockKey = parts[0];
 		var tokId = parts[1];
 		var token = this.highlighted[blockKey][tokId];
@@ -77,7 +75,7 @@ const {
  export default class PrismEditor extends Component {
 	constructor(props) {
 		super(props);
-		const decorator = new PrismDraftDecorator(Prism.languages.javascript);
+		const decorator = new PrismDecorator(Prism.languages.javascript);
 		this.state = {
 		 editorState: EditorState.createEmpty(decorator),
 		};
@@ -98,10 +96,10 @@ const {
 	}
 	_toggleBlockType(blockType) {
 		this.onChange(
-		 RichUtils.toggleBlockType(
-			this.state.editorState,
-			blockType
-		 )
+			RichUtils.toggleBlockType(
+				this.state.editorState,
+				blockType
+			)
 		);
 	}
 	_toggleInlineStyle(inlineStyle) {
@@ -115,8 +113,8 @@ const {
 
 	getBlockStyle(block) {
 		switch (block.getType()) {
-			case 'blockquote': return 'RichEditor-blockquote';
-			case 'new-age-shit': return 'RichEditor-new-age-shit';
+			case "blockquote": return "RichEditor-blockquote";
+			case "new-age-shit": return "RichEditor-new-age-shit";
 			default: return null;
 		}
 	}
@@ -124,25 +122,21 @@ const {
 	render() {
 		const {editorState} = this.state;
 		// If the user changes block type before entering any text, we can
-		// either style the placeholder or hide it. Let's just hide it now.
-		let className = 'RichEditor-editor';
+		// either style the placeholder or hide it. Let"s just hide it now.
+		let className = "RichEditor-editor";
 		const contentState = editorState.getCurrentContent();
 		if (!contentState.hasText()) {
-			if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-				className += ' RichEditor-hidePlaceholder';
+			if (contentState.getBlockMap().first().getType() !== "unstyled") {
+				className += " RichEditor-hidePlaceholder";
 			}
 		}
 		return (
-			<Container><Row className="justify-content-md-center"><Col md="7.5">
+			<Container>
+				<Row className="justify-content-md-center">
+			{/* <Container><Row className="justify-content-md-center"> */}
+
+				<Col md={{ span: 9, offset: 0}}>
 				<div className="RichEditor-root">
-					<BlockStyleControls
-						editorState={editorState}
-						onToggle={this.toggleBlockType}
-					/>
-					<InlineStyleControls
-						editorState={editorState}
-						onToggle={this.toggleInlineStyle}
-					/>
 					<div className={className} onClick={this.focus}>
 						<Editor
 						blockStyleFn={this.getBlockStyle}
@@ -155,7 +149,20 @@ const {
 						/>
 					</div>
 				</div>
-			</Col></Row></Container>
+				</Col>
+				</ Row>
+				< Row >
+				< Col md={{ span: 2, offset: 11}}>
+				{/* < Col md={{ span: 2, offset: 11}}> */}
+					< EditorControls 
+					className="position-absolute sticky-top"
+						editorState={editorState}
+						onToggleBlockType={this.toggleBlockType}
+						onToggleInlineStyle={this.toggleInlineStyle}
+					/>
+				</Col>
+			</Row>
+			</Container>
 		);
 	}
 }

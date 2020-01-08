@@ -9,11 +9,11 @@ const BlockStyleControls = (props) => {
 		{label: 'Sub-heading', style: 'header-four'},
 		// {label: 'H5', style: 'header-five'},
 		// {label: 'H6', style: 'header-six'},
-		{label: 'Blockquote', style: 'blockquote'},
+		{label: 'Block Quote', style: 'blockquote'},
+		{label: 'Millenial Quote', style: 'new-age-shit'},
 		{label: 'Bullet List', style: 'unordered-list-item'},
 		{label: 'Numbered List', style: 'ordered-list-item'},
 		{label: 'JS Code Block', style: 'code-block'},
-		{label: 'New age shit', style: 'new-age-shit'},
 	];
 	const {editorState} = props;
 	const selection = editorState.getSelection();

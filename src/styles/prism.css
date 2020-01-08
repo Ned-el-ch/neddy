@@ -38,25 +38,25 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  }
  
  /* Code blocks */
- pre[class*="language-"] {
-	 padding: 1em;
-	 margin: .5em 0;
-	 overflow: auto;
-	 border-radius: 0.5em;
- }
- 
- :not(pre) > code[class*="language-"],
- pre[class*="language-"] {
-	 background: #2f2c38;
- }
- 
- /* Inline code */
- :not(pre) > code[class*="language-"] {
-	 padding: .1em;
-	 border-radius: .3em;
-	 white-space: normal;
- }
- 
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.5em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #2f2c38;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
 .token.comment,
 .token.block-comment,
 .token.prolog,
