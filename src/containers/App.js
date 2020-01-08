@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PrismEditor from './PrismEditor';
 import SignUpPage from './SignUpPage';
 import LoginPage from './LoginPage';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, useHistory } from 'react-router-dom'
 import Posts from './Posts';
 
 export default class App extends Component {
@@ -21,6 +21,13 @@ export default class App extends Component {
 
 	}
 
+	logout = (event) => {
+
+		event.preventDefault()
+		this.setState({user: {}})
+
+	}
+
 	pagesToRender = () => {
 
 		if (this.state.user.id ) {
@@ -29,6 +36,7 @@ export default class App extends Component {
 
 				<Fragment>
 					<Link to="/editor" exact>Editor Page</Link><br/>
+					<button onClick={this.logout} >Log Out</button>
 					<Route exact path='/editor' component={PrismEditor} />
 				</Fragment>
 
