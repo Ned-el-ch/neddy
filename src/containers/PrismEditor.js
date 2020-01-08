@@ -119,6 +119,12 @@ class PrismDecorator {
 		}
 	}
 
+	logPost = () => {
+
+		let oof = this.state.editorState.getCurrentContent();
+		console.log(oof.blockMap.toJSON())
+	}
+
 	render() {
 		const {editorState} = this.state;
 		// If the user changes block type before entering any text, we can
@@ -133,7 +139,6 @@ class PrismDecorator {
 		return (
 			<Container>
 				<Row className="justify-content-md-center">
-			{/* <Container><Row className="justify-content-md-center"> */}
 
 				<Col md={{ span: 9, offset: 0}}>
 				<div className="RichEditor-root">
@@ -160,6 +165,11 @@ class PrismDecorator {
 						onToggleBlockType={this.toggleBlockType}
 						onToggleInlineStyle={this.toggleInlineStyle}
 					/>
+				</Col>
+			</Row>
+			< Row >
+				< Col md={{ span: 2, offset: 5}}>
+					< button onClick={this.logPost} >Console log post</button>
 				</Col>
 			</Row>
 			</Container>
