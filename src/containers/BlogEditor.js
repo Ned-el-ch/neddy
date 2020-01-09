@@ -38,7 +38,7 @@ export default class BlogEditor extends Component {
 				blockTypes={blockTypes}
 				inlineStyles={inlineStyles}
 				plugins={[hashtagPlugin]}
-				decorators={[new PrismDecorator({ defaultLanguage: "js" })]}
+				decorators={[new PrismDecorator({ defaultLanguage: "css" })]}
 			/>
 
 		);

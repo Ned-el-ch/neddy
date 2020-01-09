@@ -109,7 +109,9 @@ pre[class*="language-"] {
 
  }
  
- .token.selector,
+ .token.selector {
+	 color: #d68324;
+ }
  .token.important,
  .token.atrule,
  .token.keyword,

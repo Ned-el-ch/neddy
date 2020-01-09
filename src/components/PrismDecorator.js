@@ -35,7 +35,7 @@ export default class PrismDecorator {
 	}
 
 	getDecorations(block, callback) {
-		// debugger;
+		debugger;
 		// Only process code blocks.
 		if (block.getType() !== BLOCK_TYPE.CODE) {
 			return;
