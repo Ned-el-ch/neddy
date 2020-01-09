@@ -4,6 +4,7 @@ import SignUpPage from './SignUpPage';
 import LoginPage from './LoginPage';
 import { BrowserRouter as Router, Route, Link, useHistory } from 'react-router-dom'
 import Posts from './Posts';
+import BlogEditor from './BlogEditor';
 
 export default class App extends Component {
 
@@ -76,6 +77,8 @@ export default class App extends Component {
 					<Route exact path='/posts' component={Posts} />
 
 				</Router>
+
+				< BlogEditor />
 
 			</div>
 

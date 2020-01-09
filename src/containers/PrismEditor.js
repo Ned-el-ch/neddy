@@ -66,12 +66,12 @@ class PrismDecorator {
 		 tokType: token.type
 		};
 	}
- }
- function occupySlice(targetArr, start, end, componentKey) {
-	for (var ii = start; ii < end; ii++) {
-		targetArr[ii] = componentKey;
-	}
- }
+}
+function occupySlice(targetArr, start, end, componentKey) {
+for (var ii = start; ii < end; ii++) {
+	targetArr[ii] = componentKey;
+}
+}
  export default class PrismEditor extends Component {
 	constructor(props) {
 		super(props);
