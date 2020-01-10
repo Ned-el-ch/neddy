@@ -4,6 +4,7 @@ import { convertToRaw, convertFromRaw } from "draft-js"
 import { convertFromHTML, convertToHTML } from "draft-convert"
 import {stateToHTML} from 'draft-js-export-html';
 import "../styles/post.css"
+import "../styles/rich.css"
 
 
 
@@ -117,13 +118,17 @@ export class SmallPost extends Component {
 							></h2>)
 					case "header-three":
 						return(
-							<h3
-								className="Draftail-block--header-three"
-								key={index}
-								dangerouslySetInnerHTML={
-									{__html: element.styledHTML}
-								}
-							></h3>)
+							<h3 className="Draftail-block--header-three "
+							key={index}>
+								<div className=" public-DraftStyleDefault-block public-DraftStyleDefault-ltr">
+									<span
+										dangerouslySetInnerHTML={
+											{__html: element.styledHTML}
+										}
+									></span>
+								</div>
+							</h3>
+							)
 					case "code-block":
 						if (index < data.blocks.length-1 && data.blocks[index + 1].type === "code-block") {
 							codeBlock.push(element.text)
