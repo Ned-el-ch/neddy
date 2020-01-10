@@ -10,19 +10,22 @@ import "../styles/login.css";
 
 export default class SignUpPage extends Component{
 
-	handleSubmit(event) {
-
+	handleSubmit = (event) => {
+		event.preventDefault();
+		// event.stopPropagation();
+		// debugger;
+		const handleLogin = this.props.handleLogin;
+		const history = this.props.history;
 		const form = event.currentTarget;
 
 		if (!form.checkValidity() === false) {
 
-			event.preventDefault();
-			event.stopPropagation();
+
 
 			const name = event.target.elements.validationCustomName.value;
 			const username = event.target.elements.validationCustomUsername.value;
 			const password = event.target.elements.validationCustomPassword.value;
-			const imageUrl = event.target.elements.validationCustomImageUrl.value;
+			// const imageUrl = event.target.elements.validationCustomImageUrl.value;
 			// FETCH TO THE API TO TRY AND CREATE AN ACCOUNT
 
 			fetch('http://localhost:4000/api/v1/users', {
@@ -37,13 +40,18 @@ export default class SignUpPage extends Component{
 						username: username,
 						password: password,
 						bio: "'twas in the tutorial, forgot to remove this",
-						avatar: imageUrl
+						avatar: "pretty optimistic to think I'll support avatars lol"
+						// avatar: imageUrl
 					}
 				})
 			})
 
-			.then(res => res.json())
-			.then(console.log)
+			.then(res => {
+				const data = res.json();
+				return data.user;
+			})
+			.then(handleLogin)
+			.then(history.push('/'))
 
 		}
 
@@ -66,7 +74,7 @@ export default class SignUpPage extends Component{
 								<Form.Control.Feedback>Looks good!</Form.Control.Feedback>
 							</Form.Group>
 						</Form.Row>
-						<Form.Row>
+						{/* <Form.Row>
 							<Form.Group as={Col} controlId="validationCustomImageUrl">
 								<InputGroup>
 									<InputGroup.Prepend>
@@ -80,7 +88,7 @@ export default class SignUpPage extends Component{
 								</InputGroup>
 								<Form.Control.Feedback>Looks good!</Form.Control.Feedback>
 							</Form.Group>
-						</Form.Row>
+						</Form.Row> */}
 						<Form.Row>
 							<Form.Group as={Col} controlId="validationCustomUsername">
 								<InputGroup>

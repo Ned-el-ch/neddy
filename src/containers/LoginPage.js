@@ -12,7 +12,7 @@ export default class LoginPage extends Component{
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-
+		// debugger;
 		const handleLogin = this.props.handleLogin;
 		const history = this.props.history;
 		const form = event.currentTarget;

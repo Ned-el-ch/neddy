@@ -10,7 +10,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE } from "draftail"
+import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE, ENTITY_TYPE } from "draftail"
 
 import "draft-js/dist/Draft.css"
 import "draftail/dist/draftail.css"
@@ -27,19 +27,46 @@ export default class BlogEditor extends Component {
 		sessionStorage.setItem("draftail:content", JSON.stringify(content))
 	}
 
+	submitPost = () => {
+
+		const userId = this.props.userId
+		fetch("http://localhost:4000/submit_post", {
+			method: "POST",
+			headers: {
+					"Content-Type": "application/json",
+					Accept: "application/json"
+			},
+			body: JSON.stringify({
+					post : {
+							content: sessionStorage["draftail:content"],
+							categories: [1],
+							user_id: userId
+					}
+			})
+		})
+		.then(res => res.json())
+		.then(console.log)
+
+	}
+
 	render() {
 
 		return (
-
-			<DraftailEditor
-				rawContentState={null}
-				// rawContentState={initial || null}
-				onSave={this.onSave}
-				blockTypes={blockTypes}
-				inlineStyles={inlineStyles}
-				plugins={[hashtagPlugin]}
-				decorators={[new PrismDecorator({ defaultLanguage: "css" })]}
-			/>
+			<Container><Row className="justify-content-md-center">
+			<Col md={{ span: 9, offset: 0}}>
+				<DraftailEditor
+					ref="draftRef"
+					rawContentState={initial || null}
+					// rawContentState={initial || null}
+					onSave={this.onSave}
+					blockTypes={blockTypes}
+					inlineStyles={inlineStyles}
+					entityTypes={[{type: ENTITY_TYPE.LINK}]}
+					plugins={[hashtagPlugin]}
+					decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}
+				/>
+				<button onClick={this.submitPost}>Submit Post</button>
+			</Col></Row></Container>
 
 		);
 

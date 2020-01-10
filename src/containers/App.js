@@ -10,7 +10,8 @@ export default class App extends Component {
 
 	state = {
 
-		user: {}
+		user: {},
+		posts: []
 
 	}
 
@@ -22,6 +23,19 @@ export default class App extends Component {
 
 	}
 
+	getPosts = () => {
+
+		fetch("http://localhost:4000/posts")
+		.then(res => res.json())
+		.then(posts => this.setState({posts: posts}))
+
+	}
+
+	componentDidMount() {
+		this.getPosts()
+	}
+	
+
 	logout = (event) => {
 
 		event.preventDefault()
@@ -30,15 +44,18 @@ export default class App extends Component {
 	}
 
 	pagesToRender = () => {
-
-		if (this.state.user.id ) {
+		// debugger;
+		if (this.state.user && this.state.user.id ) {
 
 			return(
 
 				<Fragment>
 					<Link to="/editor" exact>Editor Page</Link><br/>
 					<button onClick={this.logout} >Log Out</button>
-					<Route exact path='/editor' component={PrismEditor} />
+					<Route exact path='/editor' render={
+						(routerProps) => < BlogEditor {...routerProps} userId={this.state.user.id}/>
+						}
+					/>
 				</Fragment>
 
 			)
@@ -48,10 +65,16 @@ export default class App extends Component {
 			return(
 
 				<Fragment>
-					<Link to="/login" exact>Login Page</Link><br/>
-					<Link to="/signup" exact>Signup Page</Link><br/>
-					<Route exact path='/signup' component={SignUpPage} />
-					<Route exact path='/login' render={(routerProps) => < LoginPage {...routerProps} handleLogin={this.handleLogin}/>} />
+					<Link to="/login">Login Page</Link><br/>
+					<Link to="/signup">Signup Page</Link><br/>
+					<Route exact path='/signup' render={
+							(routerProps) => < SignUpPage {...routerProps} handleLogin={this.handleLogin}/>
+						}
+					/><br/>
+					<Route exact path='/login' render={
+							(routerProps) => < LoginPage {...routerProps} handleLogin={this.handleLogin}/>
+						}
+					/>
 				</Fragment>
 
 			)
@@ -68,17 +91,20 @@ export default class App extends Component {
 
 				<Router>
 					
-					<Link to="/" exact>Home</Link><br/>
-					<Link to="/posts" exact>Posts</Link><br/>
+					<Link to="/">Home</Link><br/>
+					<Link to="/posts">Posts</Link><br/>
 					
 					{this.pagesToRender()}
 					
-					<Route exact path='/' component={Posts} />
-					<Route exact path='/posts' component={Posts} />
+					{/* <Route exact path='/' component={Posts} /> */}
+					<Route exact path='/posts'  render={
+							(routerProps) => < Posts {...routerProps} posts={this.state.posts}
+							/>
+						}
+					/><br/>
 
 				</Router>
 
-				< BlogEditor />
 
 			</div>
 

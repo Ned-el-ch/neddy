@@ -82,15 +82,26 @@ pre[class*="language-"] {
 	 font-weight: bolder;
 
  }
+ .token.function-variable {
+	color: #7cbcfc;
+	font-weight: bolder;
+}
  
  .token.function-name {
 	 color: #4287cc;
 	 font-weight: bolder;
  }
  
+
+ 
  .token.boolean,
  .token.number {
 	 color: #ff8432;
+	 font-weight: bolder;
+
+ }
+ .token.parameter {
+	 color: #e9e8b2;
 	 font-weight: bolder;
 
  }
