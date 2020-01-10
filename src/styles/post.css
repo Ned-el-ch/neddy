@@ -30,14 +30,135 @@ pre.code-block-container {
 	text-decoration: underline line-through;
 }
 
+.MARK {
+	background-color: yellow;
+}
+
+.QUOTATION {
+	font-style: italic;
+	font-weight: 340;
+}
+
+/* .QUOTATION:before {
+	content: "❝";
+}
+
+.QUOTATION:after {
+	content: "❞";
+} */
+
+/* .QUOTATION:before {
+	content: "“";
+}
+
+.QUOTATION:after {
+	content: "”";
+} */
+.Draftail-block--MILLENIAL-QUOTE div {
+	text-align: center;
+}
+.Draftail-block--MILLENIAL-QUOTE, .MILLENIAL-QUOTE {
+
+	background: linear-gradient(222deg,  #ffa000, #f9ff00, #94ff00, #18ff00, #00ff91, #00e6ff,  #00ff91, #18ff00, #f9ff00,  #ffa000);
+	background-size: 200% 200%;
+	animation: New-Age-Shit-Animation 10s ease infinite;
+
+	border-radius: 10px;
+	color: white;
+	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+	font-size: 30px;
+	font-weight: bolder;
+	text-transform: uppercase;
+	letter-spacing: -2px;
+	padding: 20px;
+	text-shadow: 2px 2px 0px rgba(82, 82, 82, 0.33);
+	line-height: 1;
+	text-align: center;
+}
+
+.Draftail-block--MILLENIAL-QUOTE:after {
+	display: block;
+	content: "👏👏👏👏👏👏👏👏";
+}
+
+.Draftail-block--MILLENIAL-QUOTE:before {
+	display: block;
+	content: "👏👏👏👏👏👏👏👏";
+}
+
+@keyframes New-Age-Shit-Animation {
+	0%{background-position:10% 90%}
+	25%{background-position:90% 10%}
+	50%{background-position:10% 90%}
+	75%{background-position:90% 10%}
+	100%{background-position:10% 90%}
+}
+
+.SMALL {
+	font-size: 0.5rem;
+}
+
+.SAMPLE {
+	padding: 0.2em 0.3125em;
+	margin: 0px;
+	font-size: 85%;
+	background-color: rgba(27, 31, 35, 0.068);
+	font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, sans-serif;
+	border-radius: 3px;
+	border-left: solid 2px #2f2c38;
+	border-bottom: solid 2px #2f2c38;
+}
+
+.INSERT {
+	text-decoration: underline;
+}
+
+.REDACTED, .DELETE {
+	/* text-decoration: line-through underline overline ; */
+	background-color: black;
+	color: black;
+}
+
+.SUPERSCRIPT {
+	font-size: 60%;
+	vertical-align: super;
+	line-height: 1;
+}
+
+.SUBSCRIPT {
+	font-size: 60%;
+	vertical-align: sub;
+	line-height: 1;
+}
+
+.KEYBOARD {
+	font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, sans-serif;
+	padding: 3px 5px;
+	font-size: 11px;
+	line-height: 10px;
+	color: rgb(68, 77, 86);
+	vertical-align: middle;
+	background-color: rgb(250, 251, 252);
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(198, 203, 209) rgb(198, 203, 209) rgb(149, 157, 165);
+	border-image: initial;
+	border-radius: 3px;
+	box-shadow: rgb(149, 157, 165) 0px -1px 0px inset;
+}
+
 .CODE {
 	padding: 0.2em 0.3125em;
 	margin: 0px;
 	font-size: 85%;
-	background-color: rgba(27, 31, 35, 0.05);
+	background-color: rgba(27, 31, 35, 0.068);
 	font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, sans-serif;
 	border-radius: 3px;
+	border-left: solid 2px #2f2c38;
+	border-bottom: solid 2px #2f2c38;
 }
+
+
 .individual-post{
 	background: #fff;
 	border: 1px solid rgba(221, 221, 221, 0.527);

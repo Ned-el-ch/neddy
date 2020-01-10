@@ -44,7 +44,8 @@ export default class App extends Component {
 	}
 
 	pagesToRender = () => {
-		// debugger;
+
+		// if (true ) {
 		if (this.state.user && this.state.user.id ) {
 
 			return(
