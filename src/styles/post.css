@@ -11,7 +11,7 @@ pre.code-block-container {
 }
 
 .BOLD {
-	font-weight: bolder;
+	font-weight: bold;
 }
 
 .ITALIC {
@@ -41,14 +41,14 @@ pre.code-block-container {
 	font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, sans-serif;
 	border-radius: 3px;
 }
-/* .DraftEditor-root {
+.individual-post{
 	background: #fff;
-	border: 1px solid #ddd;
-	font-family: 'Georgia', serif;
-	font-size: 14px;
+	border: 1px solid rgba(221, 221, 221, 0.527);
+	/* font-family: 'Georgia', serif; */
+	/* font-size: 14px; */
 	padding: 15px;
 }
-
+/* 
 .Draftail-Editor {
 	cursor: text;
 	font-size: 16px;

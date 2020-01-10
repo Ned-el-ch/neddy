@@ -11,7 +11,7 @@
 	/* border-top: 1px solid #ddd; */
 	cursor: text;
 	font-size: 16px;
-	margin-top: 10px;
+	/* margin-top: 10px; */
 	/* max-width: 90vw; */
 }
 .DraftEditor-controls-container {
@@ -122,4 +122,9 @@ div.DraftEditor-new-age-shit div span span:before {
 
 .DraftEditor-activeButton {
 	color: #5890ff;
+}
+
+.Draftail-Editor .Draftail-Toolbar {
+	position: absolute;
+	top: 0;
 }
