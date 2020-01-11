@@ -74,7 +74,6 @@ export default class BlogEditor extends Component {
 
 };
 
-
 const blockTypes = [
 	{ type: BLOCK_TYPE.HEADER_TWO },
 	{ type: BLOCK_TYPE.HEADER_THREE },

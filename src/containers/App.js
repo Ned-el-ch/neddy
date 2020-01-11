@@ -1,55 +1,42 @@
 import React, { Component, Fragment } from 'react';
-import PrismEditor from './PrismEditor';
 import SignUpPage from './SignUpPage';
 import LoginPage from './LoginPage';
-import { BrowserRouter as Router, Route, Link, useHistory } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Posts from './Posts';
 import BlogEditor from './BlogEditor';
 
 export default class App extends Component {
 
 	state = {
-
 		user: {},
 		posts: []
-
 	}
 
 	handleLogin = (user) => {
-
 		this.setState(
 			{user}
 		)
-
 	}
 
 	getPosts = () => {
-
 		fetch("http://localhost:4000/posts")
 		.then(res => res.json())
 		.then(posts => this.setState({posts: posts}))
-
 	}
 
 	componentDidMount() {
 		this.getPosts()
 	}
-	
 
 	logout = (event) => {
-
 		event.preventDefault()
 		this.setState({user: {}})
-
 	}
 
 	pagesToRender = () => {
-
 		// if (true ) {
 		if (this.state.user && this.state.user.id ) {
-
 			return(
-
 				<Fragment>
 					<Link to="/editor" exact>Editor Page</Link><br/>
 					<button onClick={this.logout} >Log Out</button>
@@ -58,13 +45,9 @@ export default class App extends Component {
 						}
 					/>
 				</Fragment>
-
 			)
-
 		} else {
-
 			return(
-
 				<Fragment>
 					<Link to="/login">Login Page</Link><br/>
 					<Link to="/signup">Signup Page</Link><br/>
@@ -77,40 +60,26 @@ export default class App extends Component {
 						}
 					/>
 				</Fragment>
-
 			)
-
 		}
-
 	}
 
 	render() {
-
 		return (
-
 			<div className='app'>
-
 				<Router>
-					
 					<Link to="/">Home</Link><br/>
 					<Link to="/posts">Posts</Link><br/>
-					
 					{this.pagesToRender()}
-					
 					{/* <Route exact path='/' component={Posts} /> */}
 					<Route exact path='/posts'  render={
 							(routerProps) => < Posts {...routerProps} posts={this.state.posts}
 							/>
 						}
 					/><br/>
-
 				</Router>
-
-
 			</div>
-
 		);
-
 	};
 
 };
