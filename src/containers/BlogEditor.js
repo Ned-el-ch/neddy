@@ -48,8 +48,7 @@ export default class BlogEditor extends Component {
 
 	render() {
 		return (
-			<Container><Row className="justify-content-md-center">
-			<Col md={{ span: 8, offset: 0}}>
+			<Container><Row className="justify-content-md-center"><Col md={{ span: 8, offset: 0}}>
 				<DraftailEditor
 					ref="draftRef"
 					rawContentState={initial || null}

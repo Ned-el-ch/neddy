@@ -49,10 +49,10 @@ span.draftJsHashtagPlugin__hashtag__1wMVC span span {
 }
 
 .Draftail-Editor .public-DraftStyleDefault-pre {
-	background-color: #2f2c38;
-	border-top: #837c99 solid 17px;
+	background-color: #3c3c57;
+	border-top: #71659b solid 17px;
 	overflow: scroll;
-	border-radius: 8px;
+	border-radius: 12px;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
 	font-size: 16px;
 	font-weight: 550;
