@@ -68,12 +68,12 @@ export default class BlogEditor extends Component {
 };
 
 const blockTypes = [
-	{ type: BLOCK_TYPE.HEADER_TWO },
-	{ type: BLOCK_TYPE.HEADER_THREE },
-	{ type: BLOCK_TYPE.BLOCKQUOTE },
-	{ type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
-	{ type: BLOCK_TYPE.ORDERED_LIST_ITEM },
-	{ type: BLOCK_TYPE.CODE },
+	{ type: BLOCK_TYPE.HEADER_TWO, label: "Heading" },
+	{ type: BLOCK_TYPE.HEADER_THREE, label: "Sub-heading"  },
+	{ type: BLOCK_TYPE.BLOCKQUOTE, label: "Block Quote"  },
+	{ type: BLOCK_TYPE.UNORDERED_LIST_ITEM, label: "Bullet List"  },
+	{ type: BLOCK_TYPE.ORDERED_LIST_ITEM, label: "Number List"  },
+	{ type: BLOCK_TYPE.CODE, label: "Code Block"  },
 	{ type: "millenial-quote", label: "👏"},
 ]
 
@@ -83,26 +83,27 @@ const inlineStyles = [
 	// { type: INLINE_STYLE.CODE },
 	{ type: INLINE_STYLE.UNDERLINE },
 	{ type: INLINE_STYLE.STRIKETHROUGH },
-	{ type: INLINE_STYLE.MARK },
+	{ type: INLINE_STYLE.MARK, label: "Highlight" },
 	{ type: INLINE_STYLE.QUOTATION , label: "“ ”", style: {fontStyle: "italic", fontWeight: "340"}},
-	{ type: INLINE_STYLE.SMALL, label: "ᴛɪɴʏ", style: {fontSize: "0.5rem", textTransform: "uppercase"}},
-	{ type: INLINE_STYLE.SAMPLE, label: "𝚌𝚘𝚍𝚎", style: {	padding: "0.2em 0.3125em",
+	{ type: INLINE_STYLE.SMALL, label: "SMALL", style: {fontSize: "0.5rem", textTransform: "uppercase"}},
+	{ type: INLINE_STYLE.SAMPLE, label: "code", style: {	padding: "0.2em 0.3125em",
 		margin: "0px",
-		fontSize: "85%",
-		backgroundColor: "rgba(27, 31, 35, 0.068)",
+		fontSize: "90%",
+		fontWeight: "550",
+		color: "white",
+		backgroundColor: "#3c3c57",
 		fontFamily: "Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, sans-serif",
-		borderRadius: "3px",
-		borderLeft: "solid 2px #2f2c38",
-		borderBottom: "solid 2px #2f2c38"}},
+		borderRadius: "4px",
+		borderTop: "solid 4px #71659b",}},
 	// { type: INLINE_STYLE.INSERT },
 	{ type: "REDACTED" , label: "Redacted", style: {backgroundColor: "black", color:"black"}},
 	{ type: INLINE_STYLE.KEYBOARD },
-	{ type: INLINE_STYLE.SUPERSCRIPT, style: 
+	{ type: INLINE_STYLE.SUPERSCRIPT,label: "Superscript", style: 
 		{
 			fontSize: "60%",
 			verticalAlign: "super",
 			lineHeight: "1"} },
-	{ type: INLINE_STYLE.SUBSCRIPT, style: 
+	{ type: INLINE_STYLE.SUBSCRIPT, label: "Subscript", style: 
 		{
 			fontSize: "60%",
 			verticalAlign: "sub",
