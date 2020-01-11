@@ -18,7 +18,7 @@ export default class CodeBlock extends Component {
 					className="code-block-line"
 					dangerouslySetInnerHTML={
 						{__html: Prism.highlight(
-							line + (index === data.length - 1 ? null : "\n"),
+							line + (index === data.length - 1 ? "" : "\n"),
 							Prism.languages.javascript,
 							"javascript"
 							)

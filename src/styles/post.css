@@ -15,36 +15,39 @@ button.copy-code-block {
 	display: inline-block;
 	z-index: 1000;
 	position: absolute;
-	line-height: 1.15;
+	line-height: 1.2;
 	font-size: 15px;
 	padding: 0;
 	padding-left: 6px;
-	padding-right: 6px;
+	padding-right: 13px;
 	outline: none;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-	right: 50px;
+	right: 31px;
 	border: none;
 	color: #f879fa;
 	font-weight: 550;
 	background-color: #3c3c57;
-
+	border-top-right-radius: 13px;
 }
 
 button.copy-code-block:active {
-	background-color: #71659b;
-	color: #3c3c57;
+	background: none;
+	color: #fc53ff;
+
 }
 
 pre.code-block {
-	white-space: pre;
-	/* white-space: pre-wrap; */
+	white-space: pre-wrap;
 }
+
 pre.code-block:before {
 	counter-reset: listing;
 }
+
 pre.code-block code {
 	counter-increment: listing;
 }
+
 pre.code-block code::before {
 	content: counter(listing);
 	display: inline-block;
@@ -204,7 +207,6 @@ button[name="SUBSCRIPT"] span {
 	background: linear-gradient(222deg,	#ffa000, #f9ff00, #94ff00, #18ff00, #00ff91, #00e6ff,	#00ff91, #18ff00, #f9ff00,	#ffa000);
 	background-size: 200% 200%;
 	animation: Gradient-Background-Animation 10s ease infinite;
-
 	border-radius: 10px;
 	color: white;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;

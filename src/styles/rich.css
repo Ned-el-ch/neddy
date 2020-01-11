@@ -61,6 +61,24 @@ span.draftJsHashtagPlugin__hashtag__1wMVC span span {
 	width: 100%;
 }
 
+.Draftail-Editor pre.public-DraftStyleDefault-pre code div {
+	white-space: pre-wrap;
+}
+pre.public-DraftStyleDefault-pre:before {
+	counter-reset: listing;
+}
+pre.public-DraftStyleDefault-pre code {
+	counter-increment: listing;
+}
+pre.public-DraftStyleDefault-pre code::before {
+	content: counter(listing);
+	/* display: inline-block; */
+	margin-left: 0px;
+	margin-right: 16px;
+	color: #71659b;
+	float: left;
+}
+
 .DraftEditor-controls {
 	font-family: 'Helvetica', sans-serif;
 	font-size: 14px;
