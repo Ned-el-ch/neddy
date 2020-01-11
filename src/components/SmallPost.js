@@ -136,7 +136,10 @@ const parseBlockStyling = (data) => {
 			case "blockquote": return(<Quote index={index} data={element.styledHTML}/>)
 			case "millenial-quote": return(<MillenialQuote index={index} data={element.styledHTML}/>)
 			case "code-block":
-				if (index === 0) {
+				if (data.blocks.length === 1) {
+					codeBlock.push(element.text)
+					return(<CodeBlock key={index} data={codeBlock}/>)
+				} else if (index === 0) {
 					if (data.blocks[index + 1].type === "code-block") {
 						codeBlock.push(element.text)
 						return
@@ -174,7 +177,10 @@ const parseBlockStyling = (data) => {
 					}
 				}
 			case "ordered-list-item":
-				if (index === 0) {
+				if (data.blocks.length === 1) {
+					olBlock.push(element.text)
+					return(<OrderedList key={index} data={olBlock}/>)
+				} else if (index === 0) {
 					if (data.blocks[index + 1].type === "ordered-list-item") {
 						olBlock.push(element.text)
 						return
@@ -212,7 +218,10 @@ const parseBlockStyling = (data) => {
 					}
 				}
 			case "unordered-list-item":
-				if (index === 0) {
+				if (data.blocks.length === 1) {
+					ulBlock.push(element.text)
+					return(<UnorderedList key={index} data={ulBlock}/>)
+				} else if (index === 0) {
 					if (data.blocks[index + 1].type === "unordered-list-item") {
 						ulBlock.push(element.text)
 						return

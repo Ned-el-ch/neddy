@@ -4,7 +4,7 @@ pre.code-block {
 	overflow: scroll;
 	border-radius: 12px;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-	font-size: 16px;
+	font-size: 15px;
 	padding: 20px;
 	margin: 0;
 	width: 100%;
@@ -33,7 +33,6 @@ button.copy-code-block {
 button.copy-code-block:active {
 	background: none;
 	color: #fc53ff;
-
 }
 
 pre.code-block {
