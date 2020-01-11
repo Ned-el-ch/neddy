@@ -12,7 +12,7 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
 	 background: none;
 	 font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	 font-size: 1em;
-	 font-weight: bolder;
+	 font-weight: 550;
 	 text-align: left;
 	 white-space: pre;
 	 word-spacing: normal;
@@ -33,7 +33,7 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
 
  pre {
 	 color: white;
-	 font-weight: bolder;
+	 font-weight: 550;
 	 margin-bottom: 0;
  }
  
@@ -70,7 +70,7 @@ pre[class*="language-"] {
  
  .token.punctuation {
 	 color: rgb(83, 215, 255);
-	 font-weight: bolder;
+	 font-weight: 550;
 
  }
  
@@ -79,17 +79,17 @@ pre[class*="language-"] {
  .token.namespace,
  .token.deleted {
 	 color: #dd5055;
-	 font-weight: bolder;
+	 font-weight: 550;
 
  }
  .token.function-variable {
 	color: #7cbcfc;
-	font-weight: bolder;
+	font-weight: 550;
 }
  
  .token.function-name {
 	 color: #4287cc;
-	 font-weight: bolder;
+	 font-weight: 550;
  }
  
 
@@ -97,17 +97,17 @@ pre[class*="language-"] {
  .token.boolean,
  .token.number {
 	 color: #ff8432;
-	 font-weight: bolder;
+	 font-weight: 550;
 
  }
  .token.parameter {
 	 color: #e9e8b2;
-	 font-weight: bolder;
+	 font-weight: 550;
 
  }
  .token.function {
 	 color: #84c8ff;
-	 font-weight: bolder;
+	 font-weight: 550;
 
  }
  
@@ -116,19 +116,20 @@ pre[class*="language-"] {
  .token.constant,
  .token.symbol {
 	 color: #f7b72d;
-	 font-weight: bolder;
+	 font-weight: 550;
 
  }
  
  .token.selector {
 	 color: #d68324;
+	 font-weight: 550;
  }
  .token.important,
  .token.atrule,
  .token.keyword,
  .token.builtin {
 	 color: #f879fa;
-	 font-weight: bolder;
+	 font-weight: 550;
 
  }
  
@@ -138,7 +139,7 @@ pre[class*="language-"] {
  .token.regex,
  .token.variable {
 	 color: #40dd7c;
-	 font-weight: bolder;
+	 font-weight: 550;
 
  }
  
@@ -146,7 +147,7 @@ pre[class*="language-"] {
  .token.entity,
  .token.url {
 	 color: #41cecb;
-	 font-weight: bolder;
+	 font-weight: 550;
 
  }
  
@@ -164,7 +165,7 @@ pre[class*="language-"] {
  
  .token.inserted {
 	 color: rgb(0, 163, 0);
-	 font-weight: bolder;
+	 font-weight: 550;
 
  }
  

@@ -97,9 +97,10 @@ div.DraftEditor-new-age-shit div span span:before {
 	background-color: #2f2c38;
 	border-top: #837c99 solid 17px;
 	overflow: scroll;
-	border-radius: 6px;
+	border-radius: 8px;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
 	font-size: 16px;
+	font-weight: 550;
 	padding: 20px;
 	margin: 0;
 	width: 100%;

@@ -62,7 +62,7 @@ export default class BlogEditor extends Component {
 					blockTypes={blockTypes}
 					inlineStyles={inlineStyles}
 					entityTypes={entityTypes}
-					plugins={[hashtagPlugin]}
+					// plugins={[hashtagPlugin]}
 					decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}
 				/>
 				<button onClick={this.submitPost}>Submit Post</button>
@@ -93,7 +93,7 @@ const inlineStyles = [
 	{ type: INLINE_STYLE.STRIKETHROUGH },
 	{ type: INLINE_STYLE.MARK },
 	{ type: INLINE_STYLE.QUOTATION , label: "“ ”", style: {fontStyle: "italic", fontWeight: "340"}},
-	{ type: INLINE_STYLE.SMALL, label: "ᴛɪɴʏ", style: {fontSize: "0.5rem"}},
+	{ type: INLINE_STYLE.SMALL, label: "ᴛɪɴʏ", style: {fontSize: "0.5rem", textTransform: "uppercase"}},
 	{ type: INLINE_STYLE.SAMPLE, label: "𝚌𝚘𝚍𝚎", style: {	padding: "0.2em 0.3125em",
 		margin: "0px",
 		fontSize: "85%",
@@ -121,4 +121,19 @@ const entityTypes = [
 	{type: ENTITY_TYPE.LINK},
 	{type: ENTITY_TYPE.IMAGE},
 	{type: ENTITY_TYPE.HORIZONTAL_RULE},
+]
+
+const decorators = [
+	{
+		strategy: (block, callback) => {
+		  const text = block.getText();
+		  let matches;
+		  while ((matches = /#[\w]+/g.exec(text)) !== null) {
+			 callback(matches.index, matches.index + matches[0].length);
+		  }
+		},
+		component: ({ children }) => (
+		  <span style={{ color: "#007d7e" }}>{children}</span>
+		),
+	 },
 ]

@@ -96,6 +96,7 @@ pre.code-block-container {
 
 .SMALL {
 	font-size: 0.5rem;
+	text-transform: uppercase;
 }
 
 .SAMPLE {
