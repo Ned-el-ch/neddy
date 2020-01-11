@@ -10,6 +10,7 @@ import Heading2 from "./postComponents/Heading2";
 import Heading3 from "./postComponents/Heading3";
 import Quote from "./postComponents/Quote";
 import MillenialQuote from "./postComponents/MillenialQuote";
+import CodeBlock from "./postComponents/CodeBlock";
 
 /* ********* OLD ExportingConfig IGNORE FOR NOW, REMOVE LATER
 import { DraftailEditor, ENTITY_TYPE, BLOCK_TYPE } from "draftail"
@@ -99,10 +100,8 @@ export class SmallPost extends Component {
 		}
 		// debugger;
 		const parseBlockStyling = (data) => {
-			// debugger;
 			let codeBlock = []
 			const blocks = data.blocks.map((element, index) => {
-				// debugger
 				switch (element.type) {
 					case "ordered-list-item":
 						return null
@@ -117,46 +116,24 @@ export class SmallPost extends Component {
 					case "millenial-quote":
 						return(<MillenialQuote index={index} data={element.styledHTML}/>)
 					case "code-block":
-						if (index < data.blocks.length-1 && data.blocks[index + 1].type === "code-block") {
+						if (index < data.blocks.length-1 && data.blocks[index - 1].type !== "code-block") {
+							// RESETTING THE CODEBLOCK CONTAINER AND STARTING A NEW ONE
+							codeBlock = [];
 							codeBlock.push(element.text)
+							return
+						}
+						else if (index < data.blocks.length-1 && data.blocks[index + 1].type === "code-block") {
+							// PUSHING JUST ANOTHER LINE INTO THE CURRENT CODE BLOCK
+							codeBlock.push(element.text)
+							return
+						} else if (index < data.blocks.length-1 && data.blocks[index + 1].type !== "code-block") {
+							// PUSHING THE LINE AT THE OF THE CURRENT CODE BLOCK
+							codeBlock.push(element.text)
+							return(<CodeBlock index={index} data={codeBlock}/>)
 						} else if (index = data.blocks.length-1) {
+							// THIS IS FOR SINGLE LINE CODE BLOCKS IN THE END OF A POST
 							codeBlock.push(element.text)
-							return(
-								<pre className="code-block-container" key={index}>
-									<code
-										className="code-block-line"
-										dangerouslySetInnerHTML={
-											{__html: Prism.highlight(
-												codeBlock.join("\n"),
-												Prism.languages.javascript,
-												"javascript"
-												)
-											}
-										}
-									>
-									</code>
-									<br/>
-								</pre>
-							)
-						} else {
-							return(
-								<pre className="code-block-container" key={index}>
-									<code
-										className="code-block-line"
-										dangerouslySetInnerHTML={
-											{__html: Prism.highlight(
-												codeBlock.join("\n"),
-												Prism.languages.javascript,
-												"javascript"
-												)
-											}
-										}
-									>
-									</code>
-									<br/>
-								</pre>
-							)
-
+							return(<CodeBlock index={index} data={codeBlock}/>)
 						}
 					default:
 						return (
