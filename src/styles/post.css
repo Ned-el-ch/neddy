@@ -35,6 +35,24 @@ button.copy-code-block:active {
 	color: #3c3c57;
 }
 
+pre.code-block {
+	white-space: pre;
+	/* white-space: pre-wrap; */
+}
+pre.code-block:before {
+	counter-reset: listing;
+}
+pre.code-block code {
+	counter-increment: listing;
+}
+pre.code-block code::before {
+	content: counter(listing);
+	display: inline-block;
+	margin-left: 0px;
+	margin-right: 16px;
+	color: #71659b;
+}
+
 .BOLD {
 	font-weight: bold;
 }

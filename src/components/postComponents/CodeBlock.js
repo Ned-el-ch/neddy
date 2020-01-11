@@ -9,23 +9,34 @@ export default class CodeBlock extends Component {
 
 	}
 
+	renderCodeLines = () => {
+
+		const data = this.props.data
+		return data.map((line, index) => {
+			return (
+				<code
+					className="code-block-line"
+					dangerouslySetInnerHTML={
+						{__html: Prism.highlight(
+							line + (index === data.length - 1 ? null : "\n"),
+							Prism.languages.javascript,
+							"javascript"
+							)
+						}
+					}
+				>
+				</code>
+			)
+		})
+
+	}
+
 	render() {
 		return (
 			<div className="code-block-container">
 				<button className="copy-code-block" onClick={this.copyBlock}>COPY</button>
 				<pre className="code-block">
-					<code
-						className="code-block-line"
-						dangerouslySetInnerHTML={
-							{__html: Prism.highlight(
-								this.props.data.join("\n"),
-								Prism.languages.javascript,
-								"javascript"
-								)
-							}
-						}
-					>
-					</code>
+					{this.renderCodeLines()}
 					<br/>
 				</pre>
 			</div>
