@@ -57,6 +57,7 @@ export default class SmallPost extends Component {
 
 	buildPost = (postData) => {
 		const data = JSON.parse(postData.content)
+		if (!data) { return (<span>I am empty inside</span>) }
 		const dataWithInlineStyling = parseInlineStyling(data)
 		const dataToDisplay = parseBlockStyling(dataWithInlineStyling)
 		return(dataToDisplay)
