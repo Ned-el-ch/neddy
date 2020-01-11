@@ -1,13 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Prism from "prismjs"
-import { convertToRaw, convertFromRaw } from "draft-js"
-import { convertFromHTML, convertToHTML } from "draft-convert"
-import {stateToHTML} from 'draft-js-export-html';
+// import { convertToRaw, convertFromRaw } from "draft-js"
+// import { convertFromHTML, convertToHTML } from "draft-convert"
+// import {stateToHTML} from 'draft-js-export-html';
 import "../styles/post.css"
 import "../styles/rich.css"
 
+import Heading2 from "./postComponents/Heading2";
+import Heading3 from "./postComponents/Heading3";
+import Quote from "./postComponents/Quote";
+import MillenialQuote from "./postComponents/MillenialQuote";
 
-
+/* ********* OLD ExportingConfig IGNORE FOR NOW, REMOVE LATER
 import { DraftailEditor, ENTITY_TYPE, BLOCK_TYPE } from "draftail"
 
 const exporterConfig = {
@@ -46,14 +50,7 @@ const exporterConfig = {
 		return originalText
 	},
 }
-
-
-
-
-
-
-
-
+*/
 
 export class SmallPost extends Component {
 
@@ -107,28 +104,18 @@ export class SmallPost extends Component {
 			const blocks = data.blocks.map((element, index) => {
 				// debugger
 				switch (element.type) {
+					case "ordered-list-item":
+						return null
+					case "unordered-list-item":
+						return null
 					case "header-two":
-						return (
-							<h2
-								className="Draftail-block--header-two"
-								key={index}
-								dangerouslySetInnerHTML={
-									{__html: element.styledHTML}
-								}
-							></h2>)
+						return (<Heading2 index={index} data={element.styledHTML}/>)
 					case "header-three":
-						return(
-							<h3 className="Draftail-block--header-three "
-							key={index}>
-								<div className=" public-DraftStyleDefault-block public-DraftStyleDefault-ltr">
-									<span
-										dangerouslySetInnerHTML={
-											{__html: element.styledHTML}
-										}
-									></span>
-								</div>
-							</h3>
-							)
+						return(<Heading3 index={index} data={element.styledHTML}/>)
+					case "blockquote":
+						return(<Quote index={index} data={element.styledHTML}/>)
+					case "millenial-quote":
+						return(<MillenialQuote index={index} data={element.styledHTML}/>)
 					case "code-block":
 						if (index < data.blocks.length-1 && data.blocks[index + 1].type === "code-block") {
 							codeBlock.push(element.text)

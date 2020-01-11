@@ -1,10 +1,5 @@
-import React, { Component, div } from 'react';
-// import Draft from "draft-js";
-// import Prism from "prismjs";
-// import Immutable from "immutable";
-// import EditorControls from "./EditorControls";
+import React, { Component } from 'react';
 import PrismDecorator from '../components/PrismDecorator'
-import createHashtagPlugin from "draft-js-hashtag-plugin"
 
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -17,13 +12,15 @@ import "draftail/dist/draftail.css"
 import "../styles/rich.css";
 import "../styles/prism.css";
 
-const hashtagPlugin = createHashtagPlugin();
+// import createHashtagPlugin from "draft-js-hashtag-plugin"
+// const hashtagPlugin = createHashtagPlugin();
+
 const initial = JSON.parse(sessionStorage.getItem("draftail:content"))
 
 export default class BlogEditor extends Component {
 
 	onSave = (content) => {
-		console.log("saving", content)
+		console.log("saving:", content)
 		sessionStorage.setItem("draftail:content", JSON.stringify(content))
 	}
 
@@ -50,7 +47,6 @@ export default class BlogEditor extends Component {
 	}
 
 	render() {
-
 		return (
 			<Container><Row className="justify-content-md-center">
 			<Col md={{ span: 8, offset: 0}}>
@@ -67,11 +63,8 @@ export default class BlogEditor extends Component {
 				/>
 				<button onClick={this.submitPost}>Submit Post</button>
 			</Col></Row></Container>
-
 		);
-
 	};
-
 };
 
 const blockTypes = [
@@ -81,7 +74,7 @@ const blockTypes = [
 	{ type: BLOCK_TYPE.UNORDERED_LIST_ITEM },
 	{ type: BLOCK_TYPE.ORDERED_LIST_ITEM },
 	{ type: BLOCK_TYPE.CODE },
-	{ type: "MILLENIAL-QUOTE", label: "👏"},
+	{ type: "millenial-quote", label: "👏"},
 ]
 
 const inlineStyles = [

@@ -54,45 +54,7 @@ pre.code-block-container {
 .QUOTATION:after {
 	content: "”";
 } */
-.Draftail-block--MILLENIAL-QUOTE div {
-	text-align: center;
-}
-.Draftail-block--MILLENIAL-QUOTE, .MILLENIAL-QUOTE {
 
-	background: linear-gradient(222deg,  #ffa000, #f9ff00, #94ff00, #18ff00, #00ff91, #00e6ff,  #00ff91, #18ff00, #f9ff00,  #ffa000);
-	background-size: 200% 200%;
-	animation: New-Age-Shit-Animation 10s ease infinite;
-
-	border-radius: 10px;
-	color: white;
-	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-	font-size: 30px;
-	font-weight: bolder;
-	text-transform: uppercase;
-	letter-spacing: -2px;
-	padding: 20px;
-	text-shadow: 2px 2px 0px rgba(82, 82, 82, 0.33);
-	line-height: 1;
-	text-align: center;
-}
-
-.Draftail-block--MILLENIAL-QUOTE:after {
-	display: block;
-	content: "👏👏👏👏👏👏👏👏";
-}
-
-.Draftail-block--MILLENIAL-QUOTE:before {
-	display: block;
-	content: "👏👏👏👏👏👏👏👏";
-}
-
-@keyframes New-Age-Shit-Animation {
-	0%{background-position:10% 90%}
-	25%{background-position:90% 10%}
-	50%{background-position:10% 90%}
-	75%{background-position:90% 10%}
-	100%{background-position:10% 90%}
-}
 
 .SMALL {
 	font-size: 0.5rem;
@@ -115,7 +77,6 @@ pre.code-block-container {
 }
 
 .REDACTED, .DELETE {
-	/* text-decoration: line-through underline overline ; */
 	background-color: black;
 	color: black;
 }
@@ -159,7 +120,6 @@ pre.code-block-container {
 	border-bottom: solid 2px #2f2c38;
 }
 
-
 .individual-post{
 	background: #fff;
 	border: 1px solid rgba(221, 221, 221, 0.527);
@@ -167,51 +127,16 @@ pre.code-block-container {
 	/* font-size: 14px; */
 	padding: 15px;
 }
-/* 
-.Draftail-Editor {
-	cursor: text;
-	font-size: 16px;
-	margin-top: 10px;
-}
-.DraftEditor-controls-container {
-	position: absolute;
-}
-.Draftail-Editor .public-DraftEditorPlaceholder-root,
-.Draftail-Editor .public-DraftEditor-content {
-	margin: 0 -15px -15px;
-	padding: 15px;
+
+.Draftail-block--millenial-quote div {
+	text-align: center;
 }
 
-.Draftail-Editor .public-DraftEditor-content {
-	min-height: 100px;
-}
-
-.DraftEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
-	display: none;
-}
-
-.blockquote {
-	border-left: 5px solid #eee;
-	color: #666;
-	font-family: 'Hoefler Text', 'Georgia', serif;
-	font-style: italic;
-	word-spacing: 0.4rem;
-	font-size: 26px;
-	margin: 1px 0;
-	margin-bottom: 0;
-	padding: 1px 20px;
-} */
-/* span.draftJsHashtagPlugin__hashtag__1wMVC span span {
-
-	color: rgb(45, 118, 253);
-
-}
-
-.Draftail-Editor .DraftEditor-new-age-shit {
+.Draftail-block--millenial-quote, .millenial-quote {
 
 	background: linear-gradient(222deg,  #ffa000, #f9ff00, #94ff00, #18ff00, #00ff91, #00e6ff,  #00ff91, #18ff00, #f9ff00,  #ffa000);
 	background-size: 200% 200%;
-	animation: New-Age-Shit-Animation 10s ease infinite;
+	animation: Gradient-Background-Animation 10s ease infinite;
 
 	border-radius: 10px;
 	color: white;
@@ -226,49 +151,20 @@ pre.code-block-container {
 	text-align: center;
 }
 
-div.DraftEditor-new-age-shit div span span:after {
+.Draftail-block--millenial-quote:after {
 	display: block;
 	content: "👏👏👏👏👏👏👏👏";
 }
 
-div.DraftEditor-new-age-shit div span span:before {
+.Draftail-block--millenial-quote:before {
 	display: block;
 	content: "👏👏👏👏👏👏👏👏";
-} */
-
-/* .Draftail-Editor pre.public-DraftStyleDefault-pre {
-	max-width: 100vw;
-} */
-
-/* .Draftail-Editor pre.public-DraftStyleDefault-pre pre div {
-	overflow: scroll;
-} */
-
-/* @keyframes New-Age-Shit-Animation {
-    0%{background-position:10% 90%}
-    25%{background-position:90% 10%}
-    50%{background-position:10% 90%}
-    75%{background-position:90% 10%}
-    100%{background-position:10% 90%}
-} */
-
-
-
-/* .DraftEditor-controls {
-	font-family: 'Helvetica', sans-serif;
-	font-size: 14px;
-	margin-bottom: 5px;
-	user-select: none;
 }
 
-.DraftEditor-styleButton {
-	color: #999;
-	cursor: pointer;
-	margin-right: 16px;
-	padding: 2px 0;
-	display: inline-block;
+@keyframes Gradient-Background-Animation {
+	0%{background-position:10% 90%}
+	25%{background-position:90% 10%}
+	50%{background-position:10% 90%}
+	75%{background-position:90% 10%}
+	100%{background-position:10% 90%}
 }
-
-.DraftEditor-activeButton {
-	color: #5890ff;
-} */

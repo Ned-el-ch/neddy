@@ -12,7 +12,7 @@ export default class Posts extends Component {
 			<Container className="Login">
 				<Row className="justify-content-md-center">
 					<Col md={{ span: 8, offset: 0}}>
-						{this.props.posts.map(postData => {
+						{this.props.posts.map((postData) => {
 							return(< SmallPost postData={postData} key={postData.id}/>)
 						})}
 					</Col>
