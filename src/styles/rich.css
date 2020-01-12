@@ -81,10 +81,14 @@ pre.public-DraftStyleDefault-pre code {
 pre.public-DraftStyleDefault-pre code::before {
 	content: counter(listing);
 	/* display: inline-block; */
-	margin-left: 0px;
-	margin-right: 16px;
-	color: #71659b;
 	float: left;
+	margin-left: 0px;
+	margin-right: 8px;
+	color: #71659b;
+	width: 33px;
+	border-right: solid 1px #71659b;
+	text-align: right;
+	padding-right: 3px;
 }
 
 .DraftEditor-controls {

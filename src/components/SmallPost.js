@@ -127,7 +127,7 @@ const parseInlineStyling = (data) => {
 }
 
 const parseBlockStyling = (data) => {
-	const supportedLanguages = ["javascript", "python", "ruby", "html"]
+	const supportedLanguages = ["javascript", "python", "ruby", "html", "jsx", "css", "java"]
 	let codeBlock = []
 	let olBlock = []
 	let ulBlock = []
@@ -140,20 +140,34 @@ const parseBlockStyling = (data) => {
 			case "millenial-quote": return(<MillenialQuote key={randKey()} data={element.styledHTML}/>)
 			case "code-block":
 				if (data.blocks.length === 1) {
-					language = "javascript"
-					codeBlock.push(element.text)
+					if (supportedLanguages.includes(element.text)) {
+						language = element.text
+						codeBlock.push("empty")
+					} else {
+						language = "not specified/supported"
+						codeBlock.push(element.text)
+					}
+					// language = "javascript"
 					return(<CodeBlock key={randKey()} data={codeBlock} language={language}/>)
 				} else if (index === 0) {
 					if (data.blocks[index + 1].type === "code-block") {
 						if (supportedLanguages.includes(element.text)) {
 							language = element.text
 						} else {
-							language = "javascript"
+							language = "not specified/supported"
+						// language = "javascript"
 							codeBlock.push(element.text)
 						}
 						return
 					} else {
-						codeBlock.push(element.text)
+						if (supportedLanguages.includes(element.text)) {
+							language = element.text
+							codeBlock.push("empty")
+						} else {
+							language = "not specified/supported"
+							codeBlock.push(element.text)
+						}
+						// codeBlock.push(element.text)
 						return(<CodeBlock key={randKey()} data={codeBlock} language={language}/>)
 					}
 				} else if (index < data.blocks.length - 1) {
@@ -161,18 +175,23 @@ const parseBlockStyling = (data) => {
 						codeBlock = []
 						language = ""
 						if (data.blocks[index + 1].type === "code-block") {
-							// codeBlock.push(element.text)
-							// language = element.text
 							if (supportedLanguages.includes(element.text)) {
 								language = element.text
 							} else {
-								language = "javascript"
+								language = "not specified/supported"
 								codeBlock.push(element.text)
 							}
 							return
 						} else {
-							language = "javascript"
-							codeBlock.push(element.text)
+							if (supportedLanguages.includes(element.text)) {
+								language = element.text
+								codeBlock.push("empty")
+							} else {
+								language = "not specified/supported"
+								codeBlock.push(element.text)
+							}
+							// language = "javascript"
+							// codeBlock.push(element.text)
 							return(<CodeBlock key={randKey()} data={codeBlock} language={language}/>)
 						}
 					} else {
@@ -188,8 +207,15 @@ const parseBlockStyling = (data) => {
 				} else {
 					if (data.blocks[index - 1].type !== "code-block") {
 						codeBlock = []
-						language = "javascript"
-						codeBlock.push(element.text)
+						if (supportedLanguages.includes(element.text)) {
+							language = element.text
+							codeBlock.push("empty")
+						} else {
+							language = "not specified/supported"
+							codeBlock.push(element.text)
+						}
+						// language = "javascript"
+						// codeBlock.push(element.text)
 						return(<CodeBlock key={randKey()} data={codeBlock} language={language}/>)
 					} else {
 						codeBlock.push(element.text)
