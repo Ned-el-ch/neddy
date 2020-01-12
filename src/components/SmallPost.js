@@ -127,54 +127,73 @@ const parseInlineStyling = (data) => {
 }
 
 const parseBlockStyling = (data) => {
+	const supportedLanguages = ["javascript", "python", "ruby", "html"]
 	let codeBlock = []
 	let olBlock = []
 	let ulBlock = []
-	const blocks = data.blocks.map((element, index) => {
+	let language = ""
+	return data.blocks.map((element, index) => {
 		switch (element.type) {
-			case "header-two": return (<Heading2 index={index} data={element.styledHTML}/>)
-			case "header-three": return(<Heading3 index={index} data={element.styledHTML}/>)
-			case "blockquote": return(<Quote index={index} data={element.styledHTML}/>)
-			case "millenial-quote": return(<MillenialQuote index={index} data={element.styledHTML}/>)
+			case "header-two": return (<Heading2 key={randKey()} data={element.styledHTML}/>)
+			case "header-three": return(<Heading3 key={randKey()} data={element.styledHTML}/>)
+			case "blockquote": return(<Quote key={randKey()} data={element.styledHTML}/>)
+			case "millenial-quote": return(<MillenialQuote key={randKey()} data={element.styledHTML}/>)
 			case "code-block":
 				if (data.blocks.length === 1) {
+					language = "javascript"
 					codeBlock.push(element.text)
-					return(<CodeBlock key={index} data={codeBlock}/>)
+					return(<CodeBlock key={randKey()} data={codeBlock} language={language}/>)
 				} else if (index === 0) {
 					if (data.blocks[index + 1].type === "code-block") {
-						codeBlock.push(element.text)
+						if (supportedLanguages.includes(element.text)) {
+							language = element.text
+						} else {
+							language = "javascript"
+							codeBlock.push(element.text)
+						}
 						return
 					} else {
 						codeBlock.push(element.text)
-						return(<CodeBlock key={index} data={codeBlock}/>)
+						return(<CodeBlock key={randKey()} data={codeBlock} language={language}/>)
 					}
 				} else if (index < data.blocks.length - 1) {
 					if (data.blocks[index - 1].type !== "code-block") {
 						codeBlock = []
+						language = ""
 						if (data.blocks[index + 1].type === "code-block") {
-							codeBlock.push(element.text)
+							// codeBlock.push(element.text)
+							// language = element.text
+							if (supportedLanguages.includes(element.text)) {
+								language = element.text
+							} else {
+								language = "javascript"
+								codeBlock.push(element.text)
+							}
 							return
 						} else {
+							language = "javascript"
 							codeBlock.push(element.text)
-							return(<CodeBlock key={index} data={codeBlock}/>)
+							return(<CodeBlock key={randKey()} data={codeBlock} language={language}/>)
 						}
 					} else {
 						if (data.blocks[index + 1].type === "code-block") {
+							// language = element.text
 							codeBlock.push(element.text)
 							return
 						} else {
 							codeBlock.push(element.text)
-							return(<CodeBlock key={index} data={codeBlock}/>)
+							return(<CodeBlock key={randKey()} data={codeBlock} language={language}/>)
 						}
 					}
 				} else {
 					if (data.blocks[index - 1].type !== "code-block") {
 						codeBlock = []
+						language = "javascript"
 						codeBlock.push(element.text)
-						return(<CodeBlock key={index} data={codeBlock}/>)
+						return(<CodeBlock key={randKey()} data={codeBlock} language={language}/>)
 					} else {
 						codeBlock.push(element.text)
-						return(<CodeBlock key={index} data={codeBlock}/>)
+						return(<CodeBlock key={randKey()} data={codeBlock} language={language}/>)
 					}
 				}
 			case "ordered-list-item":
@@ -187,7 +206,7 @@ const parseBlockStyling = (data) => {
 						return
 					} else {
 						olBlock.push(element.text)
-						return(<OrderedList key={index} data={olBlock}/>)
+						return(<OrderedList key={randKey()} data={olBlock}/>)
 					}
 				} else if (index < data.blocks.length - 1) {
 					if (data.blocks[index - 1].type !== "ordered-list-item") {
@@ -197,7 +216,7 @@ const parseBlockStyling = (data) => {
 							return
 						} else {
 							olBlock.push(element.text)
-							return(<OrderedList key={index} data={olBlock}/>)
+							return(<OrderedList key={randKey()} data={olBlock}/>)
 						}
 					} else {
 						if (data.blocks[index + 1].type === "ordered-list-item") {
@@ -205,30 +224,30 @@ const parseBlockStyling = (data) => {
 							return
 						} else {
 							olBlock.push(element.text)
-							return(<OrderedList key={index} data={olBlock}/>)
+							return(<OrderedList key={randKey()} data={olBlock}/>)
 						}
 					}
 				} else {
 					if (data.blocks[index - 1].type !== "ordered-list-item") {
 						olBlock = []
 						olBlock.push(element.text)
-						return(<OrderedList key={index} data={olBlock}/>)
+						return(<OrderedList key={randKey()} data={olBlock}/>)
 					} else {
 						olBlock.push(element.text)
-						return(<OrderedList key={index} data={olBlock}/>)
+						return(<OrderedList key={randKey()} data={olBlock}/>)
 					}
 				}
 			case "unordered-list-item":
 				if (data.blocks.length === 1) {
 					ulBlock.push(element.text)
-					return(<UnorderedList key={index} data={ulBlock}/>)
+					return(<UnorderedList key={randKey()} data={ulBlock}/>)
 				} else if (index === 0) {
 					if (data.blocks[index + 1].type === "unordered-list-item") {
 						ulBlock.push(element.text)
 						return
 					} else {
 						ulBlock.push(element.text)
-						return(<UnorderedList key={index} data={ulBlock}/>)
+						return(<UnorderedList key={randKey()} data={ulBlock}/>)
 					}
 				} else if (index < data.blocks.length - 1) {
 					if (data.blocks[index - 1].type !== "unordered-list-item") {
@@ -238,7 +257,7 @@ const parseBlockStyling = (data) => {
 							return
 						} else {
 							ulBlock.push(element.text)
-							return(<UnorderedList key={index} data={ulBlock}/>)
+							return(<UnorderedList key={randKey()} data={ulBlock}/>)
 						}
 					} else {
 						if (data.blocks[index + 1].type === "unordered-list-item") {
@@ -246,22 +265,31 @@ const parseBlockStyling = (data) => {
 							return
 						} else {
 							ulBlock.push(element.text)
-							return(<UnorderedList key={index} data={ulBlock}/>)
+							return(<UnorderedList key={randKey()} data={ulBlock}/>)
 						}
 					}
 				} else {
 					if (data.blocks[index - 1].type !== "unordered-list-item") {
 						ulBlock = []
 						ulBlock.push(element.text)
-						return(<UnorderedList key={index} data={ulBlock}/>)
+						return(<UnorderedList key={randKey()} data={ulBlock}/>)
 					} else {
 						ulBlock.push(element.text)
-						return(<UnorderedList key={index} data={ulBlock}/>)
+						return(<UnorderedList key={randKey()} data={ulBlock}/>)
 					}
 				}
 			default:
-				return (< Unstyled key={index} data={element.styledHTML}/>)
+				return (< Unstyled key={randKey()} data={element.styledHTML}/>)
 		}
 	});
-	return blocks;
+}
+
+const randKey = () => {
+	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	let result = '';
+	let charactersLength = characters.length;
+	for ( var i = 0; i < 10; i++ ) {
+		result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+	return result;
 }

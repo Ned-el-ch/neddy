@@ -9,25 +9,55 @@ pre.code-block {
 	margin: 0;
 	width: 100%;
 	font-weight: 550;
+	line-height: 1.2;
+
 }
 
-button.copy-code-block {
+button.copy-code-block, .code-block-container:before {
 	display: inline-block;
 	z-index: 1000;
 	position: absolute;
 	line-height: 1.2;
 	font-size: 15px;
 	padding: 0;
-	padding-left: 6px;
+	padding-left: 13px;
 	padding-right: 13px;
 	outline: none;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-	right: 31px;
 	border: none;
 	color: #f879fa;
 	font-weight: 550;
 	background-color: #3c3c57;
 	border-top-right-radius: 13px;
+	border-top-left-radius: 13px;
+
+}
+
+.code-block-container:before {
+	background: none;
+	color:#3c3c57;
+	font-size: 13px;
+	padding-top: 2px;
+}
+
+/* .code-block-javascript.code-block-container:before {
+	content: "JavaScript";
+}
+
+.code-block-html.code-block-container:before {
+	content: "HTML";
+}
+
+.code-block-ruby.code-block-container:before {
+	content: "Ruby";
+}
+
+.code-block-ruby.code-block-container:before {
+	content: "Python";
+} */
+
+button.copy-code-block {
+	right: 31px;
 }
 
 button.copy-code-block:active {
@@ -45,6 +75,7 @@ pre.code-block:before {
 
 pre.code-block code {
 	counter-increment: listing;
+	font-size: 87.5%;
 }
 
 pre.code-block code::before {
@@ -199,6 +230,8 @@ button[name="SUBSCRIPT"] span {
 
 .Draftail-block--millenial-quote div {
 	text-align: center;
+	/* overflow: scroll; */
+	overflow-wrap: break-word;
 }
 
 .Draftail-block--millenial-quote, .millenial-quote {
@@ -235,4 +268,16 @@ button[name="SUBSCRIPT"] span {
 	50%{background-position:10% 90%}
 	75%{background-position:90% 10%}
 	100%{background-position:10% 90%}
+}
+
+.Draftail-block--unordered-list-item div {
+	white-space: pre-wrap;
+	/* overflow: scroll; */
+	overflow-wrap: break-word;
+}
+
+.Draftail-block--ordered-list-item div {
+	white-space: pre-wrap;
+	/* overflow: scroll; */
+	overflow-wrap: break-word;
 }

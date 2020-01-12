@@ -48,32 +48,40 @@ export default class BlogEditor extends Component {
 
 	render() {
 		return (
-			<Container><Row className="justify-content-md-center"><Col md={{ span: 8, offset: 0}}>
-				<DraftailEditor
-					ref="draftRef"
-					rawContentState={initial || null}
-					// rawContentState={initial || null}
-					onSave={this.onSave}
-					blockTypes={blockTypes}
-					inlineStyles={inlineStyles}
-					entityTypes={entityTypes}
-					// plugins={[hashtagPlugin]}
-					decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}
-				/>
-				<button onClick={this.submitPost}>Submit Post</button>
-			</Col></Row></Container>
+			<Container><Row className="justify-content-md-center">
+				<Col 
+					md={{ span: 10, offset: 0}}
+					xs
+					lg={{ span: 8, offset: 0}}
+				>
+					<DraftailEditor
+						ref="draftRef"
+						rawContentState={initial || null}
+						// rawContentState={initial || null}
+						onSave={this.onSave}
+						blockTypes={blockTypes}
+						inlineStyles={inlineStyles}
+						entityTypes={entityTypes}
+						// plugins={[hashtagPlugin]}
+						decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}
+					/>
+					<button onClick={this.submitPost}>Submit Post</button>
+				</Col>
+			</Row></Container>
 		);
 	};
 };
 
 const blockTypes = [
-	{ type: BLOCK_TYPE.HEADER_TWO, label: "Heading" },
-	{ type: BLOCK_TYPE.HEADER_THREE, label: "Sub-heading"  },
-	{ type: BLOCK_TYPE.BLOCKQUOTE, label: "Block Quote"  },
-	{ type: BLOCK_TYPE.UNORDERED_LIST_ITEM, label: "Bullet List"  },
-	{ type: BLOCK_TYPE.ORDERED_LIST_ITEM, label: "Number List"  },
-	{ type: BLOCK_TYPE.CODE, label: "Code Block"  },
-	{ type: "millenial-quote", label: "👏"},
+	{ type: BLOCK_TYPE.HEADER_TWO, label: "Heading", description: null },
+	{ type: BLOCK_TYPE.HEADER_THREE, label: "Sub-heading" , description: null },
+	{ type: BLOCK_TYPE.BLOCKQUOTE, label: "Block Quote" , description: null },
+	{ type: BLOCK_TYPE.UNORDERED_LIST_ITEM, label: "Bullet List" , description: null },
+	{ type: BLOCK_TYPE.ORDERED_LIST_ITEM, label: "Number List" , description: null },
+	{ type: BLOCK_TYPE.CODE, label: "Code Block" , description: null },
+	{ type: "millenial-quote", label: "👏",
+	keyboard_shortcut:
+		{ other: "Ctrl + Shift + Alt + O", macOS: "⌘ + ⇧ + O" }},
 ]
 
 const inlineStyles = [
@@ -93,7 +101,7 @@ const inlineStyles = [
 		backgroundColor: "#3c3c57",
 		fontFamily: "Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, sans-serif",
 		borderRadius: "4px",
-		borderTop: "solid 4px #71659b",}},
+		borderTop: "solid 4px #71659b",}, description: "Inline code"},
 	// { type: INLINE_STYLE.INSERT },
 	{ type: "REDACTED" , label: "Redacted", style: {backgroundColor: "black", color:"black"}},
 	{ type: INLINE_STYLE.KEYBOARD },

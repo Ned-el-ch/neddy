@@ -55,7 +55,7 @@ export default class LoginPage extends Component{
 		return (
 			<Container className="Login">
 			<Row className="justify-content-md-center">
-			<Col md={{ span: 5, offset: 0}}>
+			<Col md={{ span: 8, offset: 0}} xs lg={{span: 5, offset: 0}}>
 				<Form onSubmit={this.handleSubmit} >
 					<Form.Row>
 						<Form.Group as={Col} controlId="validationCustomUsername">

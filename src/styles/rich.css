@@ -23,6 +23,11 @@
 	padding: 15px;
 }
 
+.Draftail-block--unstyled {
+	overflow-wrap: break-word;
+
+}
+
 .Draftail-Editor .public-DraftEditor-content {
 	min-height: 100px;
 }
@@ -59,6 +64,8 @@ span.draftJsHashtagPlugin__hashtag__1wMVC span span {
 	padding: 20px;
 	margin: 0;
 	width: 100%;
+	line-height: 1.2;
+
 }
 
 .Draftail-Editor pre.public-DraftStyleDefault-pre code div {
@@ -69,6 +76,7 @@ pre.public-DraftStyleDefault-pre:before {
 }
 pre.public-DraftStyleDefault-pre code {
 	counter-increment: listing;
+	font-size: 87.5%;
 }
 pre.public-DraftStyleDefault-pre code::before {
 	content: counter(listing);
