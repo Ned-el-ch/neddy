@@ -18,7 +18,7 @@ import { LinkContainer } from "react-router-bootstrap";
 export default class App extends Component {
 
 	state = {
-		user: {},
+		user: null,
 		posts: []
 	}
 
@@ -72,7 +72,7 @@ export default class App extends Component {
 			return(
 				<Fragment>
 					<Route exact path='/editor' render={
-						(routerProps) => < BlogEditor {...routerProps} userId={this.state.user.id}/>
+						(routerProps) => < BlogEditor {...routerProps} userId={this.state.user.id} user={this.state.user}/>
 						}
 					/>
 				</Fragment>
@@ -115,18 +115,18 @@ export default class App extends Component {
 					<Col md={{ span: 12, offset: 0}} xs lg={{ span: 9, offset: 0}}>
 						<Switch>
 							<Route path="/posts/:id" render={routerProps => {
-								return <SmallPost {...routerProps} posts={this.state.posts}/>
+								return <SmallPost {...routerProps} posts={this.state.posts} user={this.state.user}/>
 							}} />
 							<Route path="/authors/:username" render={routerProps => {
-								return <AuthorPage {...routerProps}/>
+								return <AuthorPage {...routerProps} user={this.state.user}/>
 							}} />
 							<Route exact path='/posts'	render={
-									(routerProps) => < Posts {...routerProps} posts={this.state.posts}
+									(routerProps) => < Posts {...routerProps} posts={this.state.posts} user={this.state.user}
 								/>
 								}
 							/>
 							<Route exact path='/' render={
-								(routerProps) => < HomeFeed {...routerProps}/>
+								(routerProps) => < HomeFeed {...routerProps} user={this.state.user}/>
 								}
 							/>
 							{this.routesToRender()}

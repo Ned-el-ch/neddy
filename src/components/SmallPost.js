@@ -99,27 +99,22 @@ export default class SmallPost extends Component {
 		if (!data) { return (<span>I am empty inside</span>) }
 		const dataWithInlineStyling = parseInlineStyling(data)
 		const dataToDisplay = parseBlockStyling(dataWithInlineStyling)
-
 		dataToDisplay.push(
 			<div className="post-bottom-card">
 				<PostCategories categories={[{title: "Science", id: 1}, {title: "Programming", id: 2}, {title: "JavaScript", id: 3}]}/>
 				<AuthorCard author={postData.user}/>
-				<PostControls
-					isLiked={this.state.isLiked}
-					toggleLike={this.toggleLike}
-					isFavorited={this.state.isFavorited}
-					toggleFavorite={this.toggleFavorite}
-				/>
 			</div>
 		)
 		return dataToDisplay
 	}
 
 	toggleFavorite = () => {
+		// SEND A POST FETCH TO FAVORITE THE POST
 		this.setState({isFavorited: !this.state.isFavorited})
 	}
 
 	toggleLike = () => {
+		// SEND A POST FETCH TO LIKE THE POST
 		this.setState({isLiked: !this.state.isLiked})
 	}
 
@@ -142,6 +137,17 @@ export default class SmallPost extends Component {
 				<div className="individual-post">
 					{/* {this.buildPost(this.props.posts)} */}
 					{this.state.post ? this.state.post : <span>I am empty inside</span>}
+					{this.props.user ?
+					<PostControls
+						isLiked={this.state.isLiked}
+						toggleLike={this.toggleLike}
+						isFavorited={this.state.isFavorited}
+						toggleFavorite={this.toggleFavorite}
+						user={this.props.user}
+					/>
+					:
+					null
+					}
 				</div>
 		);
 	}

@@ -23,7 +23,7 @@ export default class AuthorPage extends Component {
 		} else {
 			// debugger
 			return this.state.posts.map(postData => {
-				return (<SmallPost postData={postData} />)
+				return (<SmallPost postData={postData} user={this.props.user}/>)
 			})
 		}
 	}

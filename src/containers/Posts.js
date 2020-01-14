@@ -17,7 +17,7 @@ export default class Posts extends Component {
 						lg={{ span: 8, offset: 0}}
 					>
 						{/* {this.renderPostLinks()} */}
-						<PostsList posts={this.props.posts} />
+						<PostsList posts={this.props.posts} user={this.props.user} />
 						<Route exact path={this.props.match.url} render={() => <h3>Choose a post from the list above</h3>}/>
 						{/* {this.debugMe()} */}
 						{/* <Route path={`${this.props.match.url}/:postId`} render={
