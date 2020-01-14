@@ -81,7 +81,7 @@ export default class SmallPost extends Component {
 		const dataToDisplay = parseBlockStyling(dataWithInlineStyling)
 
 		dataToDisplay.push(<PostCategories categories={[{title: "Science", id: 1}, {title: "Programming", id: 2}, {title: "JavaScript", id: 3}]}/>)
-		dataToDisplay.push(<AuthorCard/>)
+		dataToDisplay.push(<AuthorCard author={postData.user}/>)
 		dataToDisplay.push(<PostControls
 			isLiked={this.state.isLiked}
 			toggleLike={this.toggleLike}
