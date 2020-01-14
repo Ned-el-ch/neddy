@@ -46,10 +46,8 @@ export default class SignUpPage extends Component{
 				})
 			})
 
-			.then(res => {
-				const data = res.json();
-				return data.user;
-			})
+			.then(res => res.json())
+			.then(data => data.user)
 			.then(handleLogin)
 			.then(history.push('/'))
 

@@ -26,7 +26,8 @@ export default class PrismDecorator {
 
 	getTokenTypeForKey(key) {
 		// debugger;
-		let [blockKey, tokId] = key.split("-");
+		// let [blockKey, tokId] = key.split("-");
+		let tokId = key.split("-")[1];
 
 		// tokId = (parseInt(tokId) + 1).toString();
 		const token = this.tokens[tokId];

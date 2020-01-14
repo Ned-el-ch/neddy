@@ -7,10 +7,17 @@ import MillenialQuote from "./postComponents/MillenialQuote";
 import CodeBlock from "./postComponents/CodeBlock";
 import OrderedList from "./postComponents/OrderedList";
 import UnorderedList from "./postComponents/UnorderedList";
+import PostControls from "./postComponents/PostControls";
+
+import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 
 import "../styles/post.css"
 import "../styles/rich.css"
 import Unstyled from './postComponents/Unstyled';
+import AuthorCard from './postComponents/AuthorCard';
+import { PostCategories } from '../containers/PostCategories';
 
 /* ********* OLD ExportingConfig IGNORE FOR NOW, REMOVE LATER
 import { DraftailEditor, ENTITY_TYPE, BLOCK_TYPE } from "draftail"
@@ -55,19 +62,58 @@ const exporterConfig = {
 
 export default class SmallPost extends Component {
 
-	buildPost = (postData) => {
+	state = {
+		isLiked: false,
+		isFavorited: false
+	}
+
+	buildPost = (posts) => {
+		let postData = posts.find(el => el.id === parseInt(this.props.match.params.id))
+
+		if (!postData) {
+			return (<h1>loading post hehe</h1>)
+			// CHANGE THIS SHIT FOR AN ANIMATION U FUCKING DONKEY
+		}
+
 		const data = JSON.parse(postData.content)
 		if (!data) { return (<span>I am empty inside</span>) }
 		const dataWithInlineStyling = parseInlineStyling(data)
 		const dataToDisplay = parseBlockStyling(dataWithInlineStyling)
+
+		dataToDisplay.push(<PostCategories/>)
+		dataToDisplay.push(<AuthorCard/>)
+		dataToDisplay.push(<PostControls
+			isLiked={this.state.isLiked}
+			toggleLike={this.toggleLike}
+			isFavorited={this.state.isFavorited}
+			toggleFavorite={this.toggleFavorite}
+		/>)
 		return(dataToDisplay)
+	}
+
+	toggleFavorite = () => {
+		this.setState({isFavorited: !this.state.isFavorited})
+	}
+
+	toggleLike = () => {
+		this.setState({isLiked: !this.state.isLiked})
 	}
 
 	render() {
 		return (
-			<div className="individual-post">
-				{this.buildPost(this.props.postData)}
-			</div>
+			<Container className="Login">
+			<Row className="justify-content-md-center">
+			<Col
+				md={{ span: 10, offset: 0}}
+				xs
+				lg={{ span: 8, offset: 0}}
+			>
+				<div className="individual-post">
+					{this.buildPost(this.props.posts)}
+				</div>
+			</Col>
+			</Row>
+			</Container>
 		);
 	}
 }
@@ -158,7 +204,7 @@ const parseBlockStyling = (data) => {
 						// language = "javascript"
 							codeBlock.push(element.text)
 						}
-						return
+						break
 					} else {
 						if (supportedLanguages.includes(element.text)) {
 							language = element.text
@@ -181,7 +227,7 @@ const parseBlockStyling = (data) => {
 								language = "not specified/supported"
 								codeBlock.push(element.text)
 							}
-							return
+							break
 						} else {
 							if (supportedLanguages.includes(element.text)) {
 								language = element.text
@@ -198,7 +244,7 @@ const parseBlockStyling = (data) => {
 						if (data.blocks[index + 1].type === "code-block") {
 							// language = element.text
 							codeBlock.push(element.text)
-							return
+							break
 						} else {
 							codeBlock.push(element.text)
 							return(<CodeBlock key={randKey()} data={codeBlock} language={language}/>)
@@ -229,7 +275,7 @@ const parseBlockStyling = (data) => {
 				} else if (index === 0) {
 					if (data.blocks[index + 1].type === "ordered-list-item") {
 						olBlock.push(element.text)
-						return
+						break
 					} else {
 						olBlock.push(element.text)
 						return(<OrderedList key={randKey()} data={olBlock}/>)
@@ -239,7 +285,7 @@ const parseBlockStyling = (data) => {
 						olBlock = []
 						if (data.blocks[index + 1].type === "ordered-list-item") {
 							olBlock.push(element.text)
-							return
+							break
 						} else {
 							olBlock.push(element.text)
 							return(<OrderedList key={randKey()} data={olBlock}/>)
@@ -247,7 +293,7 @@ const parseBlockStyling = (data) => {
 					} else {
 						if (data.blocks[index + 1].type === "ordered-list-item") {
 							olBlock.push(element.text)
-							return
+							break
 						} else {
 							olBlock.push(element.text)
 							return(<OrderedList key={randKey()} data={olBlock}/>)
@@ -270,7 +316,7 @@ const parseBlockStyling = (data) => {
 				} else if (index === 0) {
 					if (data.blocks[index + 1].type === "unordered-list-item") {
 						ulBlock.push(element.text)
-						return
+						break
 					} else {
 						ulBlock.push(element.text)
 						return(<UnorderedList key={randKey()} data={ulBlock}/>)
@@ -280,7 +326,7 @@ const parseBlockStyling = (data) => {
 						ulBlock = []
 						if (data.blocks[index + 1].type === "unordered-list-item") {
 							ulBlock.push(element.text)
-							return
+							break
 						} else {
 							ulBlock.push(element.text)
 							return(<UnorderedList key={randKey()} data={ulBlock}/>)
@@ -288,7 +334,7 @@ const parseBlockStyling = (data) => {
 					} else {
 						if (data.blocks[index + 1].type === "unordered-list-item") {
 							ulBlock.push(element.text)
-							return
+							break
 						} else {
 							ulBlock.push(element.text)
 							return(<UnorderedList key={randKey()} data={ulBlock}/>)
@@ -307,7 +353,7 @@ const parseBlockStyling = (data) => {
 			default:
 				return (< Unstyled key={randKey()} data={element.styledHTML}/>)
 		}
-	});
+	})
 }
 
 const randKey = () => {

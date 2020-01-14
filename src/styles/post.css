@@ -1,3 +1,54 @@
+
+.individual-post{
+	background: #fff;
+	/* border: 1px solid rgba(221, 221, 221, 0.527); */
+	/* font-family: 'Georgia', serif; */
+	/* font-size: 14px; */
+	padding: 15px;
+	/* box-shadow: 6px 6px 3px 0 rgba(0, 0, 0, 0.35); */
+
+}
+
+.post-category {
+	display: inline-block;
+	margin-right: 1rem;
+}
+
+.post-action {
+	/* display: inline-block; */
+	text-align: center;
+	font-size: 4rem;
+	/* height: 6.3vh;
+	width: 6.3vh;	 */
+	line-height: 1;
+	border-radius: 150px;
+	/* color: white; */
+	position: absolute;
+
+}
+
+.post-like {
+	left: 16px;
+	color: rgb(255, 209, 209);
+	user-select: none;
+}
+
+.post-favorite {
+	right: 16px;
+	color: rgb(255, 224, 183);
+	user-select: none;
+}
+
+.author-card {
+	display: block;
+	/* box-shadow: 0 6px 8px -6px rgba(0, 0, 0, 0.35);
+	border-radius: 10px;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	margin-bottom: 8px; */
+}
+
 pre.code-block {
 	background-color: #3c3c57;
 	border-top: #71659b solid 17px;
@@ -7,10 +58,12 @@ pre.code-block {
 	font-size: 13px;
 	padding: 20px;
 	margin: 0;
+	margin-bottom : 20px;
 	width: 100%;
 	font-weight: 550;
-	line-height: 1.12rem;
-
+	line-height: 1rem;
+	
+	box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.35);
 }
 
 button.copy-code-block, .code-block-container:before {
@@ -225,14 +278,6 @@ button[name="SUBSCRIPT"] span {
 	border-bottom: solid 2px #2f2c38;
 }
 
-.individual-post{
-	background: #fff;
-	border: 1px solid rgba(221, 221, 221, 0.527);
-	/* font-family: 'Georgia', serif; */
-	/* font-size: 14px; */
-	padding: 15px;
-}
-
 .Draftail-block--millenial-quote div {
 	text-align: center;
 	/* overflow: scroll; */
@@ -255,6 +300,8 @@ button[name="SUBSCRIPT"] span {
 	text-shadow: 2px 2px 0px rgba(82, 82, 82, 0.33);
 	line-height: 1;
 	text-align: center;
+	box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.15);
+
 }
 
 .Draftail-block--millenial-quote:after {

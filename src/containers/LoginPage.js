@@ -43,7 +43,7 @@ export default class LoginPage extends Component{
 					return data.user;
 				})
 				.then(handleLogin)
-				.then(history.push('/'))
+				.then(history.push('/editor'))
 				// .then(console.log)
 
 		}

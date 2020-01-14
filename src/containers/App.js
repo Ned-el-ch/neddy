@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import SignUpPage from './SignUpPage';
 import LoginPage from './LoginPage';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Posts from './Posts';
 import BlogEditor from './BlogEditor';
+import SmallPost from '../components/SmallPost';
 
 export default class App extends Component {
 
@@ -71,12 +72,17 @@ export default class App extends Component {
 					<Link to="/">Home</Link><br/>
 					<Link to="/posts">Posts</Link><br/>
 					{this.pagesToRender()}
-					{/* <Route exact path='/' component={Posts} /> */}
-					<Route exact path='/posts'  render={
-							(routerProps) => < Posts {...routerProps} posts={this.state.posts}
-							/>
-						}
-					/><br/>
+					<Switch>
+						<Route path="/posts/:id" render={routerProps => {
+							return <SmallPost {...routerProps} posts={this.state.posts}/>
+						}} />
+						<Route exact path='/posts'  render={
+								(routerProps) => < Posts {...routerProps} posts={this.state.posts}
+								/>
+							}
+						/>
+					</Switch>
+					<br/>
 				</Router>
 			</div>
 		);
