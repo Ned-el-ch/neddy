@@ -48,26 +48,20 @@ export default class BlogEditor extends Component {
 
 	render() {
 		return (
-			<Container><Row className="justify-content-md-center">
-				<Col 
-					md={{ span: 10, offset: 0}}
-					xs
-					lg={{ span: 8, offset: 0}}
-				>
-					<DraftailEditor
-						ref="draftRef"
-						rawContentState={initial || null}
-						// rawContentState={initial || null}
-						onSave={this.onSave}
-						blockTypes={blockTypes}
-						inlineStyles={inlineStyles}
-						entityTypes={entityTypes}
-						// plugins={[hashtagPlugin]}
-						decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}
-					/>
-					<button onClick={this.submitPost}>Submit Post</button>
-				</Col>
-			</Row></Container>
+			<Container>
+				<DraftailEditor
+					ref="draftRef"
+					rawContentState={initial || null}
+					// rawContentState={initial || null}
+					onSave={this.onSave}
+					blockTypes={blockTypes}
+					inlineStyles={inlineStyles}
+					entityTypes={entityTypes}
+					// plugins={[hashtagPlugin]}
+					decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}
+				/>
+				<button onClick={this.submitPost}>Submit Post</button>
+			</Container>
 		);
 	};
 };
