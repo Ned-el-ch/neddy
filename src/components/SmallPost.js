@@ -12,9 +12,6 @@ import Unstyled from './postComponents/Unstyled';
 import AuthorCard from './postComponents/AuthorCard';
 import { PostCategories } from '../containers/PostCategories';
 
-import Container from "react-bootstrap/Container"
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
 
 import "../styles/post.css"
 import "../styles/rich.css"
@@ -64,31 +61,58 @@ export default class SmallPost extends Component {
 
 	state = {
 		isLiked: false,
-		isFavorited: false
+		isFavorited: false,
+		post: null
 	}
 
-	buildPost = (posts) => {
-		let postData = posts.find(el => el.id === parseInt(this.props.match.params.id))
+	fetchPost = () => {
 
-		if (!postData) {
-			return (<h1>loading post hehe</h1>)
-			// CHANGE THIS SHIT FOR AN ANIMATION U FUCKING DONKEY
+		let post;
+		
+		if (this.props.match) {
+
+			fetch(`http://localhost:4000/posts/${this.props.match.params.id}`)
+			.then(res => res.json())
+			.then(this.buildPost)
+			.then(post => this.setState({post}))
+		} else {
+			post = this.buildPost(this.props.postData)
 		}
+		this.setState({post: post})
+		// debugger
+		// return foo
+	}
 
+	buildPost = (postData) => {
+		// let postData = posts.find(el => el.id === parseInt(this.props.match.params.id))
+		// let data;
+		// if (!postData) {
+		// 	data = this.fetchPost()
+		// 	debugger
+		// 	// CHANGE THIS SHIT FOR AN ANIMATION U FUCKING DONKEY
+		// } else {
+		// 	debugger
+		// }
+		// debugger
 		const data = JSON.parse(postData.content)
+
 		if (!data) { return (<span>I am empty inside</span>) }
 		const dataWithInlineStyling = parseInlineStyling(data)
 		const dataToDisplay = parseBlockStyling(dataWithInlineStyling)
 
-		dataToDisplay.push(<PostCategories categories={[{title: "Science", id: 1}, {title: "Programming", id: 2}, {title: "JavaScript", id: 3}]}/>)
-		dataToDisplay.push(<AuthorCard author={postData.user}/>)
-		dataToDisplay.push(<PostControls
-			isLiked={this.state.isLiked}
-			toggleLike={this.toggleLike}
-			isFavorited={this.state.isFavorited}
-			toggleFavorite={this.toggleFavorite}
-		/>)
-		return(dataToDisplay)
+		dataToDisplay.push(
+			<div className="post-bottom-card">
+				<PostCategories categories={[{title: "Science", id: 1}, {title: "Programming", id: 2}, {title: "JavaScript", id: 3}]}/>
+				<AuthorCard author={postData.user}/>
+				<PostControls
+					isLiked={this.state.isLiked}
+					toggleLike={this.toggleLike}
+					isFavorited={this.state.isFavorited}
+					toggleFavorite={this.toggleFavorite}
+				/>
+			</div>
+		)
+		return dataToDisplay
 	}
 
 	toggleFavorite = () => {
@@ -99,21 +123,26 @@ export default class SmallPost extends Component {
 		this.setState({isLiked: !this.state.isLiked})
 	}
 
+	componentDidMount () {
+		this.fetchPost()
+	}
+	
+	renderPost = () => {
+		if (!this.props.postData) {
+			this.fetchPost()
+			return (<h3>Loading posts hehe</h3>)
+		} else {
+			return this.state.post
+		}
+	}
+
 	render() {
 		return (
-			<Container className="Login">
-			<Row className="justify-content-md-center">
-			<Col
-				md={{ span: 10, offset: 0}}
-				xs
-				lg={{ span: 8, offset: 0}}
-			>
+
 				<div className="individual-post">
-					{this.buildPost(this.props.posts)}
+					{/* {this.buildPost(this.props.posts)} */}
+					{this.state.post ? this.state.post : <span>I am empty inside</span>}
 				</div>
-			</Col>
-			</Row>
-			</Container>
 		);
 	}
 }
