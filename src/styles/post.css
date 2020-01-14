@@ -29,13 +29,13 @@
 }
 
 .post-like {
-	left: 16px;
+	left: 20px;
 	color: rgb(255, 209, 209);
 	user-select: none;
 }
 
 .post-favorite {
-	right: 16px;
+	right: 20px;
 	color: rgb(255, 224, 183);
 	user-select: none;
 }
