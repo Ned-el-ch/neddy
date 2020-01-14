@@ -112,7 +112,7 @@ export default class App extends Component {
 					</Nav>
 				</Navbar>
 				<Row className="justify-content-md-center">
-					<Col md={{ span: 10, offset: 0}} xs lg={{ span: 8, offset: 0}}>
+					<Col md={{ span: 12, offset: 0}} xs lg={{ span: 9, offset: 0}}>
 						<Switch>
 							<Route path="/posts/:id" render={routerProps => {
 								return <SmallPost {...routerProps} posts={this.state.posts}/>
