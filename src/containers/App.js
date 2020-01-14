@@ -4,6 +4,7 @@ import LoginPage from './LoginPage';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Posts from './Posts';
 import BlogEditor from './BlogEditor';
+import AuthorPage from './AuthorPage';
 import SmallPost from '../components/SmallPost';
 
 export default class App extends Component {
@@ -75,6 +76,9 @@ export default class App extends Component {
 					<Switch>
 						<Route path="/posts/:id" render={routerProps => {
 							return <SmallPost {...routerProps} posts={this.state.posts}/>
+						}} />
+						<Route path="/authors/:username" render={routerProps => {
+							return <AuthorPage {...routerProps}/>
 						}} />
 						<Route exact path='/posts'  render={
 								(routerProps) => < Posts {...routerProps} posts={this.state.posts}
