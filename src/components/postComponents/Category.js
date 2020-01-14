@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-
-export class Category extends Component {
+import { Link } from "react-router-dom"
+export default class Category extends Component {
 	render() {
 		return (
 			<div className="post-category">
-				<h5>Category</h5>
+				<Link to={`/category/${this.props.category.id}`}><h5>{this.props.category.title}</h5></Link>
 			</div>
 		);
 	}
 }
-
-export default Category;
