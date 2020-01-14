@@ -8,6 +8,9 @@ import CodeBlock from "./postComponents/CodeBlock";
 import OrderedList from "./postComponents/OrderedList";
 import UnorderedList from "./postComponents/UnorderedList";
 import PostControls from "./postComponents/PostControls";
+import Unstyled from './postComponents/Unstyled';
+import AuthorCard from './postComponents/AuthorCard';
+import { PostCategories } from '../containers/PostCategories';
 
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
@@ -15,9 +18,6 @@ import Col from "react-bootstrap/Col"
 
 import "../styles/post.css"
 import "../styles/rich.css"
-import Unstyled from './postComponents/Unstyled';
-import AuthorCard from './postComponents/AuthorCard';
-import { PostCategories } from '../containers/PostCategories';
 
 /* ********* OLD ExportingConfig IGNORE FOR NOW, REMOVE LATER
 import { DraftailEditor, ENTITY_TYPE, BLOCK_TYPE } from "draftail"

@@ -14,15 +14,16 @@
 	margin-right: 1rem;
 }
 
+.post-category-container {
+	margin-top: 60px;
+	margin-bottom: 10px;
+}
+
 .post-action {
-	/* display: inline-block; */
 	text-align: center;
-	font-size: 4rem;
-	/* height: 6.3vh;
-	width: 6.3vh;	 */
+	font-size: 5rem;
 	line-height: 1;
 	border-radius: 150px;
-	/* color: white; */
 	position: absolute;
 
 }
@@ -41,12 +42,6 @@
 
 .author-card {
 	display: block;
-	/* box-shadow: 0 6px 8px -6px rgba(0, 0, 0, 0.35);
-	border-radius: 10px;
-	padding-left: 3px;
-	padding-right: 3px;
-	padding-bottom: 3px;
-	margin-bottom: 8px; */
 }
 
 pre.code-block {
@@ -93,22 +88,6 @@ button.copy-code-block, .code-block-container:before {
 	padding-top: 2px;
 }
 
-/* .code-block-javascript.code-block-container:before {
-	content: "JavaScript";
-}
-
-.code-block-html.code-block-container:before {
-	content: "HTML";
-}
-
-.code-block-ruby.code-block-container:before {
-	content: "Ruby";
-}
-
-.code-block-ruby.code-block-container:before {
-	content: "Python";
-} */
-
 button.copy-code-block {
 	right: 31px;
 }
@@ -120,6 +99,7 @@ button.copy-code-block:active {
 
 pre.code-block {
 	white-space: pre-wrap;
+	padding-left: 3px;
 }
 
 pre.code-block:before {
@@ -137,7 +117,7 @@ pre.code-block code::before {
 	margin-left: 0px;
 	margin-right: 8px;
 	color: #71659b;
-	width: 33px;
+	width: 25px;
 	border-right: solid 1px #71659b;
 	text-align: right;
 	padding-right: 3px;
