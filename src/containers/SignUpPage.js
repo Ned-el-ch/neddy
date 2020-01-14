@@ -25,6 +25,7 @@ export default class SignUpPage extends Component{
 			const name = event.target.elements.validationCustomName.value;
 			const username = event.target.elements.validationCustomUsername.value;
 			const password = event.target.elements.validationCustomPassword.value;
+			const bio = event.target.elements.validationCustomBio.value;
 			// const imageUrl = event.target.elements.validationCustomImageUrl.value;
 			// FETCH TO THE API TO TRY AND CREATE AN ACCOUNT
 
@@ -36,10 +37,10 @@ export default class SignUpPage extends Component{
 				},
 				body: JSON.stringify({
 					user: {
-						name: name,
-						username: username,
-						password: password,
-						bio: "'twas in the tutorial, forgot to remove this",
+						name,
+						username,
+						password,
+						bio,
 						avatar: "pretty optimistic to think I'll support avatars lol"
 						// avatar: imageUrl
 					}
@@ -99,6 +100,21 @@ export default class SignUpPage extends Component{
 									/>
 									<Form.Control.Feedback type="invalid">
 										Please choose a username.
+									</Form.Control.Feedback>
+								</InputGroup>
+							</Form.Group>
+						</Form.Row>
+						<Form.Row>
+							<Form.Group as={Col} controlId="validationCustomBio">
+								<InputGroup>
+									<Form.Control
+										type="text"
+										placeholder="Short Bio"
+										aria-describedby="inputGroupPrepend"
+										required
+									/>
+									<Form.Control.Feedback type="invalid">
+										Please put in a bio ffs.
 									</Form.Control.Feedback>
 								</InputGroup>
 							</Form.Group>

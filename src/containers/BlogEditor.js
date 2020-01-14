@@ -25,7 +25,7 @@ export default class BlogEditor extends Component {
 	}
 
 	submitPost = () => {
-
+		const history = this.props.history;
 		const userId = this.props.userId
 		fetch("http://localhost:4000/submit_post", {
 			method: "POST",
@@ -42,7 +42,7 @@ export default class BlogEditor extends Component {
 			})
 		})
 		.then(res => res.json())
-		.then(console.log)
+		.then(res => history.push(`/posts/${res.id}`))
 
 	}
 

@@ -99,9 +99,9 @@ export default class App extends Component {
 				<Navbar bg="light" variant="light" >
 					<Nav fluid collapseOnSelect>
 						<LinkContainer to="/">
-							<Navbar.Brand>
-							<NavLink><NavItem>Home</NavItem></NavLink>
-							</Navbar.Brand>
+							<NavLink><Navbar.Brand>
+							<NavItem>Home</NavItem>
+							</Navbar.Brand></NavLink>
 						</LinkContainer>
 						<Navbar.Collapse>
 						<LinkContainer to="/posts">
