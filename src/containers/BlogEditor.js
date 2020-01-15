@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PrismDecorator from '../components/PrismDecorator'
 
 import Container from "react-bootstrap/Container";
@@ -48,7 +48,7 @@ export default class BlogEditor extends Component {
 
 	render() {
 		return (
-			<Container>
+			<Fragment>
 				<DraftailEditor
 					ref="draftRef"
 					rawContentState={initial || null}
@@ -61,7 +61,7 @@ export default class BlogEditor extends Component {
 					decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}
 				/>
 				<button onClick={this.submitPost}>Submit Post</button>
-			</Container>
+			</Fragment>
 		);
 	};
 };

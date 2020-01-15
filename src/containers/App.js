@@ -50,7 +50,7 @@ export default class App extends Component {
 					<LinkContainer to="/editor">
 						<NavLink><NavItem>Editor</NavItem></NavLink>
 					</LinkContainer>
-					<button onClick={this.logout} >Log Out</button>
+					<button onClick={this.logout} className='logout'>Log Out</button>
 				</Fragment>
 			)
 		} else {
@@ -95,8 +95,9 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div className='app'><Container><Router>
-				<Navbar bg="light" variant="light" >
+			<div className='app'><Container fluid><Router>
+				
+				<Navbar bg="light" variant="light" fixed>
 					<Nav fluid collapseOnSelect>
 						<LinkContainer to="/">
 							<NavLink><Navbar.Brand>
@@ -107,12 +108,12 @@ export default class App extends Component {
 						<LinkContainer to="/posts">
 							<NavLink><NavItem>Posts List</NavItem></NavLink>
 						</LinkContainer>
-						{this.linksToRender()}
 						</Navbar.Collapse>
+						{this.linksToRender()}
 					</Nav>
 				</Navbar>
 				<Row className="justify-content-md-center">
-					<Col md={{ span: 12, offset: 0}} xs lg={{ span: 9, offset: 0}}>
+					<Col  xs sm md lg={7} xl={5}>
 						<Switch>
 							<Route path="/posts/:id" render={routerProps => {
 								return <SmallPost {...routerProps} posts={this.state.posts} user={this.state.user}/>
