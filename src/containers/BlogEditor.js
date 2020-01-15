@@ -11,6 +11,7 @@ import "draft-js/dist/Draft.css"
 import "draftail/dist/draftail.css"
 import "../styles/rich.css";
 import "../styles/prism.css";
+import "../styles/index.css";
 
 // import createHashtagPlugin from "draft-js-hashtag-plugin"
 // const hashtagPlugin = createHashtagPlugin();
@@ -60,7 +61,7 @@ export default class BlogEditor extends Component {
 					// plugins={[hashtagPlugin]}
 					decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}
 				/>
-				<button onClick={this.submitPost}>Submit Post</button>
+				<button onClick={this.submitPost} className="submit-post">Submit Post</button>
 			</Fragment>
 		);
 	};

@@ -15,14 +15,8 @@
 	margin-bottom: 100px;
 }
 
-.post-bottom-card {
-	/* background-color: blue; */
-	/* z-index: 1000; */
-	/* border-top: 10px solid #00e5ff00; */
-	/* padding: 30px; */
-	/* box-shadow: 0px 12px 12px -15px rgba(0, 0, 0, 0.35); */
-
-}
+/* .post-bottom-card {
+} */
 
 .post-category {
 	display: inline-block;
@@ -72,8 +66,7 @@ pre.code-block {
 	width: 100%;
 	font-weight: 550;
 	line-height: 1.3rem;
-	
-	box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.35);
+	box-shadow: 0 5px 3px -3px rgba(0, 0, 0, 0.35);
 }
 
 button.copy-code-block, .code-block-container:before {
@@ -312,8 +305,7 @@ button[name="SUBSCRIPT"] span {
 	text-shadow: 2px 2px 0px rgba(82, 82, 82, 0.33);
 	line-height: 1;
 	text-align: center;
-	box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.15);
-
+	box-shadow: 0 5px 3px -3px rgba(0, 0, 0, 0.15);
 }
 
 .Draftail-block--millenial-quote:after {

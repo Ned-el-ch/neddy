@@ -1,19 +1,4 @@
-.DraftEditor-root {
-	background: #fff;
-	border: 1px solid #ddd;
-	/* border-radius: 10px; */
-	font-family: 'Georgia', serif;
-	font-size: 14px;
-	padding: 15px;
-}
 
-.Draftail-Editor {
-	/* border-top: 1px solid #ddd; */
-	cursor: text;
-	font-size: 16px;
-	/* margin-top: 10px; */
-	/* max-width: 90vw; */
-}
 .DraftEditor-controls-container {
 	position: absolute;
 }
@@ -110,7 +95,39 @@ pre.public-DraftStyleDefault-pre code::before {
 	color: #5890ff;
 }
 
-/* .Draftail-Editor .Draftail-Toolbar {
-	position: absolute;
-	top: 0;
+.DraftEditor-root {
+	background: #fff;
+	border-radius: 0 0 13px 13px;
+	font-family: 'Georgia', serif;
+	font-size: 14px;
+	padding: 15px;
+	
+}
+
+.Draftail-Editor {
+	cursor: text;
+	font-size: 16px;
+	border-radius: 13px;
+}
+
+/* .Draftail-ToolbarGroup {
+	display: inline-block;
+	background: #fff;
 } */
+.Draftail-ToolbarGroup + .Draftail-ToolbarGroup::before {
+	display: none!important;
+}
+
+.Draftail-Toolbar {
+	border-radius: none!important;
+	border-bottom: none!important;
+	background-color: rgba(0, 0, 0, 0)!important;
+}
+
+.Draftail-Editor {
+	border: none!important;
+	border-radius: 13px!important;
+	background-color: rgba(0, 255, 255, 0.2)!important;
+	box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15);
+
+}

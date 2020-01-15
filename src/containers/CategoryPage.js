@@ -25,7 +25,6 @@ export default class CategoryPage extends Component {
 
 	renderPosts = () => {
 
-		// this.getPosts()
 		if (!this.state.posts) {
 			return (<h3>Loading posts hehe</h3>)
 		} else if (this.state.posts.status == 404) {
