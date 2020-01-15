@@ -15,6 +15,7 @@ import Navbar from "react-bootstrap/Navbar"
 import NavItem from "react-bootstrap/NavItem"
 import NavLink from "react-bootstrap/NavLink"
 import { LinkContainer } from "react-router-bootstrap";
+import CategoryPage from './CategoryPage';
 export default class App extends Component {
 
 	state = {
@@ -121,6 +122,9 @@ export default class App extends Component {
 							}} />
 							<Route path="/authors/:username" render={routerProps => {
 								return <AuthorPage {...routerProps} user={this.state.user}/>
+							}} />
+							<Route path="/category/:id" render={routerProps => {
+								return <CategoryPage {...routerProps} user={this.state.user}/>
 							}} />
 							<Route exact path='/posts'	render={
 									(routerProps) => < Posts {...routerProps} posts={this.state.posts} user={this.state.user}
