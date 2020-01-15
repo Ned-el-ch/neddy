@@ -1,12 +1,13 @@
 
 .individual-post{
 	background: #fff;
-	border-bottom: 10px solid #3c3c57;
+	/* border-bottom: 10px solid #3c3c57; */
+	border-radius: 13px;
 	/* font-family: 'Georgia', serif; */
 	/* font-size: 14px; */
-	padding-top: 15px;
+	padding: 15px;
 	margin-bottom: 1rem;
-	/* box-shadow: 6px 6px 3px 0 rgba(0, 0, 0, 0.35); */
+	box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15);
 
 }
 

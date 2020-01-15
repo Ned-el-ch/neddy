@@ -108,10 +108,11 @@ export default class App extends Component {
 						<LinkContainer to="/posts">
 							<NavLink><NavItem>Posts List</NavItem></NavLink>
 						</LinkContainer>
-						</Navbar.Collapse>
 						{this.linksToRender()}
+						</Navbar.Collapse>
 					</Nav>
 				</Navbar>
+				<br/>
 				<Row className="justify-content-md-center">
 					<Col  xs sm md lg={7} xl={5}>
 						<Switch>
