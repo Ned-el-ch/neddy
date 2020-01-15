@@ -32,6 +32,7 @@ export default class AuthorPage extends Component {
 			if (this.state.posts.length === 0) {
 				return(<h3>This category doesn't have any posts yet</h3>)
 			} else {
+				debugger
 				return this.state.posts.map(postData => {
 					return (<SmallPost postData={postData} user={this.props.user}/>)
 				})

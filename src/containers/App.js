@@ -123,7 +123,7 @@ export default class App extends Component {
 							<Route path="/authors/:username" render={routerProps => {
 								return <AuthorPage {...routerProps} user={this.state.user}/>
 							}} />
-							<Route path="/category/:id" render={routerProps => {
+							<Route path="/category/:title" render={routerProps => {
 								return <CategoryPage {...routerProps} user={this.state.user}/>
 							}} />
 							<Route exact path='/posts'	render={

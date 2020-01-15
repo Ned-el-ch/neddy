@@ -1,22 +1,15 @@
 
 .individual-post{
 	background: #fff;
-	/* border-bottom: 10px solid #3c3c57; */
 	border-radius: 13px;
-	/* font-family: 'Georgia', serif; */
-	/* font-size: 14px; */
 	padding: 15px;
 	margin-bottom: 1rem;
 	box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15);
-
 }
 
 .post-controls {
 	margin-bottom: 100px;
 }
-
-/* .post-bottom-card {
-} */
 
 .post-category {
 	display: inline-block;
@@ -34,7 +27,6 @@
 	line-height: 1;
 	border-radius: 150px;
 	position: absolute;
-
 }
 
 .post-like {
@@ -86,7 +78,6 @@ button.copy-code-block, .code-block-container:before {
 	background-color: #3c3c57;
 	border-top-right-radius: 13px;
 	border-top-left-radius: 13px;
-
 }
 
 .code-block-container:before {
@@ -129,7 +120,6 @@ pre.code-block code::before {
 	border-right: solid 1px #71659b;
 	text-align: right;
 	padding-right: 3px;
-	/* height: 30px; */
 }
 
 .BOLD {
@@ -290,7 +280,6 @@ button[name="SUBSCRIPT"] span {
 }
 
 .Draftail-block--millenial-quote, .millenial-quote {
-
 	background: linear-gradient(222deg,	#ffa000, #f9ff00, #94ff00, #18ff00, #00ff91, #00e6ff,	#00ff91, #18ff00, #f9ff00,	#ffa000);
 	background-size: 200% 200%;
 	animation: Gradient-Background-Animation 10s ease infinite;

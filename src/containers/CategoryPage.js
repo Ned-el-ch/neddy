@@ -6,18 +6,19 @@ export default class CategoryPage extends Component {
 		posts: null
 	}
 	getPosts = () => {
-		fetch(`http://localhost:4000/category/${this.props.match.params.id}`)
+		fetch(`http://localhost:4000/category/${this.props.match.params.title}`)
 		.then(res => res.json())
 		.then(posts => this.setState({posts}))
 		// .catch(error => console.log(error))
 	}
 
 	componentDidMount() {
+		debugger
 		this.getPosts();
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (this.props.match.params.id !== prevProps.match.params.id) {
+		if (this.props.match.params.title !== prevProps.match.params.title) {
 			this.getPosts()
 		}
 	}
@@ -27,9 +28,10 @@ export default class CategoryPage extends Component {
 
 		if (!this.state.posts) {
 			return (<h3>Loading posts hehe</h3>)
-		} else if (this.state.posts.status == 404) {
+		} else if (this.state.posts.status >= 400 || this.state.posts.error) {
 			return (<h3>There doesn't seem to be anything here damn</h3>)
 		} else {
+			debugger
 			if (this.state.posts.length === 0) {
 				return(<h3>This category doesn't have any posts yet</h3>)
 			} else {
@@ -43,7 +45,7 @@ export default class CategoryPage extends Component {
 	render() {
 		return (
 			<div>
-				<h1>Category ### page</h1>
+				<h1>{this.props.match.params.title.toUpperCase()}</h1>
 				{this.renderPosts()}
 			</div>
 		);
