@@ -13,7 +13,7 @@ export default class CategoryPage extends Component {
 	}
 
 	componentDidMount() {
-		debugger
+		// debugger
 		this.getPosts();
 	}
 
@@ -31,7 +31,7 @@ export default class CategoryPage extends Component {
 		} else if (this.state.posts.status >= 400 || this.state.posts.error) {
 			return (<h3>There doesn't seem to be anything here damn</h3>)
 		} else {
-			debugger
+			// debugger
 			if (this.state.posts.length === 0) {
 				return(<h3>This category doesn't have any posts yet</h3>)
 			} else {

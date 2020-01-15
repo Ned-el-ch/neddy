@@ -115,7 +115,7 @@ pre.public-DraftStyleDefault-pre code::before {
 .Draftail-Toolbar {
 	border-radius: none!important;
 	border-bottom: none!important;
-	background-color: rgba(0, 0, 0, 0)!important;
+	background-color: rgb(194, 253, 253)!important;
 }
 
 .Draftail-Editor {
