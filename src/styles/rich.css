@@ -101,7 +101,6 @@ pre.public-DraftStyleDefault-pre code::before {
 	font-family: 'Georgia', serif;
 	font-size: 14px;
 	padding: 15px;
-	
 }
 
 .Draftail-Editor {
@@ -110,10 +109,6 @@ pre.public-DraftStyleDefault-pre code::before {
 	border-radius: 13px;
 }
 
-/* .Draftail-ToolbarGroup {
-	display: inline-block;
-	background: #fff;
-} */
 .Draftail-ToolbarGroup + .Draftail-ToolbarGroup::before {
 	display: none!important;
 }
@@ -129,5 +124,4 @@ pre.public-DraftStyleDefault-pre code::before {
 	border-radius: 13px!important;
 	background-color: rgba(0, 255, 255, 0.2)!important;
 	box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15);
-
 }
