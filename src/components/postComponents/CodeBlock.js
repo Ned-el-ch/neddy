@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Prism from "prismjs"
 import Style from 'style-it';
-import loadSupportedLanguages from "./loadPrismComponents"
+import randKey from "../../concerns/randomKey"
+import loadSupportedLanguages from "../../concerns/loadPrismComponents"
+
 loadSupportedLanguages();
 export default class CodeBlock extends Component {
 	
@@ -14,8 +16,6 @@ export default class CodeBlock extends Component {
 
 	renderCodeLines = () => {
 
-		// loadLanguages([this.props.language])
-		// importLanguage(this.props.language)
 		const supportedLanguages = ["javascript", "python", "ruby", "html", "jsx", "css", "java"]
 		const data = this.props.data
 		const language = supportedLanguages.includes(this.props.language) ? this.props.language : "javascript"
@@ -57,13 +57,3 @@ export default class CodeBlock extends Component {
 	};
 
 };
-
-const randKey = () => {
-	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	let result = '';
-	let charactersLength = characters.length;
-	for ( var i = 0; i < 10; i++ ) {
-		result += characters.charAt(Math.floor(Math.random() * charactersLength));
-	}
-	return result;
-}

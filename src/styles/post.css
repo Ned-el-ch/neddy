@@ -1,7 +1,7 @@
 
 .individual-post{
 	background: #fff;
-	border-bottom: 10px solid rgb(240, 44, 175);
+	border-bottom: 10px solid #3c3c57;
 	/* font-family: 'Georgia', serif; */
 	/* font-size: 14px; */
 	padding: 15px;
@@ -257,6 +257,23 @@ button[name="SUBSCRIPT"] span {
 	border-image: initial;
 	border-radius: 3px;
 	box-shadow: rgb(149, 157, 165) 0px -1px 0px inset;
+}
+
+.KEYBOARD-DARK {
+	font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, sans-serif;
+	padding: 3px 5px;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 10px;
+	color: rgb(228, 234, 240);
+	vertical-align: middle;
+	background-color: rgb(34, 41, 48);
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(72, 76, 82) rgb(118, 123, 129) rgb(139, 147, 156);
+	border-image: initial;
+	border-radius: 3px;
+	box-shadow: rgb(157, 164, 172) 0px -1px 0px inset;
 }
 
 .CODE {
