@@ -1,4 +1,3 @@
-
 .individual-post{
 	background: #fff;
 	border-radius: 13px;
@@ -8,7 +7,23 @@
 }
 
 .post-controls {
-	margin-bottom: 100px;
+	margin-bottom: 65px;
+	position: relative;
+	/* padding: 10px; */
+}
+
+.lottie {
+	position: absolute;
+}
+
+.lottie-star {
+	right: -17px;
+	bottom: -70px;
+}
+
+.lottie-like {
+	left: -17px;
+	bottom: -70px;
 }
 
 .post-category {

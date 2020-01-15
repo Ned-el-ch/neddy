@@ -117,7 +117,7 @@ export default class SmallPost extends Component {
 				<div className="individual-post">
 					{/* {this.buildPost(this.props.posts)} */}
 					{this.state.post ? this.state.post : <span>I am empty inside</span>}
-					{this.props.user ?
+					{!this.props.user ?
 					<PostControls
 						isLiked={this.state.isLiked}
 						toggleLike={this.toggleLike}
