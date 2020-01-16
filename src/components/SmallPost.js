@@ -5,7 +5,6 @@ import AuthorCard from './postComponents/AuthorCard';
 import { PostCategories } from '../containers/PostCategories';
 import { parseBlockStyling, parseInlineStyling } from '../concerns/parsers'
 import Collapse from "react-bootstrap/Collapse"
-import Button from "react-bootstrap/Button"
 import "../styles/post.css"
 import "../styles/rich.css"
 
@@ -56,7 +55,7 @@ export default class SmallPost extends Component {
 		isLiked: false,
 		isFavorited: false,
 		post: null,
-		open: false,
+		open: true,
 		heading: ""
 	}
 
@@ -131,7 +130,7 @@ export default class SmallPost extends Component {
 						aria-controls="post"
 						aria-expanded={this.state.open}
 						className="expand-button"
-					>{this.state.heading}</button>
+					><span className="underlined">{this.state.heading}</span></button>
 					<Collapse in={this.state.open}>
 						<div className="individual-post" id="post">
 							{this.state.post ? this.state.post : <span>I am empty inside</span>}
@@ -149,6 +148,7 @@ export default class SmallPost extends Component {
 						</div>
 					</Collapse>
 				</div>
+				<br/>
 				<br/>
 			</Fragment>
 		);
