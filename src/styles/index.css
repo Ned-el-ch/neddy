@@ -40,12 +40,12 @@ button.submit-post {
 	margin-top: 30px;
 }
 
-button.expand-button {
+div.title {
 	outline: none;
 	border: none;
 	text-align: left;
 	width: 100%;
-	font-size: 2.5rem;
+	font-size: 3rem;
 	line-height: 1.2;
 	font-weight: 200;
 	background: white;
@@ -55,8 +55,26 @@ button.expand-button {
 	/* margin-bottom: 1rem; */
 	/* box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15); */
 
-	
 }
+
+button.read-more-button {
+	position: absolute;
+	width: 100%;
+	margin-top: -66px;
+	outline: none;
+	border: none;
+	font-size: 2.5rem;
+	line-height: 1.2;
+	font-weight: 200;
+	background: linear-gradient(0deg, rgba(0,209,205,1) 0%, rgba(0,255,237,0.5) 51%, rgba(0,212,255,0) 100%);
+	color: #333;
+
+}
+
+button.read-more-button[aria-expanded="true"] {
+	background: none;
+}
+
 .underlined {
 	background-image: linear-gradient(to bottom, rgb(196, 196, 196) 10%, transparent 33%, transparent);
 	background-position: 0 1.03em;
@@ -90,8 +108,17 @@ input#postTitle {
 	position: relative;
 	overflow: hidden;
 	height: 180px;
+	transition: height 0.2s ease;
 }
 
 .collapse:not(.show) {
 	display: block;
+}
+
+svg {
+	cursor: pointer
+}
+
+.new-post {
+	margin-bottom: 50px;
 }
