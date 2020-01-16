@@ -124,7 +124,7 @@ export default class SmallPost extends Component {
 		// ON THE LOTTIES TO TRUE/FALSE SO WHEN THE POST LOADS THEY DISPLAY CORRECTLY
 		return (
 			<Fragment>
-				<div>
+				<div className="new-post">
 					<button
 						onClick={() => this.setState({open: !this.state.open})}
 						aria-controls="post"

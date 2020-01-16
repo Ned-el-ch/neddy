@@ -81,3 +81,17 @@ input#postTitle {
 	font-weight: 400;
 	color: #333;
 }
+
+#post {
+
+}
+
+.new-post div.collapse:not(.show) {
+	position: relative;
+	overflow: hidden;
+	height: 180px;
+}
+
+.collapse:not(.show) {
+	display: block;
+}
