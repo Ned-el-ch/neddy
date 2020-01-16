@@ -70,7 +70,7 @@ export default class BlogEditor extends Component {
 					onSave={this.onSave}
 					blockTypes={blockTypes}
 					inlineStyles={inlineStyles}
-					entityTypes={entityTypes}
+					// entityTypes={entityTypes}
 					// plugins={[hashtagPlugin]}
 					decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}
 				/>
