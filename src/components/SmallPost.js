@@ -154,3 +154,5 @@ export default class SmallPost extends Component {
 		);
 	}
 }
+
+// SHOW A WIDDLE BIT OF THE POST AND HAVE AREAD MORE BUTTON OT OPEN OR WHATEVER 

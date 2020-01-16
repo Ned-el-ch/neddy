@@ -18,6 +18,11 @@ export default class Star extends Component {
 		})
 	}
 
+	componentDidMount() {
+		
+	}
+	
+
 	render(){
  
 		const defaultOptions = {
