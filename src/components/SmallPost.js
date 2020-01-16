@@ -81,7 +81,7 @@ export default class SmallPost extends Component {
 		const dataToDisplay = parseBlockStyling(dataWithInlineStyling)
 		dataToDisplay.push(
 			<div className="post-bottom-card">
-				<PostCategories categories={[{title: "Science", id: 1}, {title: "Programming", id: 2}, {title: "JavaScript", id: 3}]}/>
+				<PostCategories categories={postData.categories}/>
 				<AuthorCard author={postData.user}/>
 			</div>
 		)

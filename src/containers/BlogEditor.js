@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PrismDecorator from '../components/PrismDecorator'
 import initialContent from "./initial.json"
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import Select from 'react-select';
 
 import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE, ENTITY_TYPE } from "draftail"
 
@@ -19,6 +17,11 @@ import "../styles/index.css";
 // const initial = JSON.parse(sessionStorage.getItem("draftail:content"))
 // const initial = initialContent
 export default class BlogEditor extends Component {
+
+	state = {
+		readyToBeSubmitted: false,
+		categories: []
+	}
 
 	onSave = (content) => {
 		console.log("saving:", content)
@@ -37,14 +40,24 @@ export default class BlogEditor extends Component {
 			body: JSON.stringify({
 					post : {
 							content: sessionStorage["draftail:content"],
-							categories: [1],
+							categories: this.state.categories,
 							user_id: userId
 					}
 			})
 		})
 		.then(res => res.json())
 		.then(res => history.push(`/posts/${res.id}`))
+	}
 
+	checkIfReadyForSubmission = (opt, meta) => {
+		if (opt && opt.length >= 3 && opt.length <= 5) {
+			const categories = opt.map(category => {
+				return category.value
+			})
+			this.setState({categories, readyToBeSubmitted: true})
+		} else {
+			this.setState({categories: [], readyToBeSubmitted: false})
+		}
 	}
 
 	render() {
@@ -61,7 +74,19 @@ export default class BlogEditor extends Component {
 					// plugins={[hashtagPlugin]}
 					decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}
 				/>
-				<button onClick={this.submitPost} className="submit-post">Submit Post</button>
+				<Select
+					isMulti
+					options={this.props.categories}
+					className="categories-search"
+					onChange={(opt, meta) => this.checkIfReadyForSubmission(opt, meta)}
+					placeholder="Select up to 5 categories..."
+					// closeOnSelect={this.state.readyToBeSubmitted}
+					closeMenuOnSelect={this.state.categories.length <=3 ? false : true}
+					pageSize={5}
+					noResultsText="That category is in another castle"
+
+				/>
+				<button onClick={this.submitPost} disabled={!this.state.readyToBeSubmitted} className="submit-post">Submit Post</button>
 			</Fragment>
 		);
 	};

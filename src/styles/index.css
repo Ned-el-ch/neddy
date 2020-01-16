@@ -34,3 +34,8 @@ button.submit-post {
 	box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15);
 	background: rgba(0, 255, 255, 0.2);
 }
+
+.categories-search {
+
+	margin-top: 30px;
+}

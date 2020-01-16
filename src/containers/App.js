@@ -21,7 +21,8 @@ export default class App extends Component {
 
 	state = {
 		user: null,
-		posts: []
+		posts: [],
+		categories: []
 	}
 
 	handleLogin = (user) => {
@@ -36,8 +37,23 @@ export default class App extends Component {
 		.then(posts => this.setState({posts: posts}))
 	}
 
+	getCategories = () => {
+		fetch("http://localhost:4000/categories")
+		.then(res => res.json())
+		.then(this.mutateCategories)
+	}
+
+	mutateCategories = (rawCategories) => {
+		const categories = rawCategories.map(category => {
+			return {label: category.title, value: category.id}
+		})
+
+		this.setState({categories})
+	}
+
 	componentDidMount() {
 		this.getPosts()
+		this.getCategories()
 	}
 
 	logout = (event) => {
@@ -74,7 +90,7 @@ export default class App extends Component {
 			return(
 				<Fragment>
 					<Route exact path='/editor' render={
-						(routerProps) => < BlogEditor {...routerProps} userId={this.state.user.id} user={this.state.user}/>
+						(routerProps) => < BlogEditor {...routerProps} userId={this.state.user.id} user={this.state.user} categories={this.state.categories}/>
 						}
 					/>
 				</Fragment>
