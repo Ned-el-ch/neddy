@@ -24,6 +24,7 @@ nav.navbar {
 
 button.submit-post {
 	margin-top: 30px;
+	margin-bottom: 30px;
 	width: 100%;
 	height: 3rem;
 	font-size: 1.4rem;

@@ -74,9 +74,7 @@ const blockTypes = [
 	{ type: BLOCK_TYPE.UNORDERED_LIST_ITEM, label: "Bullet List" , description: null },
 	{ type: BLOCK_TYPE.ORDERED_LIST_ITEM, label: "Number List" , description: null },
 	{ type: BLOCK_TYPE.CODE, label: "Code Block" , description: "put the language as the first line of the code block\njavascript  |  jsx  |  css  |  html  |  ruby  |  python  |  java"},
-	{ type: "millenial-quote", label: "👏",
-	keyboard_shortcut:
-		{ other: "Ctrl + Shift + Alt + O", macOS: "⌘ + ⇧ + O" }},
+	{ type: "millenial-quote", label: "👏",description: "oof"},
 ]
 
 const inlineStyles = [

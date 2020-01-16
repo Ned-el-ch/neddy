@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SmallPost from '../components/SmallPost';
+import Loading from '../lotties/Loading';
 
 export default class CategoryPage extends Component {
 	state = {
@@ -27,7 +28,7 @@ export default class CategoryPage extends Component {
 	renderPosts = () => {
 
 		if (!this.state.posts) {
-			return (<h3>Loading posts hehe</h3>)
+			return (<Loading />)
 		} else if (this.state.posts.status >= 400 || this.state.posts.error) {
 			return (<h3>There doesn't seem to be anything here damn</h3>)
 		} else {

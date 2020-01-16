@@ -2,10 +2,22 @@ import React, { Component } from 'react'
 import Lottie from 'react-lottie'
 import animationData from './star.json'
 
-class Star extends Component {
+export default class Star extends Component {
+
 	state = {
-		isStopped: true
+		isStopped: true,
+		isPaused: true,
+		speed: -1
 	}
+
+	toggle = () => {
+		this.setState({
+			isStopped: !this.state.isStopped,
+			isPaused: !this.state.isStopped,
+			speed: this.state.speed * -1
+		})
+	}
+
 	render(){
  
 		const defaultOptions = {
@@ -18,16 +30,15 @@ class Star extends Component {
 		};
 
 		return(
-			<div className="lottie lottie-star">
+			<div className="lottie lottie-star" onClick={this.toggle}>
 				<Lottie options={defaultOptions}
-					height={100}
-					width={100}
+					height={110}
+					width={110}
+					isPaused={this.state.isPaused}
 					isStopped={this.state.isStopped}
-					onClick={() => this.setState({isStopped: !this.state.isStopped})}
+					speed={this.state.speed}
 				/>
 			</div>
 		)
 	}
- }
- 
- export default Star
+}

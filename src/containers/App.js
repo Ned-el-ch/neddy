@@ -16,6 +16,7 @@ import NavItem from "react-bootstrap/NavItem"
 import NavLink from "react-bootstrap/NavLink"
 import { LinkContainer } from "react-router-bootstrap";
 import CategoryPage from './CategoryPage';
+import Dino from '../lotties/Dino';
 export default class App extends Component {
 
 	state = {
@@ -114,8 +115,8 @@ export default class App extends Component {
 					</Nav>
 				</Navbar>
 				<br/>
-				<Row className="justify-content-md-center">
-					<Col  xs sm md lg={7} xl={5}>
+				<Row className="align-self-start justify-content-center">
+					<Col  xs sm md={10} lg={9} xl={5}>
 						<Switch>
 							<Route path="/posts/:id" render={routerProps => {
 								return <SmallPost {...routerProps} posts={this.state.posts} user={this.state.user}/>
@@ -135,6 +136,7 @@ export default class App extends Component {
 								(routerProps) => < HomeFeed {...routerProps} user={this.state.user}/>
 								}
 							/>
+							<Route exact path="/dino" component={Dino}/>
 							{this.routesToRender()}
 						</Switch>
 					</Col>

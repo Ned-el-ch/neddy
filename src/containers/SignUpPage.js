@@ -54,7 +54,6 @@ export default class SignUpPage extends Component{
 	render () {
 
 		return (
-			<Container className="Signup">
 				<Form onSubmit={this.handleSubmit} >
 					<Form.Row>
 						<Form.Group as={Col} controlId="validationCustomName">
@@ -143,7 +142,6 @@ export default class SignUpPage extends Component{
 						</Form.Group>
 					</Form.Row>
 				</Form>
-			</Container>
 		);
 	}
 }

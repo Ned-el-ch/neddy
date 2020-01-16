@@ -53,7 +53,6 @@ export default class LoginPage extends Component{
 	render () {
 
 		return (
-			<Container className="Login">
 				<Form onSubmit={this.handleSubmit} >
 					<Form.Row>
 						<Form.Group as={Col} controlId="validationCustomUsername">
@@ -94,7 +93,6 @@ export default class LoginPage extends Component{
 						</Form.Group>
 					</Form.Row>
 				</Form>
-			</Container>
 		);
 
 	}

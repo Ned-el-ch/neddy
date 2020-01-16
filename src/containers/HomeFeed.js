@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import Dino from '../lotties/Dino';
 
 export default class HomeFeed extends Component {
 	render() {
 		return (
-			<div>
-				RENDER A FEED OF A BUNCH OF POSTS IDK
-			</div>
+			<Dino />
 		);
 	}
 }

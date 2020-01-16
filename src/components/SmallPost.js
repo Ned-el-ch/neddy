@@ -112,8 +112,11 @@ export default class SmallPost extends Component {
 	}
 
 	render() {
-		return (
 
+		// THIS SHOULD INHERIT THE GLOBAL STATE USER AND IF IT EXISTS CHECK IF 
+		// THAT USER ID MATCHES ANY OF THE LIKES/FAVORITES AND SET THE ACTIVE
+		// ON THE LOTTIES TO TRUE/FALSE SO WHEN THE POST LOADS THEY DISPLAY CORRECTLY
+		return (
 				<div className="individual-post">
 					{/* {this.buildPost(this.props.posts)} */}
 					{this.state.post ? this.state.post : <span>I am empty inside</span>}
