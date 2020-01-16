@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PrismDecorator from '../components/PrismDecorator'
-
+import initialContent from "./initial.json"
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -16,8 +16,8 @@ import "../styles/index.css";
 // import createHashtagPlugin from "draft-js-hashtag-plugin"
 // const hashtagPlugin = createHashtagPlugin();
 
-const initial = JSON.parse(sessionStorage.getItem("draftail:content"))
-
+// const initial = JSON.parse(sessionStorage.getItem("draftail:content"))
+// const initial = initialContent
 export default class BlogEditor extends Component {
 
 	onSave = (content) => {
@@ -52,7 +52,7 @@ export default class BlogEditor extends Component {
 			<Fragment>
 				<DraftailEditor
 					ref="draftRef"
-					rawContentState={initial || null}
+					rawContentState={initialContent || null}
 					// rawContentState={initial || null}
 					onSave={this.onSave}
 					blockTypes={blockTypes}
@@ -68,7 +68,7 @@ export default class BlogEditor extends Component {
 };
 
 const blockTypes = [
-	{ type: BLOCK_TYPE.HEADER_TWO, label: "Heading", description: null },
+	{ type: BLOCK_TYPE.HEADER_ONE, label: "Heading", description: null },
 	{ type: BLOCK_TYPE.HEADER_FOUR, label: "Sub-heading" , description: null },
 	{ type: BLOCK_TYPE.BLOCKQUOTE, label: "Block Quote" , description: null },
 	{ type: BLOCK_TYPE.UNORDERED_LIST_ITEM, label: "Bullet List" , description: null },

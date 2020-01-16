@@ -1,6 +1,7 @@
 import React from 'react';
 import randKey from './randomKey'
 
+import Heading1 from "../components/postComponents/Heading1"
 import Heading2 from "../components/postComponents/Heading2"
 import Heading3 from "../components/postComponents/Heading3"
 import Heading4 from "../components/postComponents/Heading4"
@@ -73,6 +74,7 @@ export const parseBlockStyling = (data) => {
 	let language = ""
 	return data.blocks.map((element, index) => {
 		switch (element.type) {
+			case "header-one": return (<Heading1 key={randKey()} data={element.styledHTML}/>)
 			case "header-two": return (<Heading2 key={randKey()} data={element.styledHTML}/>)
 			case "header-three": return(<Heading3 key={randKey()} data={element.styledHTML}/>)
 			case "header-four": return(<Heading4 key={randKey()} data={element.styledHTML}/>)

@@ -16,6 +16,11 @@
 	position: absolute;
 }
 
+.post-bottom-card {
+	/* background-color: saddlebrown; */
+	/* border-top: solid 10px #00e6ff; */
+}
+
 .lottie-star {
 	right: -25px;
 	bottom: -80px;
@@ -32,8 +37,10 @@
 }
 
 .post-category-container {
-	margin-top: 60px;
+	border-top: solid 10px rgb(248, 247, 246);
+	margin-top: 25px;
 	margin-bottom: 10px;
+	padding-top: 25px;
 }
 
 .post-action {
