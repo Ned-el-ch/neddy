@@ -60,23 +60,29 @@ div.title {
 button.read-more-button {
 	position: absolute;
 	width: 100%;
-	margin-top: -66px;
+	height: 100px;
+	margin-top: -116px;
+	border-radius: 0 0 13px 13px;
 	outline: none;
 	border: none;
-	font-size: 2.5rem;
+	font-size: 1.8rem;
 	line-height: 1.2;
-	font-weight: 200;
-	background: linear-gradient(0deg, rgba(0,209,205,1) 0%, rgba(0,255,237,0.5) 51%, rgba(0,212,255,0) 100%);
+	font-weight: 600;
+	text-shadow: 2px 0 0 white;
+	background: linear-gradient(0deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 33%, rgba(255, 255, 255, 0.55) 66%,transparent 100%);
 	color: #333;
-
+	padding-top: 50px;
 }
 
 button.read-more-button[aria-expanded="true"] {
 	background: none;
+	width: 40%;
+	margin-left: 30%;
+	margin-right: 30%;
 }
 
 .underlined {
-	background-image: linear-gradient(to bottom, rgb(196, 196, 196) 10%, transparent 33%, transparent);
+	background-image: linear-gradient(to bottom, cyan 33%, transparent 33%, transparent);
 	background-position: 0 1.03em;
 	background-repeat: repeat-x;
 	background-size: 2px 6px;

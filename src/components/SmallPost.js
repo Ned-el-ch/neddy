@@ -125,22 +125,13 @@ export default class SmallPost extends Component {
 		return (
 			<Fragment>
 				<div className="new-post">
-					{/* <button
-						// onClick={() => this.setState({open: !this.state.open})}
-						// aria-controls="post"
-						// aria-expanded={this.state.open}
-						className="expand-button"
-					>
-						</button> */}
-						<div className="title">
-							<span className="underlinedOLD">{this.state.heading}</span>
-						</div>
+					<div className="title">{this.state.heading}</div>
 					<Collapse in={this.state.open}>
 						<div className="individual-post" id="post">
 							{this.state.post ? this.state.post : <span>I am empty inside</span>}
 							{this.props.user ?
 							<PostControls
-							isLiked={this.state.isLiked}
+								isLiked={this.state.isLiked}
 								toggleLike={this.toggleLike}
 								isFavorited={this.state.isFavorited}
 								toggleFavorite={this.toggleFavorite}
@@ -156,7 +147,8 @@ export default class SmallPost extends Component {
 						aria-controls="post"
 						aria-expanded={this.state.open}
 						className="read-more-button"
-						><span className="underlined">{this.state.open ? "Show Less" : "Show More"}</span></button>
+						><span className="underlined">{this.state.open ? "Show Less" : "Show More"}</span>
+					</button>
 				</div>
 			</Fragment>
 		);
