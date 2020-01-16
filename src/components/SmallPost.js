@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import PostControls from "./postComponents/PostControls";
 import AuthorCard from './postComponents/AuthorCard';
 import { PostCategories } from '../containers/PostCategories';
 import { parseBlockStyling, parseInlineStyling } from '../concerns/parsers'
-
+import Collapse from "react-bootstrap/Collapse"
+import Button from "react-bootstrap/Button"
 import "../styles/post.css"
 import "../styles/rich.css"
 
@@ -54,7 +55,9 @@ export default class SmallPost extends Component {
 	state = {
 		isLiked: false,
 		isFavorited: false,
-		post: null
+		post: null,
+		open: false,
+		heading: ""
 	}
 
 	fetchPost = () => {
@@ -75,7 +78,7 @@ export default class SmallPost extends Component {
 	buildPost = (postData) => {
 
 		const data = JSON.parse(postData.content)
-
+		this.setHeading(postData.title)
 		if (!data) { return (<span>I am empty inside</span>) }
 		const dataWithInlineStyling = parseInlineStyling(data)
 		const dataToDisplay = parseBlockStyling(dataWithInlineStyling)
@@ -86,6 +89,10 @@ export default class SmallPost extends Component {
 			</div>
 		)
 		return dataToDisplay
+	}
+
+	setHeading = (heading) => {
+		this.setState({heading})
 	}
 
 	toggleFavorite = () => {
@@ -117,21 +124,33 @@ export default class SmallPost extends Component {
 		// THAT USER ID MATCHES ANY OF THE LIKES/FAVORITES AND SET THE ACTIVE
 		// ON THE LOTTIES TO TRUE/FALSE SO WHEN THE POST LOADS THEY DISPLAY CORRECTLY
 		return (
-				<div className="individual-post">
-					{/* {this.buildPost(this.props.posts)} */}
-					{this.state.post ? this.state.post : <span>I am empty inside</span>}
-					{!this.props.user ?
-					<PostControls
-						isLiked={this.state.isLiked}
-						toggleLike={this.toggleLike}
-						isFavorited={this.state.isFavorited}
-						toggleFavorite={this.toggleFavorite}
-						user={this.props.user}
-					/>
-					:
-					null
-					}
+			<Fragment>
+				<div>
+					<button
+						onClick={() => this.setState({open: !this.state.open})}
+						aria-controls="post"
+						aria-expanded={this.state.open}
+						className="expand-button"
+					>{this.state.heading}</button>
+					<Collapse in={this.state.open}>
+						<div className="individual-post" id="post">
+							{this.state.post ? this.state.post : <span>I am empty inside</span>}
+							{this.props.user ?
+							<PostControls
+							isLiked={this.state.isLiked}
+								toggleLike={this.toggleLike}
+								isFavorited={this.state.isFavorited}
+								toggleFavorite={this.toggleFavorite}
+								user={this.props.user}
+							/>
+							:
+							null
+							}
+						</div>
+					</Collapse>
 				</div>
+				<br/>
+			</Fragment>
 		);
 	}
 }

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PrismDecorator from '../components/PrismDecorator'
 import initialContent from "./initial.json"
 import Select from 'react-select';
+import Form from "react-bootstrap/Form"
 
 import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE, ENTITY_TYPE } from "draftail"
 
@@ -20,7 +21,8 @@ export default class BlogEditor extends Component {
 
 	state = {
 		readyToBeSubmitted: false,
-		categories: []
+		categories: [],
+		title: ""
 	}
 
 	onSave = (content) => {
@@ -41,7 +43,8 @@ export default class BlogEditor extends Component {
 					post : {
 							content: sessionStorage["draftail:content"],
 							categories: this.state.categories,
-							user_id: userId
+							user_id: userId,
+							title:  this.state.title
 					}
 			})
 		})
@@ -50,19 +53,45 @@ export default class BlogEditor extends Component {
 	}
 
 	checkIfReadyForSubmission = (opt, meta) => {
-		if (opt && opt.length >= 3 && opt.length <= 5) {
+		if (opt && opt.length >= 3 && opt.length <= 5 ) {
 			const categories = opt.map(category => {
 				return category.value
 			})
-			this.setState({categories, readyToBeSubmitted: true})
+			if (this.state.title.length >= 20) {
+				this.setState({categories, readyToBeSubmitted: true})
+			} else {
+				this.setState({categories, readyToBeSubmitted: false})
+			}
 		} else {
 			this.setState({categories: [], readyToBeSubmitted: false})
+		}
+	}
+
+	setTitle = (event) => {
+		event.preventDefault()
+		// debugger;
+		const title = event.target.value;
+		const categories = this.state.categories;
+
+		if (categories.length >= 3 && categories.length <= 5) {
+			this.setState({title: title, readyToBeSubmitted: title.length >= 20})
+		} else {
+			this.setState({title: title, readyToBeSubmitted: false})
 		}
 	}
 
 	render() {
 		return (
 			<Fragment>
+				<Form >
+					<Form.Group controlId="postTitle">
+						{/* <Form.Label>Email address</Form.Label> */}
+						<Form.Control onChange={this.setTitle} type="title" placeholder="Post title goes here..." />
+						<Form.Text className="text-muted">
+							Minimum 20 characters
+						</Form.Text>
+					</Form.Group>
+				</Form>
 				<DraftailEditor
 					ref="draftRef"
 					rawContentState={initialContent || null}
@@ -93,7 +122,7 @@ export default class BlogEditor extends Component {
 };
 
 const blockTypes = [
-	{ type: BLOCK_TYPE.HEADER_ONE, label: "Heading", description: null },
+	// { type: BLOCK_TYPE.HEADER_ONE, label: "Heading", description: null },
 	{ type: BLOCK_TYPE.HEADER_THREE, label: "Sub-heading" , description: null },
 	{ type: BLOCK_TYPE.BLOCKQUOTE, label: "Block Quote" , description: null },
 	{ type: BLOCK_TYPE.UNORDERED_LIST_ITEM, label: "Bullet List" , description: null },
