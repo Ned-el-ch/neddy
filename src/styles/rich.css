@@ -130,3 +130,9 @@ pre.public-DraftStyleDefault-pre code::before {
 	font-size: 1.15rem;
 	font-weight: 300;
 }
+.public-DraftStyleDefault-ul *, .public-DraftStyleDefault-ol * {
+	margin-bottom: 0.25rem;
+}
+.Draftail-block--header-three {
+	font-weight: 300;
+}

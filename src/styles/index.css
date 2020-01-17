@@ -3,7 +3,8 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: rgb(255, 250, 250);
+	background-color: rgb(246, 248, 250);
+	/* background-color: rgb(255, 250, 250); */
 	/* overflow-wrap: break-word; */
 }
 @media (min-width: 1440px) {
@@ -89,7 +90,7 @@ button.read-more-button {
 	/* font-style: italic; */
 	text-shadow: 2px 0 0 white;
 	background: linear-gradient(0deg, rgba(255, 255, 255) 0%, rgba(255, 255, 255, 0.85) 33%, rgba(255, 255, 255, 0.55) 66%,transparent 100%);
-	color: rgba(4, 247, 255, 0.6);
+	color: rgba(129, 251, 255, 0.603);
 	padding-top: 130px;
 }
 
@@ -121,7 +122,7 @@ button.show-less-button {
 } */
 
 .underlined {
-	background-image: linear-gradient(to bottom, rgb(0, 228, 228) 40%, transparent 40%, transparent);
+	background-image: linear-gradient(to bottom, rgba(43, 248, 255, 0.8) 40%, transparent 40%, transparent);
 	background-position: 0 1.03em;
 	background-repeat: repeat-x;
 	background-size: 2px 6px;
