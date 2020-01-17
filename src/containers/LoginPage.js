@@ -39,7 +39,8 @@ export default class LoginPage extends Component{
 			})
 				.then(res => res.json())
 				.then(data => {
-					localStorage.setItem("token", data.token);
+					debugger
+					localStorage.setItem("token", data.jwt);
 					return data.user;
 				})
 				.then(handleLogin)
