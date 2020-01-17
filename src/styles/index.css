@@ -76,9 +76,9 @@ button.read-more-button {
 	border-radius: 0 0 13px 13px;
 	outline: none;
 	border: none;
-	font-size: 2rem;
+	font-size: 1.7rem;
 	line-height: 1.2;
-	font-weight: 400;
+	font-weight: 350;
 	font-style: italic;
 	text-shadow: 2px 0 0 white;
 	background: linear-gradient(0deg, rgba(255, 255, 255) 0%, rgba(255, 255, 255, 0.85) 33%, rgba(255, 255, 255, 0.55) 66%,transparent 100%);
