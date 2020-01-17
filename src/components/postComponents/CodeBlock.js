@@ -11,7 +11,7 @@ export default class CodeBlock extends Component {
 		
 		const data = this.props.data.join("\n")
 		navigator.clipboard.writeText(data)
-		debugger
+		// debugger
 	}
 
 	renderCodeLines = () => {

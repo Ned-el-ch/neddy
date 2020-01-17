@@ -162,7 +162,7 @@ export default class SmallPost extends Component {
 						aria-controls="post"
 						aria-expanded={this.state.open}
 						className="read-more-button"
-						><span className="underlined">Show More</span>
+						><span>▾</span>
 					</button>
 					}
 				</div>
@@ -170,5 +170,3 @@ export default class SmallPost extends Component {
 		);
 	}
 }
-
-// SHOW A WIDDLE BIT OF THE POST AND HAVE AREAD MORE BUTTON OT OPEN OR WHATEVER 

@@ -8,7 +8,7 @@
 }
 
 .individual-post * {
-	margin-bottom: 0.275rem
+	margin-bottom: 0.35rem
 }
 /* @media screen and (min-width: 1100px){
 	.individual-post{
@@ -81,7 +81,7 @@ pre.code-block {
 	background-color: #3c3c57;
 	border-top: #71659b solid 17px;
 	overflow: scroll;
-	border-radius: 12px;
+	border-radius: 7px;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
 	font-size: 0.7750rem;
 	padding: 20px;
@@ -108,8 +108,8 @@ button.copy-code-block, .code-block-container:before {
 	color: #f879fa;
 	font-weight: 550;
 	background-color: #3c3c57;
-	border-top-right-radius: 13px;
-	border-top-left-radius: 13px;
+	border-top-right-radius: 7px;
+	border-top-left-radius: 0;
 }
 
 .code-block-container:before {
@@ -351,10 +351,13 @@ button[name="SUBSCRIPT"] span {
 	white-space: pre-wrap;
 	/* overflow: scroll; */
 	overflow-wrap: break-word;
+	text-align: justify;
 }
 
 .Draftail-block--ordered-list-item div {
 	white-space: pre-wrap;
 	/* overflow: scroll; */
 	overflow-wrap: break-word;
+	text-align: justify;
+
 }

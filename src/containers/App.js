@@ -132,7 +132,7 @@ export default class App extends Component {
 				</Navbar>
 				<br/>
 				<Row className="align-self-start justify-content-center">
-					<Col  xs sm={10} md={8} lg={7} xl={6} className="col-xxl">
+					<Col  xs sm={10} md={9} lg={7} xl={6} className="col-xxl">
 						<Switch>
 							<Route path="/posts/:id" render={routerProps => {
 								return <SmallPost {...routerProps} posts={this.state.posts} user={this.state.user}/>

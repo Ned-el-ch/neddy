@@ -10,6 +10,7 @@
 
 .Draftail-block--unstyled {
 	overflow-wrap: break-word;
+	text-align: justify;
 
 }
 
@@ -123,4 +124,9 @@ pre.public-DraftStyleDefault-pre code::before {
 	border-radius: 13px!important;
 	background-color: rgba(0, 255, 255, 0.2)!important;
 	box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15);
+}
+
+.public-DraftStyleDefault-ul, .public-DraftStyleDefault-ol, .Draftail-block--unstyled {
+	font-size: 1.15rem;
+	font-weight: 300;
 }

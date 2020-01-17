@@ -54,6 +54,8 @@ export default class SignUpPage extends Component{
 	render () {
 
 		return (
+			<Row className="align-self-start justify-content-center">
+			<Col  xs={10} sm={8} md={8} lg={7} xl={8} className="col-xxl">
 				<Form onSubmit={this.handleSubmit} >
 					<Form.Row>
 						<Form.Group as={Col} controlId="validationCustomName">
@@ -142,6 +144,7 @@ export default class SignUpPage extends Component{
 						</Form.Group>
 					</Form.Row>
 				</Form>
+			</Col></Row>
 		);
 	}
 }
