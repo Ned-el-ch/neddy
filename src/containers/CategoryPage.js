@@ -49,8 +49,8 @@ export default class CategoryPage extends Component {
 	render() {
 		return (
 			<div>
-				{/* <h1>{this.props.match.params.title.toUpperCase()}</h1> */}
-				<Programming />
+				<h1>{this.props.match.params.title.toUpperCase()}</h1>
+				{/* <Programming /> */}
 				{this.renderPosts()}
 			</div>
 		);
