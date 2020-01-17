@@ -156,6 +156,13 @@ export default class SmallPost extends Component {
 	componentDidMount () {
 		this.renderPost()
 	}
+	componentDidUpdate (prevProps, prevState) {
+			if (prevProps !== this.props) {
+
+				this.setState({open: false})
+				window.scrollTo(0, 0)
+			}
+	}
 
 	setFavorites = (favoritesArray) => {
 		const favorites = favoritesArray.map(favorite => {
@@ -215,7 +222,7 @@ export default class SmallPost extends Component {
 						null
 					}
 					<div className={this.state.open ? "title offset-down" : "title"}>{this.state.heading}</div>
-					<Collapse in={this.props.open ? this.props.open : this.state.open}>
+					<Collapse in={this.state.open}>
 						<div className="individual-post" id="post">
 							{this.state.post ? this.state.post : <span>I am empty inside</span>}
 							{this.props.user ?
