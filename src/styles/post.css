@@ -83,13 +83,13 @@ pre.code-block {
 	overflow: scroll;
 	border-radius: 12px;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-	font-size: 0.8750rem;
+	font-size: 0.7750rem;
 	padding: 20px;
 	margin: 0;
 	margin-bottom : 20px;
 	width: 100%;
 	font-weight: 550;
-	line-height: 1.3rem;
+	line-height: 1.1rem;
 	box-shadow: 0 5px 3px -3px rgba(0, 0, 0, 0.35);
 }
 
