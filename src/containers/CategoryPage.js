@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SmallPost from '../components/SmallPost';
 import Loading from '../lotties/Loading';
+import Programming from '../lotties/Programming';
 
 export default class CategoryPage extends Component {
 	state = {
@@ -48,7 +49,8 @@ export default class CategoryPage extends Component {
 	render() {
 		return (
 			<div>
-				<h1>{this.props.match.params.title.toUpperCase()}</h1>
+				{/* <h1>{this.props.match.params.title.toUpperCase()}</h1> */}
+				<Programming />
 				{this.renderPosts()}
 			</div>
 		);

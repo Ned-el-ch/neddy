@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Lottie from 'react-lottie'
-import animationData from './loading.json'
+import animationData from './programming.json'
 import Row from "react-bootstrap/Row"
 
-export default class Loading extends Component {
+export default class Programming extends Component {
 
 	render(){
 
@@ -19,8 +19,8 @@ export default class Loading extends Component {
 		return(
 			<Row className="align-self-start justify-content-center">
 				<Lottie options={defaultOptions}
-						height={250}
-						width={250}
+						height={600}
+						width={600}
 				/>
 			</Row>
 		)

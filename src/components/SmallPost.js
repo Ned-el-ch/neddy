@@ -157,8 +157,8 @@ export default class SmallPost extends Component {
 		this.renderPost()
 	}
 	componentDidUpdate (prevProps, prevState) {
+		// debugger
 			if (prevProps !== this.props) {
-
 				this.setState({open: false})
 				window.scrollTo(0, 0)
 			}
