@@ -10,6 +10,8 @@ export default class CategoryPage extends Component {
 		fetch(`http://localhost:4000/category/${this.props.match.params.title}`)
 		.then(res => res.json())
 		.then(posts => this.setState({posts}))
+		.catch(console.log)
+
 		// .catch(error => console.log(error))
 	}
 
@@ -37,7 +39,7 @@ export default class CategoryPage extends Component {
 				return(<h3>This category doesn't have any posts yet</h3>)
 			} else {
 				return this.state.posts.map(postData => {
-					return (<SmallPost postData={postData} user={this.props.user}/>)
+					return (<SmallPost postData={postData} user={this.props.user} open={false}/>)
 				})
 			}
 		}

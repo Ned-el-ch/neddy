@@ -39,12 +39,13 @@ export default class LoginPage extends Component{
 			})
 				.then(res => res.json())
 				.then(data => {
-					debugger
 					localStorage.setItem("token", data.jwt);
 					return data.user;
 				})
 				.then(handleLogin)
-				.then(history.push('/editor'))
+				.then(history.push('/'))
+				.catch(console.log)
+				
 				// .then(console.log)
 
 		}

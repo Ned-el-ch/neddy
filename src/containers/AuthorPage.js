@@ -11,6 +11,8 @@ export default class AuthorPage extends Component {
 		fetch(`http://localhost:4000/api/v1/posts/${this.props.match.params.username}`)
 		.then(res => res.json())
 		.then(posts => this.setState({posts}))
+		.catch(console.log)
+
 		// .then(this.renderPosts())
 	}
 
@@ -35,7 +37,7 @@ export default class AuthorPage extends Component {
 			} else {
 				// debugger
 				return this.state.posts.map(postData => {
-					return (<SmallPost postData={postData} user={this.props.user}/>)
+					return (<SmallPost postData={postData} user={this.props.user} open={false}/>)
 				})
 			}
 		}

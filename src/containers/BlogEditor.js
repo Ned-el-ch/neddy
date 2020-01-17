@@ -51,6 +51,7 @@ export default class BlogEditor extends Component {
 		})
 		.then(res => res.json())
 		.then(res => history.push(`/posts/${res.id}`))
+		.catch(console.log)
 	}
 
 	checkIfReadyForSubmission = (opt, meta) => {

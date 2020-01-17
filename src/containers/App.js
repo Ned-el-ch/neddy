@@ -35,6 +35,8 @@ export default class App extends Component {
 		fetch("http://localhost:4000/posts")
 		.then(res => res.json())
 		.then(posts => this.setState({posts: posts}))
+		.catch(console.log)
+
 	}
 
 	getCategories = () => {

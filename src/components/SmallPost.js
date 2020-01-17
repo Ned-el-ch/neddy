@@ -77,6 +77,7 @@ export default class SmallPost extends Component {
 				return this.buildPost(res)
 			})
 			.then(post => this.setState({post}))
+			.catch(console.log)
 			return
 		} else {
 			post = this.buildPost(this.props.postData)
@@ -125,6 +126,8 @@ export default class SmallPost extends Component {
 		})
 		.then(res => res.json())
 		.then(this.setFavorites)
+		.catch(console.log)
+
 	}
 
 	toggleLike = () => {
@@ -146,10 +149,12 @@ export default class SmallPost extends Component {
 		})
 		.then(res => res.json())
 		.then(this.setLikes)
+		.catch(console.log)
+
 	}
 
 	componentDidMount () {
-		this.fetchPost()
+		this.renderPost()
 	}
 
 	setFavorites = (favoritesArray) => {
@@ -176,10 +181,16 @@ export default class SmallPost extends Component {
 
 	renderPost = () => {
 		if (!this.props.postData) {
+			// debugger
 			this.fetchPost()
 			return (<h3>Loading posts hehe</h3>)
 		} else {
-			return this.state.post
+			const post = this.buildPost(this.props.postData)
+			// debugger
+			this.setState({post, open: this.props.open})
+			this.setLikes(this.props.postData.post_likes)
+			this.setFavorites(this.props.postData.post_favorites)
+			// return this.state.post
 		}
 	}
 
@@ -204,7 +215,7 @@ export default class SmallPost extends Component {
 						null
 					}
 					<div className={this.state.open ? "title offset-down" : "title"}>{this.state.heading}</div>
-					<Collapse in={this.state.open}>
+					<Collapse in={this.props.open ? this.props.open : this.state.open}>
 						<div className="individual-post" id="post">
 							{this.state.post ? this.state.post : <span>I am empty inside</span>}
 							{this.props.user ?
