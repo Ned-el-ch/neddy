@@ -125,7 +125,19 @@ export default class SmallPost extends Component {
 		return (
 			<Fragment>
 				<div className="new-post">
-					<div className="title">{this.state.heading}</div>
+					{this.state.open
+						?
+						<button
+							onClick={() => this.setState({open: !this.state.open})}
+							aria-controls="post"
+							aria-expanded={this.state.open}
+							className="show-less-button"
+							><span className="underlined">Show Less</span>
+						</button>
+						:
+						null
+					}
+					<div className={this.state.open ? "title offset-down" : "title"}>{this.state.heading}</div>
 					<Collapse in={this.state.open}>
 						<div className="individual-post" id="post">
 							{this.state.post ? this.state.post : <span>I am empty inside</span>}
@@ -142,13 +154,17 @@ export default class SmallPost extends Component {
 							}
 						</div>
 					</Collapse>
+					{this.state.open ?
+					null
+					:
 					<button
 						onClick={() => this.setState({open: !this.state.open})}
 						aria-controls="post"
 						aria-expanded={this.state.open}
 						className="read-more-button"
-						><span className="underlined">{this.state.open ? "Show Less" : "Show More"}</span>
+						><span className="underlined">Show More</span>
 					</button>
+					}
 				</div>
 			</Fragment>
 		);
