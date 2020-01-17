@@ -55,8 +55,11 @@ export default class SmallPost extends Component {
 		isLiked: false,
 		isFavorited: false,
 		post: null,
-		open: false,
-		heading: ""
+		open: true,
+		heading: "",
+		likes: [],
+		favorites: [],
+		comments: []
 	}
 
 	fetchPost = () => {
@@ -65,11 +68,20 @@ export default class SmallPost extends Component {
 		if (this.props.match) {
 			fetch(`http://localhost:4000/posts/${this.props.match.params.id}`)
 			.then(res => res.json())
-			.then(this.buildPost)
+			.then(res => {
+				this.setState({
+					comments: res.comments
+				});
+				this.setLikes(res.post_likes)
+				this.setFavorites(res.post_favorites)
+				return this.buildPost(res)
+			})
 			.then(post => this.setState({post}))
 			return
 		} else {
 			post = this.buildPost(this.props.postData)
+			this.setLikes(this.props.postData.post_likes)
+			this.setFavorites(this.props.postData.post_favorites)
 		}
 		this.setState({post: post})
 	}
@@ -77,6 +89,7 @@ export default class SmallPost extends Component {
 	buildPost = (postData) => {
 
 		const data = JSON.parse(postData.content)
+		// debugger
 		this.setHeading(postData.title)
 		if (!data) { return (<span>I am empty inside</span>) }
 		const dataWithInlineStyling = parseInlineStyling(data)
@@ -95,19 +108,69 @@ export default class SmallPost extends Component {
 	}
 
 	toggleFavorite = () => {
-		// SEND A POST FETCH TO FAVORITE THE POST
 		this.setState({isFavorited: !this.state.isFavorited})
+		fetch("http://localhost:4000/favorite_post",{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json"
+			},
+			body: JSON.stringify({
+				post: {
+					id: (this.props.match ? this.props.match.params.id : this.props.postData.id),
+					user_id: this.props.user.id
+				}
+			})
+		})
+		.then(res => res.json())
+		.then(this.setFavorites)
 	}
 
 	toggleLike = () => {
-		// SEND A POST FETCH TO LIKE THE POST
 		this.setState({isLiked: !this.state.isLiked})
+		fetch("http://localhost:4000/like_post",{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json"
+			},
+			body: JSON.stringify({
+				post: {
+					id: (this.props.match ? this.props.match.params.id : this.props.postData.id),
+					user_id: this.props.user.id
+				}
+			})
+		})
+		.then(res => res.json())
+		.then(this.setLikes)
 	}
 
 	componentDidMount () {
 		this.fetchPost()
 	}
-	
+
+	setFavorites = (favoritesArray) => {
+		const favorites = favoritesArray.map(favorite => {
+			return favorite.user_id
+		})
+		if (this.props.user) {
+			this.setState({favorites, isFavorited: favorites.includes(this.props.user.id)})
+		} else {
+			this.setState({favorites})
+		}
+	}
+
+	setLikes = (likesArray) => {
+		const likes = likesArray.map(like => {
+			return like.user_id
+		})
+		if (this.props.user) {
+			this.setState({likes, isLiked: likes.includes(this.props.user.id)})
+		} else {
+			this.setState({likes})
+		}
+	}
+
 	renderPost = () => {
 		if (!this.props.postData) {
 			this.fetchPost()

@@ -4,25 +4,6 @@ import animationData from './star.json'
 
 export default class Star extends Component {
 
-	state = {
-		isStopped: true,
-		isPaused: true,
-		speed: -1
-	}
-
-	toggle = () => {
-		this.setState({
-			isStopped: !this.state.isStopped,
-			isPaused: !this.state.isStopped,
-			speed: this.state.speed * -1
-		})
-	}
-
-	componentDidMount() {
-		
-	}
-	
-
 	render(){
  
 		const defaultOptions = {
@@ -35,13 +16,13 @@ export default class Star extends Component {
 		};
 
 		return(
-			<div className="lottie lottie-star" onClick={this.toggle}>
+			<div className="lottie lottie-star" onClick={this.props.toggleFavorite}>
 				<Lottie options={defaultOptions}
 					height={110}
 					width={110}
-					isPaused={this.state.isPaused}
-					isStopped={this.state.isStopped}
-					speed={this.state.speed}
+					isStopped={!this.props.active}
+					isPaused={!this.props.active}
+					speed={!this.props.active ? -1 : 1}
 				/>
 			</div>
 		)

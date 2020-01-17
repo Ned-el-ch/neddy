@@ -4,20 +4,6 @@ import animationData from './like.json'
 
 export default class Like extends Component {
 
-	state = {
-		isStopped: true,
-		isPaused: true,
-		speed: -1
-	}
-
-	toggle = () => {
-		this.setState({
-			isStopped: !this.state.isStopped,
-			isPaused: !this.state.isStopped,
-			speed: this.state.speed * -1
-		})
-	}
-
 	render(){
 
 		const defaultOptions = {
@@ -30,14 +16,14 @@ export default class Like extends Component {
 		};
 
 		return(
-			<div className="lottie lottie-like" onClick={this.toggle}>
+			<div className="lottie lottie-like" onClick={this.props.toggleLike}>
 				<Lottie
 					options={defaultOptions}
 					height={85}
 					width={85}
-					isStopped={this.state.isStopped}
-					isPaused={this.state.isPaused}
-					speed={this.state.speed}
+					isStopped={!this.props.active}
+					isPaused={!this.props.active}
+					speed={!this.props.active ? -1 : 1}
 				/>
 			</div>
 		)
