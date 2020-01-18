@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-
+import randKey from "../concerns/randomKey"
 import PostControls from "./postComponents/PostControls";
 import AuthorCard from './postComponents/AuthorCard';
 import { PostCategories } from '../containers/PostCategories';
@@ -96,9 +96,9 @@ export default class SmallPost extends Component {
 		const dataWithInlineStyling = parseInlineStyling(data)
 		const dataToDisplay = parseBlockStyling(dataWithInlineStyling)
 		dataToDisplay.push(
-			<div className="post-bottom-card">
-				<PostCategories categories={postData.categories}/>
-				<AuthorCard author={postData.user}/>
+			<div className="post-bottom-card" key={randKey()}>
+				<PostCategories categories={postData.categories} key={randKey()}/>
+				<AuthorCard author={postData.user} key={randKey()}/>
 			</div>
 		)
 		return dataToDisplay
