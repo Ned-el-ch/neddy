@@ -362,3 +362,9 @@ button[name="SUBSCRIPT"] span {
 	text-align: justify;
 
 }
+
+.author-bio {
+	font-weight: 250;
+	font-style: italic;
+	color: #9e9cb8;
+}

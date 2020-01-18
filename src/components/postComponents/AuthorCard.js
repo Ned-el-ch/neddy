@@ -5,7 +5,7 @@ export default class AuthorCard extends Component {
 		return (
 			<div className="author-card">
 				<Link to={`/authors/${this.props.author.username}`}><h2>{this.props.author.name}</h2></Link>
-				<p>{this.props.author.bio}</p>
+				<p className="author-bio">{this.props.author.bio}</p>
 			</div>
 		);
 	}
