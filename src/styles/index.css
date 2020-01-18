@@ -53,7 +53,7 @@ div.title {
 	border: none;
 	text-align: left;
 	width: 100%;
-	font-size: 2.5rem;
+	font-size: 2.1rem;
 	line-height: 1.075;
 	font-weight: 200;
 	background: white;
@@ -163,7 +163,7 @@ svg {
 }
 
 .new-post {
-	margin-bottom: 50px;
+	margin-bottom: 25px;
 }
 
 .collapsing {

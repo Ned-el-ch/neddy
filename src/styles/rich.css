@@ -48,7 +48,7 @@ span.draftJsHashtagPlugin__hashtag__1wMVC span span {
 	background-color: #3c3c57;
 	border-top: #71659b solid 17px;
 	overflow: scroll;
-	border-radius: 12px;
+	border-radius: 7px;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
 	font-size: 16px;
 	font-weight: 550;
@@ -132,12 +132,15 @@ pre.public-DraftStyleDefault-pre code::before {
 }
 
 .public-DraftStyleDefault-ul, .public-DraftStyleDefault-ol, .Draftail-block--unstyled {
-	font-size: 1.15rem;
+	font-size: 1rem;
 	font-weight: 300;
 }
 .public-DraftStyleDefault-ul *, .public-DraftStyleDefault-ol * {
 	margin-bottom: 0.25rem;
 }
 .Draftail-block--header-three {
+	font-weight: 300;
+}
+.Draftail-block--header-four {
 	font-weight: 300;
 }
