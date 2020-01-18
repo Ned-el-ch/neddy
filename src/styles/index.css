@@ -89,7 +89,7 @@ button.read-more-button {
 	font-weight: 350;
 	/* font-style: italic; */
 	text-shadow: 2px 0 0 white;
-	background: linear-gradient(0deg, rgba(255, 255, 255) 0%, rgba(255, 255, 255, 0.85) 33%, rgba(255, 255, 255, 0.55) 66%,transparent 100%);
+	background: linear-gradient(0deg, rgba(255, 255, 255, 0.975) 0%, rgba(255, 255, 255, 0.8) 33%, rgba(255, 255, 255, 0.5) 66%,rgba(255, 255, 255, 0.35) 80%, transparent 100%);
 	color: rgba(129, 251, 255, 0.603);
 	padding-top: 130px;
 }
