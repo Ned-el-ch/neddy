@@ -15,7 +15,9 @@ import UnorderedList from "../components/postComponents/UnorderedList"
 export const parseInlineStyling = (data) => {
 	const blocksWithInlineStyling = data.blocks.map((block, index) => {
 		if (block.inlineStyleRanges.length > 0) {
-			const letterArray = block.text.split("").map((element) => {
+			// debugger
+			const letters = block.text.replace(/(<([^>]+)>)/ig,"")
+			const letterArray = letters.split("").map((element) => {
 				return {character: element, style: []}
 			});
 			block.inlineStyleRanges.forEach(range => {
@@ -60,7 +62,7 @@ export const parseInlineStyling = (data) => {
 			})
 			return {styledHTML: outputArray.join(""), type: block.type, text: block.text}
 		} else {
-			return {styledHTML: `<span>${block.text}</span>`, type: block.type, text: block.text}
+			return {styledHTML: `<span>${block.text.replace(/(<([^>]+)>)/ig,"")}</span>`, type: block.type, text: block.text}
 		}
 	})
 	return {blocks: blocksWithInlineStyling, entityMap: data.entityMap}
