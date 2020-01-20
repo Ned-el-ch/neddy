@@ -4,7 +4,7 @@ import randKey from "../concerns/randomKey"
 export default class PostsList extends Component {
 
 	renderPostLinks = () => {
-		debugger
+		// debugger
 		return this.props.posts.map((postData) => {
 			return (
 				<Fragment>
