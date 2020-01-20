@@ -59,11 +59,19 @@ div.title {
 	background: white;
 	border-radius: 13px 13px 0 0;
 	padding: 15px;
+	padding-bottom: 0;
 	overflow-wrap: break-word;
 	text-decoration: underline 3px;
 	/* margin-bottom: 1rem; */
 	/* box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15); */
 	transition: padding-top 0.2s ease;
+}
+
+div.post-date {
+	font-size: 0.9rem;
+	font-weight: 400;
+	color: rgb(181, 181, 189);
+	margin-top: 10px;
 }
 
 div.title.offset-down {

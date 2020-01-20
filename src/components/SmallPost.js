@@ -58,6 +58,7 @@ export default class SmallPost extends Component {
 		post: null,
 		open: true,
 		heading: "",
+		date: "",
 		likes: [],
 		favorites: [],
 		comments: null
@@ -92,6 +93,7 @@ export default class SmallPost extends Component {
 		const data = JSON.parse(postData.content)
 		// debugger
 		this.setHeading(postData.title)
+		this.setDate(postData.created_at)
 		if (!data) { return (<span>I am empty inside</span>) }
 		const dataWithInlineStyling = parseInlineStyling(data)
 		const dataToDisplay = parseBlockStyling(dataWithInlineStyling)
@@ -225,6 +227,16 @@ export default class SmallPost extends Component {
 		}
 	}
 
+	setDate = (dateString) => {
+		const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+		let dateArray = dateString.split("-")
+		let year = dateArray[0]
+		let month = dateArray[1]
+		// month = months[parseInt(dateArray[1]) -1].toUpperCase()
+		let day = dateArray[2].substring(0, 2)
+		this.setState({date: `${day}/${month}/${year}`})
+	}
+
 	renderPost = () => {
 		if (!this.props.postData) {
 			// debugger
@@ -258,7 +270,12 @@ export default class SmallPost extends Component {
 						:
 						null
 					}
-					<div className={this.state.open ? "title offset-down" : "title"}>{this.state.heading}</div>
+					<div className={this.state.open ? "title offset-down" : "title"}>{this.state.heading}
+						<div className="post-date">
+							{this.state.date}
+						</div>
+					</div>
+					
 					<Collapse in={this.state.open}>
 						<div className="individual-post" id="post">
 							{this.state.post ? this.state.post : <span>I am empty inside</span>}
