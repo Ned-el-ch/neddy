@@ -9,7 +9,7 @@ export default class PostsList extends Component {
 		return this.props.posts.map((postData) => {
 			return (
 				<Fragment>
-					<Link key={postData.id} to={`/posts/${postData.id}`} key={randKey()}>Post number {postData.id}</Link>
+					<Link to={`/posts/${postData.id}`} key={randKey()}>Post number {postData.id}</Link>
 					<br/>
 				</Fragment>
 			)

@@ -7,8 +7,7 @@ export default class PostComment extends Component {
 		return (
 			
 			<div className="user-comment">
-				<Link key={user.id} to={`/authors/${user.username}`} key={randKey()}>{user.name}</Link>
-
+				<Link to={`/authors/${user.username}`} key={randKey()}>{user.name}</Link>
 				<br/>
 				{content}
 			</div>
