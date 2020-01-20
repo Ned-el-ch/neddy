@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import SignUpPage from './SignUpPage';
 import LoginPage from './LoginPage';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Posts from './Posts';
 import BlogEditor from './BlogEditor';
 import AuthorPage from './AuthorPage';
