@@ -3,6 +3,7 @@ import randKey from "../concerns/randomKey"
 import PostControls from "./postComponents/PostControls";
 import AuthorCard from './postComponents/AuthorCard';
 import { PostCategories } from '../containers/PostCategories';
+import Comments from '../containers/Comments';
 import { parseBlockStyling, parseInlineStyling } from '../concerns/parsers'
 import Collapse from "react-bootstrap/Collapse"
 import "../styles/post.css"
@@ -101,6 +102,11 @@ export default class SmallPost extends Component {
 				<AuthorCard author={postData.user} key={randKey()}/>
 			</div>
 		)
+		dataToDisplay.push(
+			<div className="post-comments-container" key={randKey()}>
+				<Comments comments={postData.comments}/>
+			</div>
+		)
 		return dataToDisplay
 	}
 
@@ -153,9 +159,28 @@ export default class SmallPost extends Component {
 
 	}
 
+	addComment = () => {
+		fetch("http://localhost:4000/comment",{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+				Authorization: `Bearer ${localStorage["token"]}`
+			},
+			body: JSON.stringify({
+				post: {
+					content: "placeholder",
+					user_id: this.props.user.id
+				}
+			})
+		})
+		.then(res => res.json())
+	}
+
 	componentDidMount () {
 		this.renderPost()
 	}
+
 	componentDidUpdate (prevProps, prevState) {
 		// debugger
 			if (prevProps !== this.props) {
@@ -203,9 +228,6 @@ export default class SmallPost extends Component {
 
 	render() {
 
-		// THIS SHOULD INHERIT THE GLOBAL STATE USER AND IF IT EXISTS CHECK IF 
-		// THAT USER ID MATCHES ANY OF THE LIKES/FAVORITES AND SET THE ACTIVE
-		// ON THE LOTTIES TO TRUE/FALSE SO WHEN THE POST LOADS THEY DISPLAY CORRECTLY
 		return (
 			<Fragment>
 				<div className="new-post">
