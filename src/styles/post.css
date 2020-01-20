@@ -171,7 +171,7 @@ button.comment-submit {
 pre.code-block {
 	background-color: #3c3c57;
 	border-top: #71659b solid 17px;
-	overflow: scroll;
+	/* overflow: scroll; */
 	border-radius: 7px;
 	font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
 	font-size: 0.7750rem;
