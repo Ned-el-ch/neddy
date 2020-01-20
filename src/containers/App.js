@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import SignUpPage from './SignUpPage';
 import LoginPage from './LoginPage';
-import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom'
 import Posts from './Posts';
 import BlogEditor from './BlogEditor';
 import AuthorPage from './AuthorPage';
@@ -136,13 +136,13 @@ export default class App extends Component {
 				<Row className="align-self-start justify-content-center">
 					<Col  xs sm={11} md={9} lg={7} xl={6} className="col-xxl">
 						<Switch>
-							<Route path="/posts/:id" render={routerProps => {
+							<Route exact path="/posts/:id" render={routerProps => {
 								return <SmallPost {...routerProps} posts={this.state.posts} user={this.state.user}/>
 							}} />
-							<Route path="/authors/:username" render={routerProps => {
+							<Route exact path="/authors/:username" render={routerProps => {
 								return <AuthorPage {...routerProps} user={this.state.user}/>
 							}} />
-							<Route path="/category/:title" render={routerProps => {
+							<Route exact path="/category/:title" render={routerProps => {
 								return <CategoryPage {...routerProps} user={this.state.user}/>
 							}} />
 							<Route exact path='/posts'	render={
@@ -154,8 +154,8 @@ export default class App extends Component {
 								(routerProps) => < HomeFeed {...routerProps} user={this.state.user}/>
 								}
 							/>
-							<Route exact path="*" component={Dino}/>
 							{this.routesToRender()}
+							<Route component={Dino}/>
 						</Switch>
 					</Col>
 				</Row>
