@@ -15,33 +15,39 @@ export default class Comments extends Component {
 			return(
 				<PostComment comment={comment}/>
 			)
-		})
+		}).reverse()
 	}
 
+	inputField = () => {
+		return(
+			<div className="new-comment-field">
+				<Form onSubmit={this.props.handleSubmit} className="comment">
+					<Form.Row className="comment-input-row">
+						<Form.Group controlId="commentInput" className="comment">
+							<InputGroup className="comment">
+								<Form.Control
+									type="text"
+									placeholder="Add a new comment..."
+									aria-describedby="inputGroupPrepend"
+									required
+								/>
+								<Form.Control.Feedback type="invalid">
+									Please input a comment.
+								</Form.Control.Feedback>
+								<Button type="submit" className="comment-submit">Submit</Button>
+							</InputGroup>
+						</Form.Group>
+					</Form.Row>
+				</Form>
+			</div>
+		)
+	}
 
 	render() {
 		return (
-			<div>
-				<div className="new-comment-field">
-					<Form onSubmit={this.props.handleSubmit}>
-						<Form.Row>
-							<Form.Group controlId="commentInput">
-								<InputGroup>
-									<Form.Control
-										type="text"
-										placeholder="Comment"
-										aria-describedby="inputGroupPrepend"
-										required
-									/>
-									<Form.Control.Feedback type="invalid">
-										Please input a comment.
-									</Form.Control.Feedback>
-								<Button type="submit">Submit Comment</Button>
-								</InputGroup>
-							</Form.Group>
-						</Form.Row>
-					</Form>
-				</div>
+			<Fragment>
+				<span className="comments-title">Comments</span>
+				{this.props.userId ? this.inputField() : null}
 				<div className="comments">
 					{
 					this.props.comments.length > 0
@@ -53,7 +59,7 @@ export default class Comments extends Component {
 					</div>
 					}
 				</div>
-			</div>
+			</Fragment>
 		);
 	}
 }

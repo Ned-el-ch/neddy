@@ -104,7 +104,11 @@ export default class SmallPost extends Component {
 		)
 		dataToDisplay.push(
 			<div className="post-comments-container" key={randKey()}>
-				<Comments comments={postData.comments} handleSubmit={this.addComment}/>
+				<Comments
+					userId={this.props.user ? this.props.user.id : this.props.user}
+					comments={postData.comments}
+					handleSubmit={this.addComment}
+				/>
 			</div>
 		)
 		return dataToDisplay
@@ -159,7 +163,9 @@ export default class SmallPost extends Component {
 
 	}
 
-	addComment = () => {
+	addComment = (event) => {
+		event.preventDefault()
+		// debugger
 		fetch("http://localhost:4000/comment",{
 			method: "POST",
 			headers: {
@@ -169,12 +175,15 @@ export default class SmallPost extends Component {
 			},
 			body: JSON.stringify({
 				post: {
-					content: "placeholder",
-					user_id: this.props.user.id
+					content: event.target.elements.commentInput.value,
+					user_id: this.props.user.id,
+					id: (this.props.match ? this.props.match.params.id : this.props.postData.id)
 				}
 			})
 		})
 		.then(res => res.json())
+		.then(this.renderPost)
+		.then(event.target.elements.commentInput.value = "")
 	}
 
 	componentDidMount () {
