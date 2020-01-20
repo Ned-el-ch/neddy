@@ -7,8 +7,8 @@ export default class AuthorPage extends Component {
 		posts: null
 	}
 	getPosts = () => {
-		// console.log(`http://localhost:4000/user/${this.props.match.params.username}`)
-		fetch(`http://localhost:4000/api/v1/posts/${this.props.match.params.username}`)
+		// console.log(`https://agile-journey-79048.herokuapp.com/user/${this.props.match.params.username}`)
+		fetch(`https://agile-journey-79048.herokuapp.com/api/v1/posts/${this.props.match.params.username}`)
 		.then(res => res.json())
 		.then(posts => this.setState({posts}))
 		.catch(console.log)

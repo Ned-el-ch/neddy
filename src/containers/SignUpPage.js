@@ -24,7 +24,7 @@ export default class SignUpPage extends Component{
 			// const imageUrl = event.target.elements.validationCustomImageUrl.value;
 			// FETCH TO THE API TO TRY AND CREATE AN ACCOUNT
 
-			fetch('http://localhost:4000/api/v1/users', {
+			fetch('https://agile-journey-79048.herokuapp.com/api/v1/users', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

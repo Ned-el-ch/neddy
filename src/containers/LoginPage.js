@@ -24,7 +24,7 @@ export default class LoginPage extends Component{
 			const password = event.target.elements.validationCustomPassword.value;
 			// FETCH TO THE API TO TRY TO LOGIN
 
-			fetch("http://localhost:4000/api/v1/login", {
+			fetch("https://agile-journey-79048.herokuapp.com/api/v1/login", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

@@ -32,7 +32,7 @@ export default class App extends Component {
 	}
 
 	getPosts = () => {
-		fetch("http://localhost:4000/posts")
+		fetch("https://agile-journey-79048.herokuapp.com/posts")
 		.then(res => res.json())
 		.then(posts => this.setState({posts: posts}))
 		.catch(console.log)
@@ -40,7 +40,7 @@ export default class App extends Component {
 	}
 
 	getCategories = () => {
-		fetch("http://localhost:4000/categories")
+		fetch("https://agile-journey-79048.herokuapp.com/categories")
 		.then(res => res.json())
 		.then(this.mutateCategories)
 	}

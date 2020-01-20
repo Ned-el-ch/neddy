@@ -33,7 +33,7 @@ export default class BlogEditor extends Component {
 	submitPost = () => {
 		const history = this.props.history;
 		const userId = this.props.userId
-		fetch("http://localhost:4000/submit_post", {
+		fetch("https://agile-journey-79048.herokuapp.com/submit_post", {
 			method: "POST",
 			headers: {
 					"Content-Type": "application/json",

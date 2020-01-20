@@ -9,7 +9,7 @@ export default class CategoryPage extends Component {
 		open: false
 	}
 	getPosts = () => {
-		fetch(`http://localhost:4000/category/${this.props.match.params.title}`)
+		fetch(`https://agile-journey-79048.herokuapp.com/category/${this.props.match.params.title}`)
 		.then(res => res.json())
 		.then(posts => this.setState({posts: posts, open: false}))
 		.catch(console.log)

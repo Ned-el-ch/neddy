@@ -68,7 +68,7 @@ export default class SmallPost extends Component {
 
 		let post;
 		if (this.props.match) {
-			fetch(`http://localhost:4000/posts/${this.props.match.params.id}`)
+			fetch(`https://agile-journey-79048.herokuapp.com/posts/${this.props.match.params.id}`)
 			.then(res => res.json())
 			.then(res => {
 				this.setLikes(res.post_likes)
@@ -112,7 +112,7 @@ export default class SmallPost extends Component {
 
 	toggleFavorite = () => {
 		this.setState({isFavorited: !this.state.isFavorited})
-		fetch("http://localhost:4000/favorite_post",{
+		fetch("https://agile-journey-79048.herokuapp.com/favorite_post",{
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -134,7 +134,7 @@ export default class SmallPost extends Component {
 
 	toggleLike = () => {
 		this.setState({isLiked: !this.state.isLiked})
-		fetch("http://localhost:4000/like_post",{
+		fetch("https://agile-journey-79048.herokuapp.com/like_post",{
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -158,7 +158,7 @@ export default class SmallPost extends Component {
 	addComment = (event) => {
 		event.preventDefault()
 		// debugger
-		fetch("http://localhost:4000/comment",{
+		fetch("https://agile-journey-79048.herokuapp.com/comment",{
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
