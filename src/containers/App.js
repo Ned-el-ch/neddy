@@ -154,7 +154,7 @@ export default class App extends Component {
 								(routerProps) => < HomeFeed {...routerProps} user={this.state.user}/>
 								}
 							/>
-							<Route exact path="/dino" component={Dino}/>
+							<Route exact path="*" component={Dino}/>
 							{this.routesToRender()}
 						</Switch>
 					</Col>

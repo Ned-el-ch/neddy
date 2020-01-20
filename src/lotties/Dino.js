@@ -23,6 +23,7 @@ class Dino extends Component {
 					height={400}
 					width={400}
 				/>
+				<div className="not-found-page-text">That page is in another castle</div>
 			</Row>
 		)
 	}
