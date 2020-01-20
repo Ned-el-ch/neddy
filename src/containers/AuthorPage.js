@@ -33,7 +33,7 @@ export default class AuthorPage extends Component {
 			return (<h3>There doesn't seem to be anything here damn</h3>)
 		} else {
 			if (this.state.posts.length === 0) {
-				return(<h3>This category doesn't have any posts yet</h3>)
+				return(<h3>This author doesn't have any posts yet</h3>)
 			} else {
 				// debugger
 				return this.state.posts.map(postData => {
