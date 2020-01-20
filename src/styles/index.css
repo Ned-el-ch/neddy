@@ -68,7 +68,7 @@ div.title {
 .post-heading-details {
 	display: flex;
 	justify-content: space-between;
-	width: 40%;
+	width: 100%;
 }
 
 div.post-date {
@@ -78,7 +78,8 @@ div.post-date {
 	margin-top: 10px;
 	/* display: block; */
 	float: left;
-
+	margin-left: 10px;
+	margin-right: 10px;
 
 }
 
