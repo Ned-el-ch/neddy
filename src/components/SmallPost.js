@@ -271,8 +271,16 @@ export default class SmallPost extends Component {
 						null
 					}
 					<div className={this.state.open ? "title offset-down" : "title"}>{this.state.heading}
-						<div className="post-date">
-							{this.state.date}
+						<div className="post-heading-details">
+							<div className="post-date">
+								{this.state.date}
+							</div>
+							<div className="post-date">
+								{this.state.likes.length} likes
+							</div>
+							<div className="post-date">
+								{this.state.favorites.length} favorites
+							</div>
 						</div>
 					</div>
 					

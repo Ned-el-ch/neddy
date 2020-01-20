@@ -17,12 +17,16 @@ export default class Programming extends Component {
 		};
 
 		return(
-			<Row className="align-self-start justify-content-center">
-				<Lottie options={defaultOptions}
-						height={600}
-						width={600}
-				/>
-			</Row>
+			<div>
+				{/* <div className="neddy-heading">Neddy</div> */}
+				<div className="neddy-subheading">Blogging. <span className="simplified">Simplified.</span></div>
+				<Row className="align-self-start justify-content-center">
+					<Lottie options={defaultOptions}
+							height={600}
+							width={600}
+					/>
+				</Row>
+			</div>
 		)
 	}
 }

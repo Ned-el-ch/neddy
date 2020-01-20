@@ -62,9 +62,13 @@ div.title {
 	padding-bottom: 0;
 	overflow-wrap: break-word;
 	text-decoration: underline 3px;
-	/* margin-bottom: 1rem; */
-	/* box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15); */
 	transition: padding-top 0.2s ease;
+}
+
+.post-heading-details {
+	display: flex;
+	justify-content: space-between;
+	width: 40%;
 }
 
 div.post-date {
@@ -72,6 +76,10 @@ div.post-date {
 	font-weight: 400;
 	color: rgb(181, 181, 189);
 	margin-top: 10px;
+	/* display: block; */
+	float: left;
+
+
 }
 
 div.title.offset-down {
@@ -178,6 +186,22 @@ svg {
 	height: 150px;
 }
 
-.not-found-page-text {
+/* .not-found-page-text {
 	
+} */
+
+.neddy-heading {
+	font-size: 5rem;
+	font-weight: 100;
+	text-align: center;
+}
+
+.neddy-subheading {
+	font-size: 3rem;
+	font-weight: 200;
+	text-align: center;
+}
+
+.simplified {
+	font-weight: 400;
 }
