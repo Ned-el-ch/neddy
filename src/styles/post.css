@@ -54,6 +54,29 @@
 	padding-top: 25px;
 }
 
+/* .post-comments-container {
+	border-top: solid 10px rgb(246, 248, 250);
+	margin-top: 25px;
+	margin-bottom: 10px;
+	padding-top: 25px;
+} */
+
+.post-comments-container {
+	border: solid 3px rgb(16, 138, 0);
+}
+
+.new-comment-field {
+	border: solid 3px rgb(0, 22, 146);
+}
+
+.comments {
+	border: solid 3px rgb(0, 38, 252);
+}
+
+.user-comment {
+	border: solid 3px rgb(54, 153, 253);
+}
+
 .post-action {
 	text-align: center;
 	font-size: 5rem;

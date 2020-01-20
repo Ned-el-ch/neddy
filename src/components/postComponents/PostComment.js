@@ -5,7 +5,7 @@ export default class PostComment extends Component {
 		const {content, user} = this.props.comment
 		return (
 			
-			<div>
+			<div className="user-comment">
 				{user.name}
 				<br/>
 				{content}

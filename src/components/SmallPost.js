@@ -104,7 +104,7 @@ export default class SmallPost extends Component {
 		)
 		dataToDisplay.push(
 			<div className="post-comments-container" key={randKey()}>
-				<Comments comments={postData.comments}/>
+				<Comments comments={postData.comments} handleSubmit={this.addComment}/>
 			</div>
 		)
 		return dataToDisplay
