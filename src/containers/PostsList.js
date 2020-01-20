@@ -19,6 +19,6 @@ export default class PostsList extends Component {
 			<Fragment>
 				{this.renderPostLinks()}
 			</Fragment>
-			);
+		);
 	}
 }
