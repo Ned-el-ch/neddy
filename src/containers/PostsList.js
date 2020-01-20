@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import randKey from "../concerns/randomKey"
+
 export default class PostsList extends Component {
 
 	renderPostLinks = () => {
