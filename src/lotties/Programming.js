@@ -8,7 +8,7 @@ export default class Programming extends Component {
 	render(){
 
 		const defaultOptions = {
-			loop: true,
+			loop: false,
 			autoplay: true, 
 			animationData: animationData,
 			rendererSettings: {
