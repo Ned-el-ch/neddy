@@ -16,7 +16,7 @@ import NavItem from "react-bootstrap/NavItem"
 import NavLink from "react-bootstrap/NavLink"
 import { LinkContainer } from "react-router-bootstrap";
 import CategoryPage from './CategoryPage';
-import Dino from '../lotties/Dino';
+import ErrorPage from '../lotties/ErrorPage';
 export default class App extends Component {
 
 	state = {
@@ -154,8 +154,31 @@ export default class App extends Component {
 								(routerProps) => < HomeFeed {...routerProps} user={this.state.user}/>
 								}
 							/>
-							{this.routesToRender()}
-							<Route component={Dino}/>
+
+							{this.state.user  ?
+							<div>
+								<Route exact path='/editor' render={
+									(routerProps) => < BlogEditor {...routerProps} userId={this.state.user.id} user={this.state.user} categories={this.state.categories}/>
+									}
+								/>
+							</div>
+							:
+							<div>
+								<Route exact path='/signup' render={
+									(routerProps) => < SignUpPage {...routerProps} handleLogin={this.handleLogin}/>
+								}
+								/>
+								<Route exact path='/login' render={
+									(routerProps) => < LoginPage {...routerProps} handleLogin={this.handleLogin}/>
+								}
+								/>
+							</div>
+							}
+							<Route path="/" component={ErrorPage} />
+
+							{/* <Route component={Dino}/> */}
+							{/* <Redirect to='/404' /> */}
+							{/* {this.routesToRender()} */}
 						</Switch>
 					</Col>
 				</Row>

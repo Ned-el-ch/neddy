@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Dino from '../lotties/Dino';
+import Dino from '../lotties/ErrorPage';
 import Programming from '../lotties/Programming';
 
 export default class HomeFeed extends Component {

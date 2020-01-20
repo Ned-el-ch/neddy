@@ -3,7 +3,7 @@ import Lottie from 'react-lottie'
 import animationData from './dino.json'
 import Row from "react-bootstrap/Row"
 
-class Dino extends Component {
+export default class ErrorPage extends Component {
 
 	render(){
 
@@ -27,6 +27,4 @@ class Dino extends Component {
 			</Row>
 		)
 	}
- }
- 
- export default Dino
+}
