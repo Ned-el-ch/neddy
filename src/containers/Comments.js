@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import PostComment from "../components/postComponents/PostComment"
-
+import randKey from "../concerns/randomKey"
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import InputGroup from "react-bootstrap/InputGroup"
+import { Link } from 'react-router-dom';
 
 export default class Comments extends Component {
 
@@ -50,12 +51,19 @@ export default class Comments extends Component {
 				{this.props.userId ? this.inputField() : null}
 				<div className="comments">
 					{
-					this.props.comments.length > 0
+					this.props.comments && this.props.comments.length > 0
 					?
 					this.renderComments()
 					:
 					<div className="comments-placeholder">
-						Be the first to comment on this post!
+						{
+						this.props.userId
+						?
+						"Be the first to comment on this post!"
+						:
+						<Link to={`/login`} key={randKey()}>Be the first to comment on this post!
+						</Link>
+						}
 					</div>
 					}
 				</div>

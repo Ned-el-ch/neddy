@@ -60,7 +60,7 @@ export default class SmallPost extends Component {
 		heading: "",
 		likes: [],
 		favorites: [],
-		comments: []
+		comments: null
 	}
 
 	fetchPost = () => {
@@ -70,11 +70,9 @@ export default class SmallPost extends Component {
 			fetch(`http://localhost:4000/posts/${this.props.match.params.id}`)
 			.then(res => res.json())
 			.then(res => {
-				this.setState({
-					comments: res.comments
-				});
 				this.setLikes(res.post_likes)
 				this.setFavorites(res.post_favorites)
+				this.setComments(res.comments)
 				return this.buildPost(res)
 			})
 			.then(post => this.setState({post}))
@@ -84,6 +82,7 @@ export default class SmallPost extends Component {
 			post = this.buildPost(this.props.postData)
 			this.setLikes(this.props.postData.post_likes)
 			this.setFavorites(this.props.postData.post_favorites)
+			this.setComments(this.props.postData.comments)
 		}
 		this.setState({post: post})
 	}
@@ -100,15 +99,6 @@ export default class SmallPost extends Component {
 			<div className="post-bottom-card" key={randKey()}>
 				<PostCategories categories={postData.categories} key={randKey()}/>
 				<AuthorCard author={postData.user} key={randKey()}/>
-			</div>
-		)
-		dataToDisplay.push(
-			<div className="post-comments-container" key={randKey()}>
-				<Comments
-					userId={this.props.user ? this.props.user.id : this.props.user}
-					comments={postData.comments}
-					handleSubmit={this.addComment}
-				/>
 			</div>
 		)
 		return dataToDisplay
@@ -182,19 +172,21 @@ export default class SmallPost extends Component {
 			})
 		})
 		.then(res => res.json())
-		.then(this.renderPost)
+		.then(this.setComments)
 		.then(event.target.elements.commentInput.value = "")
 	}
 
 	componentDidMount () {
 		this.renderPost()
+		// debugger
 	}
 
 	componentDidUpdate (prevProps, prevState) {
 		// debugger
 			if (prevProps !== this.props) {
+				// debugger
 				this.setState({open: false})
-				window.scrollTo(0, 0)
+				// window.scrollTo(0, 0)
 			}
 	}
 
@@ -220,6 +212,19 @@ export default class SmallPost extends Component {
 		}
 	}
 
+	setComments = (commentsArray) => {
+		// debugger
+		if (Array.isArray(commentsArray)) {
+			this.setState({comments: commentsArray})
+		} else if (typeof commentsArray === "object") {
+			if (Array.isArray(this.state.comments)) {
+				this.setState({comments: [...this.state.comments, commentsArray]})
+			} else {
+				this.setState({comments: [commentsArray]})
+			}
+		}
+	}
+
 	renderPost = () => {
 		if (!this.props.postData) {
 			// debugger
@@ -231,6 +236,7 @@ export default class SmallPost extends Component {
 			this.setState({post, open: this.props.open})
 			this.setLikes(this.props.postData.post_likes)
 			this.setFavorites(this.props.postData.post_favorites)
+			this.setComments(this.props.postData.comments)
 			// return this.state.post
 		}
 	}
@@ -267,6 +273,19 @@ export default class SmallPost extends Component {
 							:
 							null
 							}
+							<div className="post-comments-container" key={randKey()}>
+								<Comments
+									userId={this.props.user ? this.props.user.id : this.props.user}
+									comments={
+										this.state.comments
+										? this.state.comments
+										:
+										
+										this.props.postData ? this.props.postData.comments : []
+									}
+									handleSubmit={this.addComment}
+								/>
+							</div>
 						</div>
 					</Collapse>
 					{this.state.open ?

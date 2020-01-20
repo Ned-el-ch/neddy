@@ -5,12 +5,13 @@ import Programming from '../lotties/Programming';
 
 export default class CategoryPage extends Component {
 	state = {
-		posts: null
+		posts: null,
+		open: false
 	}
 	getPosts = () => {
 		fetch(`http://localhost:4000/category/${this.props.match.params.title}`)
 		.then(res => res.json())
-		.then(posts => this.setState({posts}))
+		.then(posts => this.setState({posts: posts, open: false}))
 		.catch(console.log)
 
 		// .catch(error => console.log(error))
@@ -23,9 +24,22 @@ export default class CategoryPage extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 		if (this.props.match.params.title !== prevProps.match.params.title) {
+			// debugger
 			this.getPosts()
+			window.scrollTo(0, 0)
+			// this.setState({open: false})
+
 		}
 	}
+
+	// componentDidUpdate (prevProps, prevState) {
+	// 	// debugger
+	// 		if (prevProps.match !== this.props.match) {
+	// 			debugger
+	// 			this.setState({open: false})
+	// 			window.scrollTo(0, 0)
+	// 		}
+	// }
 	
 
 	renderPosts = () => {
@@ -40,7 +54,8 @@ export default class CategoryPage extends Component {
 				return(<h3>This category doesn't have any posts yet</h3>)
 			} else {
 				return this.state.posts.map(postData => {
-					return (<SmallPost postData={postData} user={this.props.user} open={false}/>)
+					// debugger
+					return (<SmallPost postData={postData} user={this.props.user} open={this.state.open}/>)
 				})
 			}
 		}
