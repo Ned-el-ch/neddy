@@ -13,8 +13,6 @@ export default class CategoryPage extends Component {
 		.then(res => res.json())
 		.then(posts => this.setState({posts: posts, open: false}))
 		.catch(console.log)
-
-		// .catch(error => console.log(error))
 	}
 
 	componentDidMount() {
@@ -31,16 +29,6 @@ export default class CategoryPage extends Component {
 
 		}
 	}
-
-	// componentDidUpdate (prevProps, prevState) {
-	// 	// debugger
-	// 		if (prevProps.match !== this.props.match) {
-	// 			debugger
-	// 			this.setState({open: false})
-	// 			window.scrollTo(0, 0)
-	// 		}
-	// }
-	
 
 	renderPosts = () => {
 

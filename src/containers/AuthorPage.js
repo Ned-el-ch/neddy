@@ -13,11 +13,34 @@ export default class AuthorPage extends Component {
 		// console.log(`https://agile-journey-79048.herokuapp.com/user/${this.props.match.params.username}`)
 		fetch(`https://agile-journey-79048.herokuapp.com/api/v1/posts/${this.props.match.params.username}`)
 		.then(res => res.json())
-		.then(res => this.setState({posts: res.posts, followers: res.passive_relationships, following: res.active_relationships}))
+		.then(res => {
+			this.setState({posts: res.posts, followers: res.passive_relationships, following: res.active_relationships})
+			console.log(res.posts)
+			return
+		})
+		.then(this.setFollowing)
+		// .then(res => {
+		// 	this.setFollowers(res.passive_relationships)
+		// 	this.setFollowing(res.active_relationships)
+		// })
+			// , followers: res.passive_relationships, following: res.active_relationships})})
 		.catch(console.log)
 
-		// .then(this.renderPosts())
 	}
+
+	setFollowing = () => {
+		let userIsFollowing = this.state.followers.find(follower => follower.follower_user.username === this.props.user.username)
+		if (userIsFollowing) {
+			this.setState({isFollowed: true})
+		} else {
+			this.setState({isFollowed: false})
+		}
+		return
+	}
+
+	// setFollowing = (followingArray) => {
+
+	// }
 
 	componentDidMount() {
 		this.getPosts();
@@ -26,13 +49,17 @@ export default class AuthorPage extends Component {
 	componentDidUpdate(prevProps, prevState) {
 		if (this.props.match.params.username !== prevProps.match.params.username) {
 			this.getPosts()
+			window.scrollTo(0, 0)
 		}
+		// if (this.state.posts !== prevState.posts) {
+		// 	this.renderPosts()
+		// }
 	}
 
 	renderPosts = () => {
 		if (!this.state.posts) {
 			return (<Loading />)
-		} else if (this.state.posts.status == 404) {
+		} else if (this.state.posts.status >= 400) {
 			return (<h3>There doesn't seem to be anything here damn</h3>)
 		} else {
 			if (this.state.posts.length === 0) {
@@ -40,7 +67,7 @@ export default class AuthorPage extends Component {
 			} else {
 				// debugger
 				return this.state.posts.map(postData => {
-					return (<SmallPost postData={postData} user={this.props.user} open={false} match={this.props.match}/>)
+					return (<SmallPost postData={postData} user={this.props.user} open={false}/>)
 				})
 			}
 		}

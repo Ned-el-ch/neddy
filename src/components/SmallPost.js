@@ -187,9 +187,13 @@ export default class SmallPost extends Component {
 		// debugger
 			if (prevProps !== this.props && !this.props.match) {
 				// debugger
-				this.setState({open: false})
+				this.setState({open: false, post: this.buildPost(this.props.postData)})
+				
 				// window.scrollTo(0, 0)
 			}
+			// if (this.state.post === this.buildPost(this.props.postData)) {
+			// 	debugger
+			// }
 	}
 
 	setFavorites = (favoritesArray) => {
