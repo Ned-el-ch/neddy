@@ -11,21 +11,23 @@ export default class Programming extends Component {
 			loop: false,
 			autoplay: true, 
 			animationData: animationData,
-			rendererSettings: {
-			preserveAspectRatio: 'xMidYMid slice'
-			}
+			// rendererSettings: {
+			// preserveAspectRatio: 'xMidYMid slice'
+			// }
 		};
 
 		return(
 			<div>
 				{/* <div className="neddy-heading">Neddy</div> */}
 				<div className="neddy-subheading">Blogging. <span className="simplified">Simplified.</span></div>
-				<Row className="align-self-start justify-content-center">
+				{/* <Row className="align-self-start justify-content-center"> */}
+				<div className="programming-lottie">
 					<Lottie options={defaultOptions}
-							height={600}
-							width={600}
+							// height={400}
+							// width={400}
 					/>
-				</Row>
+				</div>
+				{/* </Row> */}
 			</div>
 		)
 	}

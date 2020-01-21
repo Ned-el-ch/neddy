@@ -206,3 +206,8 @@ svg {
 .simplified {
 	font-weight: 400;
 }
+
+.programming-lottie * {
+	margin: 0!important;
+	text-align: center;
+}
