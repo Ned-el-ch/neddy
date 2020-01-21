@@ -6,12 +6,13 @@ import Programming from '../lotties/Programming';
 export default class CategoryPage extends Component {
 	state = {
 		posts: null,
-		open: false
+		open: false,
+		followers: []
 	}
 	getPosts = () => {
 		fetch(`https://agile-journey-79048.herokuapp.com/category/${this.props.match.params.title}`)
 		.then(res => res.json())
-		.then(posts => this.setState({posts: posts, open: false}))
+		.then(res => this.setState({posts: res.posts, open: false, followers: res.users}))
 		.catch(console.log)
 	}
 
