@@ -16,7 +16,7 @@ export default class Check extends Component {
 		};
 
 		return(
-			<div className="lottie lottie-check" onClick={this.props.toggleLike}>
+			<div className={this.props.origin ? "lottie lottie-check-category" : "lottie lottie-check"} onClick={this.props.toggleLike}>
 				<Lottie
 					options={defaultOptions}
 					height={85}

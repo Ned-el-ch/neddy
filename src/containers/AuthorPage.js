@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SmallPost from '../components/SmallPost';
 import Loading from '../lotties/Loading';
-import FollowButton from "../components/FollowButton"
+import FollowButton from "../components/FollowUser"
 export default class AuthorPage extends Component {
 	state = {
 		posts: null,
@@ -108,7 +108,6 @@ export default class AuthorPage extends Component {
 				this.setState({isFollowed: res.response})
 			}
 		})
-		
 	}
 	
 	render() {
@@ -119,8 +118,6 @@ export default class AuthorPage extends Component {
 					{this.props.user && this.props.match.params.username !== this.props.user.username
 					?
 					<FollowButton
-						follower={this.props.user.username}
-						followed={this.props.match.params.username}
 						isFollowed={this.state.isFollowed}
 						toggle={this.toggleFollow}
 					/>
