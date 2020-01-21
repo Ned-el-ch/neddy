@@ -33,17 +33,17 @@
 	font-size: 1.2rem;
 	font-weight: 400;
 	margin-bottom: 0;
-	padding-left: 20px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding: 10px 10px 10px 30px;
+
+	padding: 10px 10px 5px 30px;
 }
 span.draftJsHashtagPlugin__hashtag__1wMVC span span {
 
 	color: rgb(45, 118, 253);
 
 }
-
+.DraftEditor-root div div div {
+	margin-bottom: 0.35rem;
+}
 .Draftail-Editor .public-DraftStyleDefault-pre {
 	background-color: #3c3c57;
 	border-top: #71659b solid 17px;

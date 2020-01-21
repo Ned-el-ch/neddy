@@ -106,7 +106,7 @@ button.read-more-button {
 	font-weight: 350;
 	/* font-style: italic; */
 	/* text-shadow: 2px 0 0 white; */
-	background: linear-gradient(0deg, rgba(255, 255, 255, 0.975) 0%, rgba(255, 255, 255, 0.8) 33%, rgba(255, 255, 255, 0.5) 66%,rgba(255, 255, 255, 0.35) 80%, transparent 100%);
+	background: linear-gradient(0deg, rgba(255, 255, 255, 0.975) 0%, rgba(255, 255, 255, 0.85) 33%, rgba(255, 255, 255, 0.5) 66%,rgba(255, 255, 255, 0.35) 80%, transparent 100%);
 	color: rgba(129, 251, 255);
 	padding-top: 130px;
 }
@@ -227,7 +227,7 @@ a {
 
 .lottie-check {
 	top: 48px;
-	left: -23px;
+	left: -7px;
 }
 
 .follow-text-true {
@@ -273,4 +273,14 @@ div[class*="follow-text-"] {
 
 .follow-button {
 	width: 100px
+}
+
+.author-title-container {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+form {
+	/* width: 30vw; */
+	/* text-align: center; */
 }

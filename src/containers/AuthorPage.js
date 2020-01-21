@@ -113,21 +113,23 @@ export default class AuthorPage extends Component {
 	render() {
 		return (
 			<div className="author-page">
-				<span className="author-title">{this.props.match.params.username}'s page</span>
-				{this.props.user && this.props.match.params.username !== this.props.user.username
-				?
-				<FollowButton
-					follower={this.props.user.username}
-					followed={this.props.match.params.username}
-					isFollowed={this.state.isFollowed}
-					toggle={this.toggleFollow}
-				/>
-				:
-				null
-				}
-				<div className="follow-data">
-					<span className="followers">{this.state.followers.length} followers</span>
-					<span className="following">{this.state.following.length} following</span>
+				<div className="author-title-container">
+					<span className="author-title">{this.props.match.params.username}'s page</span>
+					{this.props.user && this.props.match.params.username !== this.props.user.username
+					?
+					<FollowButton
+						follower={this.props.user.username}
+						followed={this.props.match.params.username}
+						isFollowed={this.state.isFollowed}
+						toggle={this.toggleFollow}
+					/>
+					:
+					null
+					}
+					<div className="follow-data">
+						<span className="followers">{this.state.followers.length} followers</span>
+						<span className="following">{this.state.following.length} following</span>
+					</div>
 				</div>
 				{this.renderPosts()}
 			</div>

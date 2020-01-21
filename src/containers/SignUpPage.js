@@ -56,8 +56,8 @@ export default class SignUpPage extends Component{
 	render () {
 
 		return (
-			<Row className="align-self-start justify-content-center">
-			<Col  xs={10} sm={8} md={8} lg={7} xl={8} className="col-xxl">
+			// <Row className="align-self-start justify-content-center">
+			// <Col  xs={10} sm={8} md={8} lg={7} xl={8} className="col-xxl">
 				<Form onSubmit={this.handleSubmit} >
 					<Form.Row>
 						<Form.Group as={Col} controlId="validationCustomName">
@@ -69,21 +69,6 @@ export default class SignUpPage extends Component{
 							<Form.Control.Feedback>Looks good!</Form.Control.Feedback>
 						</Form.Group>
 					</Form.Row>
-					{/* <Form.Row>
-						<Form.Group as={Col} controlId="validationCustomImageUrl">
-							<InputGroup>
-								<InputGroup.Prepend>
-									<InputGroup.Text id="inputGroupPrepend">👤</InputGroup.Text>
-								</InputGroup.Prepend>
-								<Form.Control
-									required
-									type="text"
-									placeholder="Paste a link to an image pls"
-								/>
-							</InputGroup>
-							<Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-						</Form.Group>
-					</Form.Row> */}
 					<Form.Row>
 						<Form.Group as={Col} controlId="validationCustomUsername">
 							<InputGroup>
@@ -146,7 +131,7 @@ export default class SignUpPage extends Component{
 						</Form.Group>
 					</Form.Row>
 				</Form>
-			</Col></Row>
+			// </Col></Row>
 		);
 	}
 }

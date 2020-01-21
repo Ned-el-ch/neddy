@@ -57,8 +57,8 @@ export default class LoginPage extends Component{
 	render () {
 
 		return (
-			<Row className="align-self-start justify-content-center">
-			<Col  xs={10} sm={8} md={8} lg={7} xl={8} className="col-xxl">
+			// <Row className="align-self-start justify-content-center">
+				// <Col  xs={10} sm={8} md={8} lg={7} xl={8} className="col-xxl">
 				<Form onSubmit={this.handleSubmit} >
 					<Form.Row>
 						<Form.Group as={Col} controlId="validationCustomUsername">
@@ -98,15 +98,15 @@ export default class LoginPage extends Component{
 							<Button type="submit">oof owie loggy loggy</Button>
 						</Form.Group>
 					</Form.Row>
+					{this.state.wrongLogin
+					?
+					<Alert variant="danger" onClose={() => this.setState({wrongLogin: false})} dismissible>
+						<Alert.Heading>Oh snap! Wrong deets!</Alert.Heading>
+					</Alert>
+					: null}
 				</Form>
-			</Col>
-			{this.state.wrongLogin
-			?
-			<Alert variant="danger" onClose={() => this.setState({wrongLogin: false})} dismissible>
-				<Alert.Heading>Oh snap! Wrong deets!</Alert.Heading>
-			</Alert>
-			: null}
-			</Row>
+			//	{/* </Col> */}
+			//{/* </Row> */}
 		);
 
 	}
