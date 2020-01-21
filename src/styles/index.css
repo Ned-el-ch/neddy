@@ -105,9 +105,9 @@ button.read-more-button {
 	line-height: 1.2;
 	font-weight: 350;
 	/* font-style: italic; */
-	text-shadow: 2px 0 0 white;
+	/* text-shadow: 2px 0 0 white; */
 	background: linear-gradient(0deg, rgba(255, 255, 255, 0.975) 0%, rgba(255, 255, 255, 0.8) 33%, rgba(255, 255, 255, 0.5) 66%,rgba(255, 255, 255, 0.35) 80%, transparent 100%);
-	color: rgba(129, 251, 255, 0.603);
+	color: rgba(129, 251, 255);
 	padding-top: 130px;
 }
 
@@ -124,7 +124,7 @@ button.show-less-button {
 	line-height: 1.2;
 	font-weight: 300;
 	font-style: italic;
-	text-shadow: 2px 0 0 white;
+	/* text-shadow: 2px 0 0 white; */
 	/* background: linear-gradient(0deg, rgba(255, 255, 255) 0%, rgba(255, 255, 255, 0.85) 33%, rgba(255, 255, 255, 0.55) 66%,transparent 100%); */
 	background: none;
 	color: rgba(99, 138, 139, 0.35);
@@ -139,7 +139,7 @@ button.show-less-button {
 } */
 
 .underlined {
-	background-image: linear-gradient(to bottom, rgba(43, 248, 255, 0.603) 30%, transparent 30%, transparent);
+	background-image: linear-gradient(to bottom, rgba(43, 248, 255, 0.6) 30%, transparent 30%, transparent);
 	background-position: 0 1.03em;
 	background-repeat: repeat-x;
 	background-size: 2px 6px;
@@ -171,6 +171,14 @@ input#postTitle {
 	transition: height 0.2s ease;
 }
 
+div.collapse:not(.show) > div.code-block-container:before {
+	display: none!important;
+}
+
+div.collapse:not(.show)  > div.code-block-container > button.copy-code-block {
+	display: none!important;
+}
+
 .collapse:not(.show) {
 	display: block;
 }
@@ -181,6 +189,7 @@ svg {
 
 .new-post {
 	margin-bottom: 25px;
+	margin-top: 15px;
 }
 
 .collapsing {
@@ -210,4 +219,58 @@ svg {
 .programming-lottie * {
 	margin: 0!important;
 	text-align: center;
+}
+
+a {
+	/* color: #0099ff; */
+}
+
+.lottie-check {
+	top: 48px;
+	left: -23px;
+}
+
+.follow-text-true {
+	padding-left: 30px;
+	border: 9px solid rgb(226, 255, 226);
+	background-color: rgb(226, 255, 226);
+	user-select: none;
+	cursor: pointer;
+	font-weight: 300;
+	font-size: 1.25rem;
+	border-radius: 13px;
+	/* transition: background-color 0.3s ease; */
+	transition: border 0.3s ease;
+}
+
+.follow-text-false {
+	padding-left: 30px;
+	border: 9px solid white;
+	background-color: white;
+	user-select: none;
+	cursor: pointer;
+	font-weight: 300;
+	font-size: 1.25rem;
+	border-radius: 13px;
+	transition: border 0.3s ease;
+}
+div[class*="follow-text-"] {
+	transition: background-color 0.3s ease;
+}
+.author-title {
+	display: block;
+	font-size: 3.2rem;
+	font-weight: 200;
+}
+
+.follow-data {
+	margin-top: 15px;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	color: rgb(167, 167, 167);
+}
+
+.follow-button {
+	width: 100px
 }
