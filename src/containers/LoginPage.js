@@ -5,11 +5,15 @@ import Form from "react-bootstrap/Form"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import Alert from "react-bootstrap/Alert"
 import InputGroup from "react-bootstrap/InputGroup"
 import "../styles/login.css";
 
 export default class LoginPage extends Component{
 
+	state = {
+		wrongLogin: false
+	}
 	handleSubmit = (event) => {
 		event.preventDefault();
 		// debugger;
@@ -22,7 +26,6 @@ export default class LoginPage extends Component{
 			event.stopPropagation();
 			const username = event.target.elements.validationCustomUsername.value;
 			const password = event.target.elements.validationCustomPassword.value;
-			// FETCH TO THE API TO TRY TO LOGIN
 
 			fetch("https://agile-journey-79048.herokuapp.com/api/v1/login", {
 				method: "POST",
@@ -37,19 +40,18 @@ export default class LoginPage extends Component{
 					}
 				})
 			})
-				.then(res => res.json())
-				.then(data => {
+			.then(res => res.json())
+			.then(data => {
+				if (data.user) {
 					localStorage.setItem("token", data.jwt);
-					return data.user;
-				})
-				.then(handleLogin)
-				.then(history.push('/'))
-				.catch(console.log)
-				
-				// .then(console.log)
-
+					handleLogin(data.user)
+					history.push('/')
+				} else {
+					// console.log(data)
+					this.setState({wrongLogin: true})
+				}
+			})
 		}
-
 	}
 
 	render () {
@@ -98,6 +100,12 @@ export default class LoginPage extends Component{
 					</Form.Row>
 				</Form>
 			</Col>
+			{this.state.wrongLogin
+			?
+			<Alert variant="danger" onClose={() => this.setState({wrongLogin: false})} dismissible>
+				<Alert.Heading>Oh snap! Wrong deets!</Alert.Heading>
+			</Alert>
+			: null}
 			</Row>
 		);
 
