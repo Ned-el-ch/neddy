@@ -15,7 +15,7 @@ export default class AuthorPage extends Component {
 		.then(res => res.json())
 		.then(res => {
 			this.setState({posts: res.posts, followers: res.passive_relationships, following: res.active_relationships})
-			console.log(res.posts)
+			// console.log(res.posts)
 			return
 		})
 		.then(this.setFollowing)
@@ -29,13 +29,14 @@ export default class AuthorPage extends Component {
 	}
 
 	setFollowing = () => {
-		let userIsFollowing = this.state.followers.find(follower => follower.follower_user.username === this.props.user.username)
-		if (userIsFollowing) {
-			this.setState({isFollowed: true})
-		} else {
-			this.setState({isFollowed: false})
+		if (this.props.user) {
+			let userIsFollowing = this.state.followers.find(follower => follower.follower_user.username === this.props.user.username)
+			if (userIsFollowing) {
+				this.setState({isFollowed: true})
+			} else {
+				this.setState({isFollowed: false})
+			}
 		}
-		return
 	}
 
 	// setFollowing = (followingArray) => {
