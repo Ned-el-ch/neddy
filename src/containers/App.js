@@ -18,7 +18,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import CategoryPage from './CategoryPage';
 import ErrorPage from '../lotties/ErrorPage';
 import DiscoverPage from './DiscoverPage';
-
+import randKey from "../concerns/randomKey"
 // ADD A MY PROFILE THING PAGE
 // MAX TITLE SIZE
 // CLEAR THE EDITOR BUTTON
@@ -30,7 +30,8 @@ export default class App extends Component {
 		posts: [],
 		categories: [],
 		feed: [],
-		draft: null
+		draft: null,
+		randomKey: "fadag3fd"
 	}
 
 	handleLogin = (user) => {
@@ -182,6 +183,13 @@ export default class App extends Component {
 		}
 	}
 
+	// clearEditor = () => {
+	// 	let clear = confirm("Are you sure you want to clear everything?")
+	// 	if (clear) {
+	// 		this.setState({randomKey: randKey(), draft: null})
+	// 	}
+	// }
+
 	componentDidMount() {
 		this.checkIfLoggedIn()
 		this.getPosts()
@@ -192,7 +200,9 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div className='app'><Container fluid><Router>
+			<div className='app'><Container fluid>
+				{/* <button onClick={this.clearEditor}>oof</button> */}
+				<Router>
 				{/* <button onClick={this.getFeed}>OOF</button> */}
 				<Navbar bg="light" variant="light" fixed>
 					<Nav fluid collapseOnSelect>
@@ -243,7 +253,7 @@ export default class App extends Component {
 							{this.state.user  ?
 							<div>
 								<Route exact path='/editor' render={
-									(routerProps) => < BlogEditor {...routerProps} userId={this.state.user.id} user={this.state.user} categories={this.state.categories} draft={this.state.draft}/>
+									(routerProps) => < BlogEditor {...routerProps} key={this.state.randomKey} userId={this.state.user.id} user={this.state.user} categories={this.state.categories} draft={this.state.draft}/>
 									}
 								/>
 							</div>

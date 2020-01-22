@@ -22,8 +22,7 @@ export default class BlogEditor extends Component {
 	state = {
 		readyToBeSubmitted: false,
 		categories: [],
-		title: "",
-		draft: null
+		title: ""
 	}
 
 	onSave = (content) => {
@@ -170,23 +169,23 @@ const inlineStyles = [
 			lineHeight: "1"} },
 ]
 
-const entityTypes = [
-	{type: ENTITY_TYPE.LINK},
-	{type: ENTITY_TYPE.IMAGE},
-	{type: ENTITY_TYPE.HORIZONTAL_RULE},
-]
+// const entityTypes = [
+// 	{type: ENTITY_TYPE.LINK},
+// 	{type: ENTITY_TYPE.IMAGE},
+// 	{type: ENTITY_TYPE.HORIZONTAL_RULE},
+// ]
 
-const decorators = [
-	{
-		strategy: (block, callback) => {
-		  const text = block.getText();
-		  let matches;
-		  while ((matches = /#[\w]+/g.exec(text)) !== null) {
-			 callback(matches.index, matches.index + matches[0].length);
-		  }
-		},
-		component: ({ children }) => (
-		  <span style={{ color: "#007d7e" }}>{children}</span>
-		),
-	 },
-]
+// const decorators = [
+// 	{
+// 		strategy: (block, callback) => {
+// 		  const text = block.getText();
+// 		  let matches;
+// 		  while ((matches = /#[\w]+/g.exec(text)) !== null) {
+// 			 callback(matches.index, matches.index + matches[0].length);
+// 		  }
+// 		},
+// 		component: ({ children }) => (
+// 		  <span style={{ color: "#007d7e" }}>{children}</span>
+// 		),
+// 	 },
+// ]
