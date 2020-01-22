@@ -96,11 +96,13 @@ export default class BlogEditor extends Component {
 				</Form>
 				<DraftailEditor
 					ref="draftRef"
-					rawContentState={initialContent || null}
+					rawContentState={null}
+					// rawContentState={initialContent || null}
 					// rawContentState={initial || null}
 					onSave={this.onSave}
 					blockTypes={blockTypes}
 					inlineStyles={inlineStyles}
+					placeholder="Write something here, make sure to use the block and inline stylings above"
 					// entityTypes={entityTypes}
 					// plugins={[hashtagPlugin]}
 					decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}
@@ -110,7 +112,7 @@ export default class BlogEditor extends Component {
 					options={this.props.categories}
 					className="categories-search"
 					onChange={(opt, meta) => this.checkIfReadyForSubmission(opt, meta)}
-					placeholder="Select up to 5 categories..."
+					placeholder="Select between 3 and 5 categories..."
 					// closeOnSelect={this.state.readyToBeSubmitted}
 					closeMenuOnSelect={this.state.categories.length <=3 ? false : true}
 					pageSize={5}

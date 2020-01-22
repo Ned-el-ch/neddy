@@ -18,6 +18,18 @@ import { LinkContainer } from "react-router-bootstrap";
 import CategoryPage from './CategoryPage';
 import ErrorPage from '../lotties/ErrorPage';
 import DiscoverPage from './DiscoverPage';
+
+// ADD A MY PROFILE THING PAGE
+// MAX TITLE SIZE
+// CLEAR THE EDITOR BUTTON
+
+
+
+
+
+
+
+
 export default class App extends Component {
 
 	state = {
