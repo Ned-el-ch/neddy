@@ -112,6 +112,10 @@
 	font-size: 0.9rem;
 }
 
+button.comment-submit:hover {
+	background-color: rgb(86, 198, 218);
+
+}
 button.comment-submit {
 	border-radius: 0;
 	outline: none;

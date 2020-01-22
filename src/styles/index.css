@@ -55,7 +55,7 @@ div.title {
 	width: 100%;
 	font-size: 2.1rem;
 	line-height: 1.075;
-	font-weight: 250;
+	font-weight: 350;
 	background: white;
 	border-radius: 13px 13px 0 0;
 	padding-left: 15px;
@@ -103,6 +103,7 @@ div.title.offset-down {
 	user-select: none;
 	justify-content: space-between;
 	width: 100%;
+	padding-top: 20px;
 }
 
 div.post-date {
@@ -111,33 +112,8 @@ div.post-date {
 	color: rgb(158, 158, 168);
 	margin-top: 10px;
 	float: left;
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-/* span.post-date-number {
-
-} */
-
-
-button.read-more-button * {
-	display: inline-block;
-	transform: scale(20,1);
-}
-
-button.read-more-button:hover .triangle {
-	display: inline-block;
-	transform: scale(20,2);
-	text-shadow: 0 2px 2px rgba(0, 0, 0, 0.075);
-}
-
-button.read-more-button *{
-	transition: transform 0.2s ease;
-	transition: text-shadow 0.2s ease;
-}
-
-.triangle {
-
+	/* margin-left: 10px; */
+	/* margin-right: 10px; */
 }
 
 button.read-more-button {
@@ -156,8 +132,8 @@ button.read-more-button {
 	/* text-shadow: 2px 0 0 white; */
 	background: linear-gradient(
 		0deg,
-		rgba(255, 255, 255) 0%,
-		rgba(255, 255, 255) 20%,
+		rgb(255, 255, 255) 0%,
+		rgb(255, 255, 255) 20%,
 		rgb(255, 255, 255) 40%,
 		rgb(255, 255, 255, 0.8) 60%,
 		rgb(255, 255, 255, 0.7) 80%,
@@ -165,6 +141,36 @@ button.read-more-button {
 		);
 	color: rgba(129, 251, 255);
 	padding-top: 130px;
+}
+
+button.read-more-button:hover {
+	background: linear-gradient(
+		0deg,
+		rgba(255, 255, 255, 0.95) 0%,
+		rgba(255, 255, 255, 0.85) 20%,
+		rgba(255, 255, 255, 0.75) 40%,
+		rgba(255, 255, 255, 0.65) 60%,
+		rgba(255, 255, 255, 0.55) 80%,
+		transparent 100%
+		);
+}
+
+button.read-more-button * {
+	display: inline-block;
+	transform: scale(20,1.0);
+}
+
+button.read-more-button:hover .triangle {
+	display: inline-block;
+	transform: scale(20,2.0);
+	color: rgb(86, 198, 218);
+	/* text-shadow: 0 2px 2px rgba(0, 0, 0, 0.075); */
+}
+
+button.read-more-button * {
+	transition: transform 0.2s linear;
+	transition: text-shadow 0.2s linear;
+	transition: color 0.1s linear;
 }
 
 button.show-less-button {
@@ -278,11 +284,11 @@ svg {
 }
 
 a {
-	color: rgb(92, 214, 236)
+	color: rgb(92, 214, 236);
 }
 
 a:hover {
-	color: rgb(86, 198, 218)
+	color: rgb(86, 198, 218);
 }
 
 .lottie-check {
