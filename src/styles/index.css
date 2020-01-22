@@ -58,11 +58,26 @@ div.title {
 	font-weight: 200;
 	background: white;
 	border-radius: 13px 13px 0 0;
-	padding: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 	padding-bottom: 0;
+	padding-top: 50px;
 	overflow-wrap: break-word;
 	text-decoration: underline 3px;
 	transition: padding-top 0.2s ease;
+}
+
+div.title.offset-down {
+	padding-top: 50px;
+	transition: padding-top 0.2s ease;
+}
+
+.post-title-categories {
+	padding-left: 15px;
+	margin-top: 10px;
+	position: absolute;
+	font-weight: 300;
+	color: rgb(158, 158, 168);
 }
 
 .post-heading-details {
@@ -86,21 +101,33 @@ div.post-date {
 
 } */
 
-div.title.offset-down {
-	padding-top: 50px;
-	transition: padding-top 0.2s ease;
-}
 
-button.read-more-button span {
+button.read-more-button * {
 	display: inline-block;
 	transform: scale(20,1);
+}
+
+button.read-more-button:hover .triangle {
+	display: inline-block;
+	transform: scale(20,2);
+	text-shadow: 0 2px 2px rgba(0, 0, 0, 0.075);
+}
+
+button.read-more-button *{
+	transition: transform 0.2s ease;
+	transition: text-shadow 0.2s ease;
+}
+
+.triangle {
+
 }
 
 button.read-more-button {
 	position: absolute;
 	width: 100%;
-	height: 250px;
-	margin-top: -266px;
+	height: 200px;
+	/* margin-top: -216px; */
+	margin-top: -216px;
 	border-radius: 0 0 13px 13px;
 	outline: none;
 	border: none;
@@ -113,13 +140,13 @@ button.read-more-button {
 		0deg,
 		rgba(255, 255, 255) 0%,
 		rgba(255, 255, 255) 20%,
-		rgb(255, 255, 255, 0.95) 40%,
-		rgb(255, 255, 255, 0.9) 60%,
-		rgb(255, 255, 255, 0.8) 80%,
+		rgb(255, 255, 255) 40%,
+		rgb(255, 255, 255, 0.8) 60%,
+		rgb(255, 255, 255, 0.7) 80%,
 		transparent 100%
 		);
 	color: rgba(129, 251, 255);
-	padding-top: 200px;
+	padding-top: 130px;
 }
 
 button.show-less-button {
@@ -178,7 +205,7 @@ input#postTitle {
 .new-post div.collapse:not(.show) {
 	position: relative;
 	overflow: hidden;
-	height: 250px;
+	height: 200px;
 	transition: height 0.2s ease;
 }
 
@@ -204,7 +231,7 @@ svg {
 }
 
 .collapsing {
-	height: 250px;
+	height: 200px;
 }
 
 /* .not-found-page-text {

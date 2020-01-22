@@ -61,7 +61,8 @@ export default class SmallPost extends Component {
 		date: "",
 		likes: [],
 		favorites: [],
-		comments: null
+		comments: null,
+		categories: []
 	}
 
 	fetchPost = () => {
@@ -93,6 +94,7 @@ export default class SmallPost extends Component {
 		const data = JSON.parse(postData.content)
 		// debugger
 		this.setHeading(postData.title)
+		this.setCategories(postData.categories)
 		this.setDate(postData.created_at)
 		if (!data) { return (<span>I am empty inside</span>) }
 		const dataWithInlineStyling = parseInlineStyling(data)
@@ -108,6 +110,16 @@ export default class SmallPost extends Component {
 
 	setHeading = (heading) => {
 		this.setState({heading})
+	}
+
+	setCategories = (categories) => {
+		this.setState({categories})
+	}
+
+	showCategories = () => {
+		return this.state.categories.map(category => {
+			return category.title
+		}).join(", ")
 	}
 
 	toggleFavorite = () => {
@@ -272,7 +284,7 @@ export default class SmallPost extends Component {
 							><span className="underlined">Show Less</span>
 						</button>
 						:
-						null
+						<span className="post-title-categories">{this.showCategories()}</span>
 					}
 					<div className={this.state.open ? "title offset-down" : "title"}>{this.state.heading}
 						<div className="post-heading-details">
@@ -325,7 +337,7 @@ export default class SmallPost extends Component {
 						aria-controls="post"
 						aria-expanded={this.state.open}
 						className="read-more-button"
-						><span>▾</span>
+						><span className="triangle">▾</span>
 					</button>
 					}
 				</div>
