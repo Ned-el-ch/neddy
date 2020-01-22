@@ -22,13 +22,15 @@ export default class App extends Component {
 	state = {
 		user: null,
 		posts: [],
-		categories: []
+		categories: [],
+		feed: []
 	}
 
 	handleLogin = (user) => {
 		this.setState(
 			{user}
 		)
+		this.getFeed()
 	}
 
 	checkIfLoggedIn = () => {
@@ -52,7 +54,41 @@ export default class App extends Component {
 		.then(res => res.json())
 		.then(posts => this.setState({posts: posts}))
 		.catch(console.log)
+	}
 
+	getFeed = () => {
+		fetch("https://agile-journey-79048.herokuapp.com/api/v1/feed",{
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+				Authorization: `Bearer ${localStorage["token"]}`
+		}
+		})
+		.then(res => res.json())
+		.then(this.parseFeed)
+		.then(feed => this.setState({feed}))
+		.catch(console.log)
+	}
+
+	parseFeed = (data) => {
+		// debugger
+		let feed = []
+		let ids = []
+		data.categories.map(category => {
+			feed = [...feed, ...category.posts]
+		})
+		// debugger
+		data.active_relationships.map(ar => {
+			feed = [...feed, ...ar.followed_user.posts]
+		})
+		// debugger
+		return feed.filter(post => {
+			if (!ids.includes(post.id)) {
+				ids.push(post.id)
+				return post
+			}
+		})
+		// debugger
 	}
 
 	getCategories = () => {
@@ -73,11 +109,13 @@ export default class App extends Component {
 		this.checkIfLoggedIn()
 		this.getPosts()
 		this.getCategories()
+		this.getFeed()
 	}
 
 	logout = (event) => {
 		event.preventDefault()
-		this.setState({user: {}})
+		this.setState({user: null, feed: []})
+		localStorage.token = ""
 	}
 
 	linksToRender = () => {
@@ -133,7 +171,7 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className='app'><Container fluid><Router>
-				
+				{/* <button onClick={this.getFeed}>OOF</button> */}
 				<Navbar bg="light" variant="light" fixed>
 					<Nav fluid collapseOnSelect>
 						<LinkContainer to="/">
@@ -162,13 +200,13 @@ export default class App extends Component {
 							<Route exact path="/category/:title" render={routerProps => {
 								return <CategoryPage {...routerProps} user={this.state.user}/>
 							}} />
-							<Route exact path='/posts'	render={
+							{/* <Route exact path='/posts'	render={
 									(routerProps) => < Posts {...routerProps} posts={this.state.posts} user={this.state.user}
 								/>
 								}
-							/>
+							/> */}
 							<Route exact path='/' render={
-								(routerProps) => < HomeFeed {...routerProps} user={this.state.user}/>
+								(routerProps) => < HomeFeed {...routerProps} user={this.state.user} feed={this.state.feed}/>
 								}
 							/>
 
