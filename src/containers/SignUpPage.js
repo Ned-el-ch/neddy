@@ -41,9 +41,12 @@ export default class SignUpPage extends Component{
 					}
 				})
 			})
-
 			.then(res => res.json())
-			.then(data => data.user)
+			.then(data => {
+				// debugger
+				localStorage.setItem("token", data.jwt);
+				return data.user
+			})
 			.then(handleLogin)
 			.then(history.push('/'))
 			.catch(console.log)
