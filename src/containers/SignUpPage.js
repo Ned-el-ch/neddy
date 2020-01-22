@@ -121,16 +121,16 @@ export default class SignUpPage extends Component{
 							</InputGroup>
 						</Form.Group>
 					</Form.Row>
-					<Form.Group>
+					{/* <Form.Group>
 						<Form.Check
 							required
 							label="Surrender my soul and morals"
 							feedback="You must surrender your soul and morals."
 						/>
-					</Form.Group>
+					</Form.Group> */}
 					<Form.Row>
 						<Form.Group >
-							<Button type="submit">oof owie signy signy</Button>
+							<Button type="submit">Sign me up!</Button>
 						</Form.Group>
 					</Form.Row>
 				</Form>

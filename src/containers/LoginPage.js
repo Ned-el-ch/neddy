@@ -95,7 +95,7 @@ export default class LoginPage extends Component{
 					</Form.Row>
 					<Form.Row>
 						<Form.Group >
-							<Button type="submit">oof owie loggy loggy</Button>
+							<Button type="submit">Log me in!</Button>
 						</Form.Group>
 					</Form.Row>
 					{this.state.wrongLogin

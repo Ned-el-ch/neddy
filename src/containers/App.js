@@ -27,9 +27,6 @@ import DiscoverPage from './DiscoverPage';
 
 
 
-
-
-
 export default class App extends Component {
 
 	state = {
@@ -57,7 +54,11 @@ export default class App extends Component {
 			}
 			})
 			.then(res => res.json())
-			.then(this.handleLogin)
+			.then(res => {
+				if (!res.message) {
+					this.handleLogin(res)
+				}
+			})
 			.catch(console.log)
 		}
 	}
@@ -136,7 +137,7 @@ export default class App extends Component {
 			return(
 				<Fragment>
 					<LinkContainer to="/editor">
-						<NavLink><NavItem>Editor</NavItem></NavLink>
+						<NavLink><NavItem>New Post</NavItem></NavLink>
 					</LinkContainer>
 					<button onClick={this.logout} className='logout'>Log Out</button>
 				</Fragment>
@@ -189,7 +190,7 @@ export default class App extends Component {
 					<Nav fluid collapseOnSelect>
 						<LinkContainer to="/">
 							<NavLink><Navbar.Brand>
-							<NavItem>Home</NavItem>
+							<NavItem>{this.state.user ? "My Feed" : "Home"}</NavItem>
 							</Navbar.Brand></NavLink>
 						</LinkContainer>
 						<Navbar.Collapse>

@@ -2,7 +2,7 @@
 	background: #fff;
 	border-radius: 0 0 13px 13px;
 	padding: 15px;
-	padding-top: 10px;
+	padding-top: 35px;
 	margin-bottom: 1rem;
 	color: #333;
 	box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15);
@@ -64,7 +64,7 @@
 .comments {
 	/* padding: 6px; */
 	/* border: solid 3px rgb(0, 38, 252); */
-	max-height: 200px;
+	max-height: 175px;
 	overflow: scroll;
 	border-radius: 7px;
 
@@ -115,8 +115,13 @@
 button.comment-submit {
 	border-radius: 0;
 	outline: none;
-	background-color: rgb(92, 92, 236);
+	background-color: rgb(92, 214, 236);
 	border: none;
+	margin: 0;
+	font-weight: 600;
+	font-size: 1rem;
+	/* text-transform: uppercase; */
+	letter-spacing: 0.05rem;
 }
 
 .comment.form-group {
@@ -141,9 +146,6 @@ form.comment {
 	margin: 0
 }
 
-button.comment-submit {
-	margin: 0;
-}
 
 .post-action {
 	text-align: center;

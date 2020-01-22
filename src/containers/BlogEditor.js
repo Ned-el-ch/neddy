@@ -102,7 +102,7 @@ export default class BlogEditor extends Component {
 					onSave={this.onSave}
 					blockTypes={blockTypes}
 					inlineStyles={inlineStyles}
-					placeholder="Write something here, make sure to use the block and inline stylings above"
+					placeholder="Just start..."
 					// entityTypes={entityTypes}
 					// plugins={[hashtagPlugin]}
 					decorators={[new PrismDecorator({ defaultLanguage: "javascript" })]}

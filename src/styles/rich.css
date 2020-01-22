@@ -114,16 +114,6 @@ pre.public-DraftStyleDefault-pre code::before {
 	border-radius: 13px;
 }
 
-.Draftail-ToolbarGroup + .Draftail-ToolbarGroup::before {
-	display: none!important;
-}
-
-.Draftail-Toolbar {
-	border-radius: none!important;
-	border-bottom: none!important;
-	background-color: rgb(194, 253, 253)!important;
-}
-
 .Draftail-Editor {
 	border: none!important;
 	border-radius: 13px!important;
@@ -143,4 +133,52 @@ pre.public-DraftStyleDefault-pre code::before {
 }
 .Draftail-block--header-four {
 	font-weight: 300;
+}
+
+.Draftail-Toolbar {
+	border-radius: none!important;
+	border-bottom: none!important;
+	background-color: rgb(194, 253, 253)!important;
+}
+
+.Draftail-ToolbarGroup + .Draftail-ToolbarGroup::before {
+	display: none!important;
+}
+
+.Draftail-ToolbarGroup button {
+	border: none;
+	font-weight: 350;
+}
+
+.Draftail-ToolbarGroup {
+	width: 100%;
+	margin-bottom: 10px;
+	/* border-bottom: rgb(246, 248, 250) 10px solid; */
+}
+
+.Draftail-ToolbarButton--active {
+	border-radius: 10px;
+	border: none;
+	background: rgba(0, 120, 124, 0.26);
+}
+
+
+/* .Draftail-Toolbar:first-child:before {
+	content: "Inline styling";
+} */
+
+.public-DraftEditorPlaceholder-inner {
+	font-size: 1.2rem;
+	font-weight: 350;
+	color: rgba(0, 0, 0, 0.301)!important;
+}
+
+.categories-search, .css-yk16xz-control {
+	border: none!important;
+	box-shadow: 0 3px 6px -5px rgba(0, 0, 0, 0.15);
+}
+
+.css-1pahdxg-control {
+	border: none!important;
+	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25)!important;
 }

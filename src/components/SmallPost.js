@@ -238,7 +238,7 @@ export default class SmallPost extends Component {
 		let month = dateArray[1]
 		// month = months[parseInt(dateArray[1]) -1].toUpperCase()
 		let day = dateArray[2].substring(0, 2)
-		this.setState({date: `${day}/${month}/${year}`})
+		this.setState({date: `${months[month - 1]} ${day}, ${year}`})
 	}
 
 	renderPost = () => {
@@ -277,13 +277,13 @@ export default class SmallPost extends Component {
 					<div className={this.state.open ? "title offset-down" : "title"}>{this.state.heading}
 						<div className="post-heading-details">
 							<div className="post-date">
+								<span className="post-date-number">{this.state.favorites.length}</span> favorites
+							</div>
+							<div className="post-date">
+							<span className="post-date-number">{this.state.likes.length}</span> likes
+							</div>
+							<div className="post-date">
 								{this.state.date}
-							</div>
-							<div className="post-date">
-								{this.state.likes.length} likes
-							</div>
-							<div className="post-date">
-								{this.state.favorites.length} favorites
 							</div>
 						</div>
 					</div>
