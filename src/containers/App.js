@@ -206,7 +206,13 @@ export default class App extends Component {
 								}
 							/> */}
 							<Route exact path='/' render={
-								(routerProps) => < HomeFeed {...routerProps} user={this.state.user} feed={this.state.feed}/>
+								(routerProps) => {
+									return <HomeFeed
+										{...routerProps}
+										user={this.state.user}
+										feed={this.state.feed}
+										getFeed={this.getFeed}
+									/>}
 								}
 							/>
 
