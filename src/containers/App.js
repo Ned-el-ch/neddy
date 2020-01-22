@@ -31,6 +31,22 @@ export default class App extends Component {
 		)
 	}
 
+	checkIfLoggedIn = () => {
+		// debugger
+		if (localStorage.token) {
+			fetch("https://agile-journey-79048.herokuapp.com/api/v1/profile", {
+				headers: {
+					"Content-Type": "application/json",
+					Accept: "application/json",
+					Authorization: `Bearer ${localStorage["token"]}`
+			}
+			})
+			.then(res => res.json())
+			.then(this.handleLogin)
+			.catch(console.log)
+		}
+	}
+
 	getPosts = () => {
 		fetch("https://agile-journey-79048.herokuapp.com/posts")
 		.then(res => res.json())
@@ -54,6 +70,7 @@ export default class App extends Component {
 	}
 
 	componentDidMount() {
+		this.checkIfLoggedIn()
 		this.getPosts()
 		this.getCategories()
 	}
