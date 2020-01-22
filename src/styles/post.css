@@ -111,10 +111,14 @@
 	font-weight: 300;
 	font-size: 0.9rem;
 }
-
-button.comment-submit:hover {
+.btn-primary:not(:disabled):not(.disabled):active {
 	background-color: rgb(86, 198, 218);
+	outline: none;
+	border: none;
+}
 
+button.comment-submit:hover, button.comment-submit:active {
+	background-color: rgb(86, 198, 218);
 }
 button.comment-submit {
 	border-radius: 0;

@@ -146,11 +146,11 @@ button.read-more-button {
 button.read-more-button:hover {
 	background: linear-gradient(
 		0deg,
-		rgba(255, 255, 255, 0.95) 0%,
-		rgba(255, 255, 255, 0.85) 20%,
-		rgba(255, 255, 255, 0.75) 40%,
-		rgba(255, 255, 255, 0.65) 60%,
-		rgba(255, 255, 255, 0.55) 80%,
+		rgba(255, 255, 255, 0.9) 0%,
+		rgba(255, 255, 255, 0.8) 20%,
+		rgba(255, 255, 255, 0.7) 40%,
+		rgba(255, 255, 255, 0.6) 60%,
+		rgba(255, 255, 255, 0.5) 80%,
 		transparent 100%
 		);
 }
@@ -225,6 +225,9 @@ input#postTitle {
 	color: #333;
 }
 
+.text-muted {
+	padding-left: 5px;
+}
 
 .new-post div.collapse:not(.show) {
 	position: relative;
@@ -292,8 +295,8 @@ a:hover {
 }
 
 .lottie-check {
-	top: 48px;
-	left: -7px;
+	top: -27px;
+	left: -20px;
 }
 
 .follow-text-true {
@@ -339,6 +342,7 @@ a:hover {
 
 .follow-button, .follow-category-button {
 	width: 0;
+	position: relative;
 }
 
 .author-title-container, .category-title-container {
@@ -358,7 +362,17 @@ a:hover {
 }
 
 .discover-page {
-	text-align: justify;
+	text-align: center;
+}
+
+.discover-page-container {
+	text-align: center;
+}
+
+.discover-prompt {
+	font-weight: 200;
+	font-size: 2.5rem;
+	/* text-align: center; */
 }
 
 .navbar-light .navbar-nav .nav-link {

@@ -23,17 +23,14 @@ import DiscoverPage from './DiscoverPage';
 // MAX TITLE SIZE
 // CLEAR THE EDITOR BUTTON
 
-
-
-
-
 export default class App extends Component {
 
 	state = {
 		user: null,
 		posts: [],
 		categories: [],
-		feed: []
+		feed: [],
+		draft: null
 	}
 
 	handleLogin = (user) => {
@@ -111,6 +108,14 @@ export default class App extends Component {
 		.then(this.mutateCategories)
 	}
 
+	getDraft = () => {
+		if (localStorage["draftail:content"] && localStorage["draftail:content"] !== "null") {
+			this.setState({draft: JSON.parse(localStorage["draftail:content"])}) 
+		} else {
+			this.setState({draft: null}) 
+		}
+	}
+
 	mutateCategories = (rawCategories) => {
 		const categories = rawCategories.map(category => {
 			return {label: category.title, value: category.id}
@@ -119,17 +124,12 @@ export default class App extends Component {
 		this.setState({categories})
 	}
 
-	componentDidMount() {
-		this.checkIfLoggedIn()
-		this.getPosts()
-		this.getCategories()
-		this.getFeed()
-	}
-
 	logout = (event) => {
 		event.preventDefault()
 		this.setState({user: null, feed: []})
 		localStorage.token = ""
+		localStorage["draftail:content"] = null
+
 	}
 
 	linksToRender = () => {
@@ -180,6 +180,14 @@ export default class App extends Component {
 				</Fragment>
 			)
 		}
+	}
+
+	componentDidMount() {
+		this.checkIfLoggedIn()
+		this.getPosts()
+		this.getCategories()
+		this.getFeed()
+		this.getDraft()
 	}
 
 	render() {
@@ -235,7 +243,7 @@ export default class App extends Component {
 							{this.state.user  ?
 							<div>
 								<Route exact path='/editor' render={
-									(routerProps) => < BlogEditor {...routerProps} userId={this.state.user.id} user={this.state.user} categories={this.state.categories}/>
+									(routerProps) => < BlogEditor {...routerProps} userId={this.state.user.id} user={this.state.user} categories={this.state.categories} draft={this.state.draft}/>
 									}
 								/>
 							</div>

@@ -22,12 +22,13 @@ export default class BlogEditor extends Component {
 	state = {
 		readyToBeSubmitted: false,
 		categories: [],
-		title: ""
+		title: "",
+		draft: null
 	}
 
 	onSave = (content) => {
-		console.log("saving:", content)
-		sessionStorage.setItem("draftail:content", JSON.stringify(content))
+		// console.log("saving:", content)
+		localStorage.setItem("draftail:content", JSON.stringify(content))
 	}
 
 	submitPost = () => {
@@ -42,7 +43,7 @@ export default class BlogEditor extends Component {
 			},
 			body: JSON.stringify({
 					post : {
-							content: sessionStorage["draftail:content"],
+							content: localStorage["draftail:content"],
 							categories: this.state.categories,
 							user_id: userId,
 							title:  this.state.title
@@ -83,6 +84,7 @@ export default class BlogEditor extends Component {
 	}
 
 	render() {
+		
 		return (
 			<Fragment>
 				<Form >
@@ -96,7 +98,7 @@ export default class BlogEditor extends Component {
 				</Form>
 				<DraftailEditor
 					ref="draftRef"
-					rawContentState={null}
+					rawContentState={this.props.draft}
 					// rawContentState={initialContent || null}
 					// rawContentState={initial || null}
 					onSave={this.onSave}

@@ -18,16 +18,13 @@ export default class Programming extends Component {
 
 		return(
 			<div>
-				{/* <div className="neddy-heading">Neddy</div> */}
 				<div className="neddy-subheading">Blogging. <span className="simplified">Simplified.</span></div>
-				{/* <Row className="align-self-start justify-content-center"> */}
 				<div className="programming-lottie">
 					<Lottie options={defaultOptions}
 							// height={400}
 							// width={400}
 					/>
 				</div>
-				{/* </Row> */}
 			</div>
 		)
 	}

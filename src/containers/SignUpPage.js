@@ -48,7 +48,7 @@ export default class SignUpPage extends Component{
 				return data.user
 			})
 			.then(handleLogin)
-			.then(history.push('/'))
+			.then(history.push('/discover'))
 			.catch(console.log)
 
 

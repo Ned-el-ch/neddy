@@ -18,7 +18,12 @@ export default class HomeFeed extends Component {
 				{this.props.feed.map(post => {
 					return(<SmallPost postData={post} user={this.props.user} open={false}/>)
 				})}
-				{this.props.user && this.props.feed.length > 0 ? null : <Programming />}
+				{this.props.user && this.props.feed.length > 0
+				?
+				null
+				:
+				<Programming />
+				}
 			</div>
 		);
 	}
