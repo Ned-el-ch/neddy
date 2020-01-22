@@ -117,9 +117,10 @@ export default class SmallPost extends Component {
 	}
 
 	showCategories = () => {
-		return this.state.categories.map(category => {
-			return category.title
-		}).join(", ")
+		// return this.state.categories.map(category => {
+		// 	return category.title
+		// }).join(", ")
+		return (<PostCategories categories={this.state.categories} key={randKey()}/>)
 	}
 
 	toggleFavorite = () => {

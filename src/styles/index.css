@@ -55,29 +55,47 @@ div.title {
 	width: 100%;
 	font-size: 2.1rem;
 	line-height: 1.075;
-	font-weight: 200;
+	font-weight: 250;
 	background: white;
 	border-radius: 13px 13px 0 0;
 	padding-left: 15px;
 	padding-right: 15px;
 	padding-bottom: 0;
-	padding-top: 50px;
+	padding-top: 55px;
 	overflow-wrap: break-word;
 	text-decoration: underline 3px;
 	transition: padding-top 0.2s ease;
 }
 
 div.title.offset-down {
-	padding-top: 50px;
+	padding-top: 55px;
 	transition: padding-top 0.2s ease;
+}
+
+.post-category-container {
+	font-size: 1.2rem;
+}
+
+.post-title-categories .post-category-container {
+	border: none;
+	margin-top: 0;
+	padding-top: 0;
+	font-size: 1rem;
+	margin-bottom: 0;
+
 }
 
 .post-title-categories {
 	padding-left: 15px;
 	margin-top: 10px;
 	position: absolute;
-	font-weight: 300;
-	color: rgb(158, 158, 168);
+	padding-bottom: 10px;
+	/* font-weight: 400; */
+	/* color: rgb(195, 195, 207); */
+}
+
+.post-category-link {
+	
 }
 
 .post-heading-details {
