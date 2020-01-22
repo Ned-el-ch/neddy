@@ -280,3 +280,18 @@ a {
 	padding-left: 15px;
 	padding-right: 15px;
 }
+
+.discover-category-item {
+	display: inline-block;
+	margin: 20px;
+	padding: 5px;
+	font-size: 2rem;
+	background: white;
+	border-radius: 13px;
+	box-shadow: 3px 3px 3px -2px rgba(0, 0, 0, 0.15);
+
+}
+
+.discover-page {
+	text-align: justify;
+}

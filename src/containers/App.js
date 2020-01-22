@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import SignUpPage from './SignUpPage';
 import LoginPage from './LoginPage';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom'
-import Posts from './Posts';
+// import Posts from './DiscoverPage';
 import BlogEditor from './BlogEditor';
 import AuthorPage from './AuthorPage';
 import HomeFeed from './HomeFeed';
@@ -17,6 +17,7 @@ import NavLink from "react-bootstrap/NavLink"
 import { LinkContainer } from "react-router-bootstrap";
 import CategoryPage from './CategoryPage';
 import ErrorPage from '../lotties/ErrorPage';
+import DiscoverPage from './DiscoverPage';
 export default class App extends Component {
 
 	state = {
@@ -180,8 +181,8 @@ export default class App extends Component {
 							</Navbar.Brand></NavLink>
 						</LinkContainer>
 						<Navbar.Collapse>
-						<LinkContainer to="/posts">
-							<NavLink><NavItem>Posts List</NavItem></NavLink>
+						<LinkContainer to="/discover">
+							<NavLink><NavItem>Discover</NavItem></NavLink>
 						</LinkContainer>
 						{this.linksToRender()}
 						</Navbar.Collapse>
@@ -200,11 +201,11 @@ export default class App extends Component {
 							<Route exact path="/category/:title" render={routerProps => {
 								return <CategoryPage {...routerProps} user={this.state.user}/>
 							}} />
-							{/* <Route exact path='/posts'	render={
-									(routerProps) => < Posts {...routerProps} posts={this.state.posts} user={this.state.user}
+							<Route exact path='/discover'	render={
+									(routerProps) => < DiscoverPage {...routerProps} categories={this.state.categories} user={this.state.user}
 								/>
 								}
-							/> */}
+							/>
 							<Route exact path='/' render={
 								(routerProps) => {
 									return <HomeFeed
