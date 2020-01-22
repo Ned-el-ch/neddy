@@ -219,6 +219,8 @@ export default class App extends Component {
 								/>
 								}
 							/>
+							<Route exact path="/dino" component={ErrorPage} />
+
 							<Route exact path='/' render={
 								(routerProps) => {
 									return <HomeFeed
@@ -249,7 +251,6 @@ export default class App extends Component {
 								/>
 							</div>
 							}
-							<Route path="/" component={ErrorPage} />
 
 							{/* <Route component={Dino}/> */}
 							{/* <Redirect to='/404' /> */}
