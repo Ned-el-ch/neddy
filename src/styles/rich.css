@@ -77,7 +77,7 @@ pre.public-DraftStyleDefault-pre:after {
 	overflow-wrap: break-word;
 	white-space: pre-wrap;
 	font-size: 0.8rem;
-	content: 'Put the language as the first line of the block to specify it or it will default to JavaScript. Hover on "Code Block" in the toolbar for more info.';
+	content: 'Put the language as the first line of the block to specify it or it will default to JavaScript. Hover on "Code Block" in the toolbar for more info. (message not visible when posted)';
 }
 pre.public-DraftStyleDefault-pre code {
 	counter-increment: listing;
