@@ -147,7 +147,7 @@ const inlineStyles = [
 	{ type: INLINE_STYLE.UNDERLINE },
 	{ type: INLINE_STYLE.STRIKETHROUGH },
 	{ type: INLINE_STYLE.MARK, label: "Highlight" },
-	{ type: INLINE_STYLE.QUOTATION , label: "“ ”", style: {fontStyle: "italic", fontWeight: "340"}},
+	// { type: INLINE_STYLE.QUOTATION , label: "“ ”", style: {fontStyle: "italic", fontWeight: "340"}},
 	{ type: INLINE_STYLE.SMALL, label: "SMALL", style: {fontSize: "0.5rem", textTransform: "uppercase"}},
 	{ type: INLINE_STYLE.SAMPLE, label: "code", style: {	padding: "0.2em 0.3125em",
 		margin: "0px",
