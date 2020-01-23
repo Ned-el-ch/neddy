@@ -9,14 +9,15 @@ export default class AuthorPage extends Component {
 		posts: null,
 		isFollowed: false,
 		followers: [],
-		following: []
+		following: [],
+		authorName: ""
 	}
 	getPosts = () => {
 		// console.log(`https://agile-journey-79048.herokuapp.com/user/${this.props.match.params.username}`)
 		fetch(`https://agile-journey-79048.herokuapp.com/api/v1/posts/${this.props.match.params.username}`)
 		.then(res => res.json())
 		.then(res => {
-			this.setState({posts: res.posts, followers: res.passive_relationships, following: res.active_relationships})
+			this.setState({posts: res.posts, followers: res.passive_relationships, following: res.active_relationships, authorName: res.name})
 			// console.log(res.posts)
 			return
 		})
@@ -116,7 +117,7 @@ export default class AuthorPage extends Component {
 		return (
 			<div className="author-page">
 				<div className="author-title-container">
-					<span className="author-title">{this.props.match.params.username}'s page</span>
+					<span className="author-title">{this.state.authorName}'s page</span>
 					{this.props.user && this.props.match.params.username !== this.props.user.username
 					?
 					<FollowButton
