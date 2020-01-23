@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from "react-router-dom"
 import randKey from "../concerns/randomKey"
 import PostControls from "./postComponents/PostControls";
 import AuthorCard from './postComponents/AuthorCard';
@@ -62,7 +63,8 @@ export default class SmallPost extends Component {
 		likes: [],
 		favorites: [],
 		comments: null,
-		categories: []
+		categories: [],
+		id: 1
 	}
 
 	fetchPost = () => {
@@ -96,6 +98,7 @@ export default class SmallPost extends Component {
 		this.setHeading(postData.title)
 		this.setCategories(postData.categories)
 		this.setDate(postData.created_at)
+		this.setId(postData.id)
 		if (!data) { return (<span>I am empty inside</span>) }
 		const dataWithInlineStyling = parseInlineStyling(data)
 		const dataToDisplay = parseBlockStyling(dataWithInlineStyling)
@@ -106,6 +109,10 @@ export default class SmallPost extends Component {
 			</div>
 		)
 		return dataToDisplay
+	}
+
+	setId = (id) => {
+		this.setState({id})
 	}
 
 	setHeading = (heading) => {
@@ -287,7 +294,8 @@ export default class SmallPost extends Component {
 						:
 						<span className="post-title-categories">{this.showCategories()}</span>
 					}
-					<div className={this.state.open ? "title offset-down" : "title"}>{this.state.heading}
+					<div className={this.state.open ? "title offset-down" : "title"}>
+						<Link to={`/posts/${this.state.id}`} className="individual-post-link underlined">{this.state.heading}</Link>
 						<div className="post-heading-details">
 							<div className="post-date">
 								<span className="post-date-number">{this.state.likes.length}</span> likes   //  <span className="post-date-number">{this.state.favorites.length}</span> favorites

@@ -263,8 +263,13 @@ svg {
 	text-align: center;
 }
 
-a {
+a:not(.individual-post-link) {
 	color: rgb(92, 214, 236);
+}
+
+.individual-post-link {
+	color: black;
+	/* text-decoration: underline black; */
 }
 
 a:hover {
@@ -379,7 +384,7 @@ button.submit-post {
 	background: rgba(0, 255, 255, 0.2);
 }
 
-.btn.btn-primary {
+.btn.btn-primary:not(.comment-submit) {
 	/* background-color: gray; */
 	/* border: 3px solid black; */
 	margin-top: 30px;
