@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
-import Container from "react-bootstrap/Container"
-import Row from "react-bootstrap/Row"
+import Alert from "react-bootstrap/Alert"
 import Col from "react-bootstrap/Col"
 import InputGroup from "react-bootstrap/InputGroup"
 import "../styles/login.css";
 
 export default class SignUpPage extends Component{
 
+	state = {
+		wrongSignup: false
+	}
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const handleLogin = this.props.handleLogin;
@@ -43,24 +45,21 @@ export default class SignUpPage extends Component{
 			})
 			.then(res => res.json())
 			.then(data => {
-				// debugger
-				localStorage.setItem("token", data.jwt);
-				return data.user
+				if (data.error) {
+					this.setState({wrongSignup: true})
+				} else {
+					localStorage.setItem("token", data.jwt);
+					handleLogin(data.user)
+					history.push('/discover')
+				}
 			})
-			.then(handleLogin)
-			.then(history.push('/discover'))
 			.catch(console.log)
-
-
 		}
-
 	}
 
 	render () {
 
 		return (
-			// <Row className="align-self-start justify-content-center">
-			// <Col  xs={10} sm={8} md={8} lg={7} xl={8} className="col-xxl">
 				<Form onSubmit={this.handleSubmit} >
 					<Form.Row>
 						<Form.Group as={Col} controlId="validationCustomName">
@@ -131,6 +130,13 @@ export default class SignUpPage extends Component{
 						<Form.Group >
 							<Button type="submit">Sign up</Button>
 						</Form.Group>
+
+					{this.state.wrongSignup
+					?
+					<Alert variant="danger" onClose={() => this.setState({wrongSignup: false})} dismissible>
+						<Alert.Heading>Oh snap! That username is already in use!</Alert.Heading>
+					</Alert>
+					: null}
 				</Form>
 			// </Col></Row>
 		);
