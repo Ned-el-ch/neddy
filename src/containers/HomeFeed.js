@@ -15,8 +15,8 @@ export default class HomeFeed extends Component {
 	render() {
 		return (
 			<div className="home-feed-page">
-				{this.props.feed.map(post => {
-					return(<SmallPost postData={post} user={this.props.user} open={false}/>)
+				{this.props.feed.map(postData => {
+					return(<SmallPost postData={postData} user={this.props.user} open={false}key={postData.id}/>)
 				})}
 				{this.props.user && this.props.feed.length > 0
 				?

@@ -87,6 +87,7 @@ export default class BlogEditor extends Component {
 		return (
 			<Fragment>
 				<Form >
+					{/* <Form.Group controlId="postTitle" className={this.state.readyToBeSubmitted ? "" :"form-error"}> */}
 					<Form.Group controlId="postTitle">
 						{/* <Form.Label>Email address</Form.Label> */}
 						<Form.Control onChange={this.setTitle} type="title" placeholder="Post title goes here..." />

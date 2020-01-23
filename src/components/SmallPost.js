@@ -168,7 +168,7 @@ export default class SmallPost extends Component {
 
 	}
 
-	addComment = (event) => {
+	addComment = (event, id) => {
 		event.preventDefault()
 		// debugger
 		fetch("https://agile-journey-79048.herokuapp.com/comment",{
@@ -180,7 +180,7 @@ export default class SmallPost extends Component {
 			},
 			body: JSON.stringify({
 				post: {
-					content: event.target.elements.commentInput.value,
+					content: event.target.elements[`commentInput-${id}`].value,
 					user_id: this.props.user.id,
 					id: (this.props.match ? this.props.match.params.id : this.props.postData.id)
 				}
@@ -188,7 +188,7 @@ export default class SmallPost extends Component {
 		})
 		.then(res => res.json())
 		.then(this.setComments)
-		.then(event.target.elements.commentInput.value = "")
+		.then(event.target.elements[`commentInput-${id}`].value = "")
 	}
 
 	componentDidMount () {
@@ -316,6 +316,7 @@ export default class SmallPost extends Component {
 							}
 							<div className="post-comments-container" key={randKey()}>
 								<Comments
+									id={randKey()}
 									userId={this.props.user ? this.props.user.id : this.props.user}
 									comments={
 										this.state.comments

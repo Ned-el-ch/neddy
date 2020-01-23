@@ -14,7 +14,7 @@ export default class Comments extends Component {
 	renderComments = () => {
 		return this.props.comments.map(comment => {
 			return(
-				<PostComment comment={comment}/>
+				<PostComment comment={comment} key={randKey()}/>
 			)
 		}).reverse()
 	}
@@ -22,9 +22,9 @@ export default class Comments extends Component {
 	inputField = () => {
 		return(
 			<div className="new-comment-field">
-				<Form onSubmit={this.props.handleSubmit} className="comment">
+				<Form onSubmit={(event) => this.props.handleSubmit(event, this.props.id)} className="comment">
 					<Form.Row className="comment-input-row">
-						<Form.Group controlId="commentInput" className="comment">
+						<Form.Group controlId={`commentInput-${this.props.id}`} className="comment">
 							<InputGroup className="comment">
 								<Form.Control
 									type="text"

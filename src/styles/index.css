@@ -224,6 +224,10 @@ input#postTitle {
 	font-weight: 200;
 	color: #333;
 }
+/* 
+.form-error.form-group input {
+	box-shadow: 0 0 0 0.2rem rgba(255, 13, 13, 0.25)!important;
+} */
 
 .text-muted {
 	padding-left: 5px;

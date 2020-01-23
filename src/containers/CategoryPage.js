@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SmallPost from '../components/SmallPost';
 import Loading from '../lotties/Loading';
 import FollowButton from "../components/FollowCategory"
+import randKey from "../concerns/randomKey"
 
 export default class CategoryPage extends Component {
 	state = {
@@ -57,7 +58,7 @@ export default class CategoryPage extends Component {
 			} else {
 				return this.state.posts.map(postData => {
 					// debugger
-					return (<SmallPost postData={postData} user={this.props.user} open={this.state.open}/>)
+					return (<SmallPost postData={postData} user={this.props.user} open={this.state.open} key={postData.id}/>)
 				})
 			}
 		}

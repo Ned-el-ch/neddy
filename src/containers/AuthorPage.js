@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import SmallPost from '../components/SmallPost';
 import Loading from '../lotties/Loading';
 import FollowButton from "../components/FollowUser"
+import randKey from "../concerns/randomKey"
+
 export default class AuthorPage extends Component {
 	state = {
 		posts: null,
@@ -68,7 +70,7 @@ export default class AuthorPage extends Component {
 			} else {
 				// debugger
 				return this.state.posts.map(postData => {
-					return (<SmallPost postData={postData} user={this.props.user} open={false}/>)
+					return (<SmallPost postData={postData} user={this.props.user} open={false} key={postData.id}/>)
 				})
 			}
 		}

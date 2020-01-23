@@ -205,7 +205,7 @@ export default class App extends Component {
 				<Router>
 				{/* <button onClick={this.getFeed}>OOF</button> */}
 				<Navbar bg="light" variant="light" fixed>
-					<Nav fluid collapseOnSelect>
+					<Nav fluid="true" collapseOnSelect="true">
 						<LinkContainer to="/">
 							<NavLink><Navbar.Brand>
 							<NavItem>{this.state.user ? "My Feed" : "Home"}</NavItem>
