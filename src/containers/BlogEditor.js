@@ -132,7 +132,7 @@ export default class BlogEditor extends Component {
 
 const blockTypes = [
 	// { type: BLOCK_TYPE.HEADER_ONE, label: "Heading", description: null },
-	{ type: BLOCK_TYPE.HEADER_FOUR, label: "Sub-heading" , description: null },
+	{ type: BLOCK_TYPE.HEADER_FOUR, label: "Heading" , description: null },
 	{ type: BLOCK_TYPE.BLOCKQUOTE, label: "Block Quote" , description: null },
 	{ type: BLOCK_TYPE.UNORDERED_LIST_ITEM, label: "Bullet List" , description: null },
 	{ type: BLOCK_TYPE.ORDERED_LIST_ITEM, label: "Number List" , description: null },
