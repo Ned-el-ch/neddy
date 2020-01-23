@@ -121,6 +121,9 @@ export default class BlogEditor extends Component {
 					noResultsText="That category is in another castle"
 
 				/>
+				<Form.Text className="text-muted">
+							Select between 3 and 5 categories
+				</Form.Text>
 				<button onClick={this.submitPost} disabled={!this.state.readyToBeSubmitted} className="submit-post">Submit Post</button>
 			</Fragment>
 		);
