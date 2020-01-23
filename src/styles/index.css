@@ -272,6 +272,11 @@ a:not(.individual-post-link) {
 	/* text-decoration: underline black; */
 }
 
+a.individual-post-link:hover {
+	color: rgb(119, 119, 119);
+	text-decoration: none;
+}
+
 a:hover {
 	color: rgb(86, 198, 218);
 }
