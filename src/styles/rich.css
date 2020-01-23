@@ -53,6 +53,7 @@ span.draftJsHashtagPlugin__hashtag__1wMVC span span {
 	font-size: 16px;
 	font-weight: 550;
 	padding: 20px;
+	padding-bottom: 40px;
 	margin: 0;
 	width: 100%;
 	line-height: 1.2;
@@ -63,6 +64,20 @@ span.draftJsHashtagPlugin__hashtag__1wMVC span span {
 }
 pre.public-DraftStyleDefault-pre:before {
 	counter-reset: listing;
+}
+pre.public-DraftStyleDefault-pre {
+	padding-bottom: 30px;
+}
+pre.public-DraftStyleDefault-pre:after {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	position: absolute;
+	color: rgba(255, 255, 255, 0.39);
+	font-weight: 400;
+	font-style: italic;
+	overflow-wrap: break-word;
+	white-space: pre-wrap;
+
+	content: "Put the language as the first line of the block to specify it or it will default to JavaScript.";
 }
 pre.public-DraftStyleDefault-pre code {
 	counter-increment: listing;
