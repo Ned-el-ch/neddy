@@ -14,7 +14,19 @@ export default class AuthorPage extends Component {
 	}
 	getPosts = () => {
 		// console.log(`https://agile-journey-79048.herokuapp.com/user/${this.props.match.params.username}`)
-		fetch(`https://agile-journey-79048.herokuapp.com/api/v1/posts/${this.props.match.params.username}`)
+		fetch(`https://agile-journey-79048.herokuapp.com/api/v1/posts`,{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json"
+
+			},
+			body: JSON.stringify({
+				user: {
+					username: this.props.match.params.username
+				}
+			})
+		})
 		.then(res => res.json())
 		.then(res => {
 			this.setState({posts: res.posts, followers: res.passive_relationships, following: res.active_relationships, authorName: res.name})
