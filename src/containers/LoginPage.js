@@ -93,11 +93,9 @@ export default class LoginPage extends Component{
 							</InputGroup>
 						</Form.Group>
 					</Form.Row>
-					<Form.Row>
 						<Form.Group >
-							<Button type="submit">Log me in!</Button>
+							<Button type="submit">Log in</Button>
 						</Form.Group>
-					</Form.Row>
 					{this.state.wrongLogin
 					?
 					<Alert variant="danger" onClose={() => this.setState({wrongLogin: false})} dismissible>

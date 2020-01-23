@@ -75,9 +75,9 @@ export default class SignUpPage extends Component{
 					<Form.Row>
 						<Form.Group as={Col} controlId="validationCustomUsername">
 							<InputGroup>
-								<InputGroup.Prepend>
+								{/* <InputGroup.Prepend>
 									<InputGroup.Text id="inputGroupPrepend">🌐</InputGroup.Text>
-								</InputGroup.Prepend>
+								</InputGroup.Prepend> */}
 								<Form.Control
 									type="text"
 									placeholder="Username"
@@ -128,11 +128,9 @@ export default class SignUpPage extends Component{
 							feedback="You must surrender your soul and morals."
 						/>
 					</Form.Group> */}
-					<Form.Row>
 						<Form.Group >
-							<Button type="submit">Sign me up!</Button>
+							<Button type="submit">Sign up</Button>
 						</Form.Group>
-					</Form.Row>
 				</Form>
 			// </Col></Row>
 		);

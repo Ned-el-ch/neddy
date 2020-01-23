@@ -14,34 +14,12 @@ body {
 	}
 }
 
-button.logout {
-	border: none;
-	background-color: rgba(0, 255, 255, 0.2);
-	position: absolute;
-	right: 0%;
-	height: 100%;
-	width: 100px;
-	border-radius: 0 0 13px ;
-}
-
 nav.navbar {
 	background-color: rgb(255, 255, 255)!important;
 	box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15);
 	border-radius: 0 0 13px 13px;
 }
 
-button.submit-post {
-	margin-top: 30px;
-	margin-bottom: 30px;
-	width: 100%;
-	height: 3rem;
-	font-size: 1.4rem;
-	font-weight: 260;
-	border: none;
-	border-radius: 13px;
-	box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15);
-	background: rgba(0, 255, 255, 0.2);
-}
 
 .categories-search {
 
@@ -175,8 +153,6 @@ button.read-more-button * {
 
 button.show-less-button {
 	position: absolute;
-	/* width: 40%; */
-	/* height: 100px; */
 	margin-top: 10px;
 	left: 10px;
 	border-radius: 0 0 13px 13px;
@@ -186,11 +162,8 @@ button.show-less-button {
 	line-height: 1.2;
 	font-weight: 300;
 	font-style: italic;
-	/* text-shadow: 2px 0 0 white; */
-	/* background: linear-gradient(0deg, rgba(255, 255, 255) 0%, rgba(255, 255, 255, 0.85) 33%, rgba(255, 255, 255, 0.55) 66%,transparent 100%); */
 	background: none;
 	color: rgba(99, 138, 139, 0.95);
-	/* padding-top: 50px; */
 }
 
 /* button.read-more-button[aria-expanded="true"] {
@@ -391,4 +364,63 @@ a:hover {
 nav.navbar {
 	padding-left: 0;
 	padding-right: 0;
+}
+
+button.submit-post {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 100%;
+	height: 3rem;
+	font-size: 1.4rem;
+	font-weight: 260;
+	border: none;
+	border-radius: 13px;
+	box-shadow: 0 6px 3px -5px rgba(0, 0, 0, 0.15);
+	background: rgba(0, 255, 255, 0.2);
+}
+
+.btn.btn-primary {
+	/* background-color: gray; */
+	/* border: 3px solid black; */
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 100%;
+	/* height: 3rem; */
+	font-size: 1.8rem;
+	font-weight: 260;
+	color: rgb(70, 70, 70);
+	border: none;
+	border-radius: 13px;
+	box-shadow: 0 5px 5px -6px rgba(0, 0, 0, 0.15);
+	background: rgba(0, 255, 255, 0.2);
+	padding: 5px;
+	word-spacing: 3px;
+	transition: 
+		color .15s ease-in-out,
+		background-color .15s ease-in-out,
+		border-color .15s ease-in-out,
+		box-shadow .15s ease-in-out;
+}
+
+.btn.btn-primary:active {
+	background: rgb(86, 198, 218)!important;
+}
+
+.btn.btn-primary:focus {
+	box-shadow: 0 5px 5px -6px rgba(0, 0, 0, 0.15)!important;
+}
+
+button.logout {
+	border: none;
+	background-color: rgba(0, 255, 255, 0.2);
+	position: absolute;
+	right: 0%;
+	height: 100%;
+	width: 100px;
+	border-radius: 0 0 13px ;
+}
+
+.form-control {
+	font-size: 1.3rem;
+	font-weight: 300;
 }
